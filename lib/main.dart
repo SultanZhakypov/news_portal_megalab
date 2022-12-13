@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:news_portal_megalab/resources/app_colors.dart';
+import 'feature/presentation/pages/register_screen/register_screen.dart';
+import 'feature/presentation/widgets/app_unfocuser.dart';
 
 void main() => runApp(const MyApp());
 
@@ -7,14 +10,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'News Portal',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Material App Bar'),
-        ),
-        body: const Center(
-          child: Text('Hello World'),
+    return const AppUnfocuser(
+      child: MaterialApp(
+        title: 'News Portal',
+        home: Scaffold(
+          backgroundColor: AppColors.colorWhite,
+          body: RegisterScreen(),
         ),
       ),
     );
