@@ -1,4 +1,7 @@
-part of '../pages/register_screen/register_screen.dart';
+
+
+import 'package:flutter/material.dart';
+import 'package:news_portal_megalab/resources/app_constants.dart';
 
 class CustomButton extends StatelessWidget {
   const CustomButton({super.key, required this.title});

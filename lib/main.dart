@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_portal_megalab/resources/app_colors.dart';
-import 'feature/presentation/pages/register_screen/register_screen.dart';
+import 'feature/presentation/pages/unauthorized_screen/unauthorized_screen.dart';
 import 'feature/presentation/widgets/app_unfocuser.dart';
 
 void main() => runApp(const MyApp());
@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
         title: 'News Portal',
         home: Scaffold(
           backgroundColor: AppColors.colorWhite,
-          body: RegisterScreen(),
+          body: UnAuthorizedScreen(),
         ),
       ),
     );
