@@ -27,10 +27,15 @@ abstract class AppConstants {
     fontFamily: 'Ubuntu500',
     fontSize: 16,
   );
-  static const textWhitew500s42 = TextStyle(
+  static const textWhitew500s30 = TextStyle(
     color: AppColors.colorWhite,
     fontFamily: 'Ubuntu500',
-    fontSize: 42,
+    fontSize: 26,
+  );
+  static const textWhitew400s16 = TextStyle(
+    color: AppColors.colorWhite,
+    fontFamily: 'Ubuntu400',
+    fontSize: 16,
   );
   static const textBlackw500s30 = TextStyle(
     color: AppColors.colorBlack,
