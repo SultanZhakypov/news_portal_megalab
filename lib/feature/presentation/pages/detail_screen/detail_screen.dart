@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_portal_megalab/core/extension.dart';
-import 'package:news_portal_megalab/feature/presentation/pages/home_screen/widgets/items_widget.dart';
+import 'package:news_portal_megalab/feature/presentation/pages/detail_screen/widgets/comment_answer_widget.dart';
+import 'package:news_portal_megalab/feature/presentation/pages/detail_screen/widgets/comment_textfield.dart';
+import 'package:news_portal_megalab/feature/presentation/pages/detail_screen/widgets/comment_widget.dart';
+import 'package:news_portal_megalab/feature/presentation/pages/detail_screen/widgets/detail_item_widget.dart';
 import 'package:news_portal_megalab/feature/presentation/widgets/footer_widget.dart';
 import 'package:news_portal_megalab/resources/app_colors.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 import 'package:news_portal_megalab/resources/resources.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class DetailScreen extends StatelessWidget {
+  const DetailScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -35,12 +38,11 @@ class HomeScreen extends StatelessWidget {
                   height: 20,
                 )),
             IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(
-                Svgs.whiteMenu,
-                height: 20,
-              ),
-            ),
+                onPressed: () {},
+                icon: SvgPicture.asset(
+                  Svgs.whiteMenu,
+                  height: 20,
+                )),
           ],
           pinned: true,
           expandedHeight: context.height / 5,
@@ -57,13 +59,13 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         SliverPadding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 17),
+          padding: const EdgeInsets.only(top: 17, left: 20, right: 20),
           sliver: SliverToBoxAdapter(
             child: Align(
-              alignment: Alignment.centerRight,
+              alignment: Alignment.centerLeft,
               child: IconButton(
                 onPressed: () {},
-                icon: SvgPicture.asset(Svgs.filterIcon),
+                icon: SvgPicture.asset(Svgs.arrowLeft),
               ),
             ),
           ),
@@ -71,12 +73,25 @@ class HomeScreen extends StatelessWidget {
         SliverPadding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           sliver: SliverList(
-            delegate: SliverChildBuilderDelegate(
-              childCount: 15,
-              (context, index) {
-                print(index);
-                return const ItemsWidget();
-              },
+            delegate: SliverChildListDelegate(
+              [
+                const DetailItemWidget(),
+                const SizedBox(height: 25),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: SvgPicture.asset(Svgs.share),
+                  ),
+                ),
+                const SizedBox(height: 32),
+                const Text('Коментарии',style: AppConstants.textBlackw500s24),
+                const SizedBox(height: 25),
+                const CommentWidget(),
+                const CommentAnswerWidget(),
+                const CommentWidget(),
+                const CommentTextField(),
+              ],
             ),
           ),
         ),
@@ -88,3 +103,5 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+
