@@ -13,47 +13,45 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomScrollView(
       slivers: [
-        SliverSafeArea(
-          sliver: SliverAppBar(
-            backgroundColor: AppColors.colorBlack,
-            leadingWidth: context.width / 3,
-            leading: SvgPicture.asset(
-              Svgs.megalabIconWhite,
-              fit: BoxFit.scaleDown,
-            ),
-            actions: [
-              IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset(
-                    Svgs.whiteSearch,
-                    height: 20,
-                  )),
-              IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset(
-                    Svgs.whiteProfile,
-                    height: 20,
-                  )),
-              IconButton(
+        SliverAppBar(
+          backgroundColor: AppColors.colorBlack,
+          leadingWidth: context.width / 3,
+          leading: SvgPicture.asset(
+            Svgs.megalabIconWhite,
+            fit: BoxFit.scaleDown,
+          ),
+          actions: [
+            IconButton(
                 onPressed: () {},
                 icon: SvgPicture.asset(
-                  Svgs.whiteMenu,
+                  Svgs.whiteSearch,
                   height: 20,
-                ),
+                )),
+            IconButton(
+                onPressed: () {},
+                icon: SvgPicture.asset(
+                  Svgs.whiteProfile,
+                  height: 20,
+                )),
+            IconButton(
+              onPressed: () {},
+              icon: SvgPicture.asset(
+                Svgs.whiteMenu,
+                height: 20,
               ),
-            ],
-            pinned: true,
-            expandedHeight: context.height / 5,
-            flexibleSpace: FlexibleSpaceBar(
-              centerTitle: true,
-              background: Image.asset(
-                Images.appbarBackgroundImage,
-                fit: BoxFit.cover,
-              ),
-              title: const Text(
-                'Новости',
-                style: AppConstants.textWhitew500s30,
-              ),
+            ),
+          ],
+          pinned: true,
+          expandedHeight: context.height / 5,
+          flexibleSpace: FlexibleSpaceBar(
+            centerTitle: true,
+            background: Image.asset(
+              Images.appbarBackgroundImage,
+              fit: BoxFit.cover,
+            ),
+            title: const Text(
+              'Новости',
+              style: AppConstants.textWhitew500s30,
             ),
           ),
         ),
