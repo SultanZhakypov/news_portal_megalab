@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:news_portal_megalab/resources/app_colors.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 
-import '../../../../../resources/resources.dart';
+import '../../../resources/resources.dart';
 
 class ItemsWidget extends StatelessWidget {
   const ItemsWidget({

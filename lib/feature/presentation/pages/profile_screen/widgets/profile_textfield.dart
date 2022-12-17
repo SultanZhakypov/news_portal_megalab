@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:news_portal_megalab/resources/app_colors.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
-import 'package:news_portal_megalab/resources/resources.dart';
 
-import '../../../widgets/custom_button.dart';
+class ProfileTextFieldWidget extends StatelessWidget {
+  const ProfileTextFieldWidget({
+    Key? key,
+    required this.title,
+  }) : super(key: key);
 
-class CommentTextField extends StatelessWidget {
-  const CommentTextField({super.key});
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(
-        top: 24,
-        bottom: 32,
-      ),
-      child: SizedBox(
-        height: 32,
-        child: Row(
-          children: [
-            Expanded(
+      padding: const EdgeInsets.only(bottom: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(title,style: AppConstants.textBlackw400s14),
+          const SizedBox(height: 5),
+          SizedBox(
+            height: 32,
+            child: Expanded(
               child: TextField(
                 style: AppConstants.textBlackw400s16,
                 cursorColor: AppColors.colorPurple,
                 decoration: InputDecoration(
-                  hintText: 'Напишите комментарий',
-                  hintStyle: AppConstants.textLightGreyw400s16,
                   contentPadding: const EdgeInsets.symmetric(horizontal: 15),
                   focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -43,13 +43,8 @@ class CommentTextField extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: 11),
-            CustomButtonSvg(
-              svg: Svgs.arrowUp,
-              onPress: () {},
-            )
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

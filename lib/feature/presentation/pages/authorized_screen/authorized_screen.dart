@@ -22,7 +22,10 @@ class AuthorizedScreen extends StatelessWidget {
           const CustomTextField(title: 'Никнейм'),
           const CustomTextFieldPassword(title: 'Пароль'),
           const SizedBox(height: 30),
-          const CustomButton(title: 'Войти'),
+          CustomButtonText(
+            title: 'Войти',
+            onPress: () {},
+          ),
         ],
       ),
     );

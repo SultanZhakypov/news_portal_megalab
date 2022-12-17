@@ -15,64 +15,64 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          backgroundColor: AppColors.colorBlack,
-          leadingWidth: context.width / 3,
-          leading: SvgPicture.asset(
-            Svgs.megalabIconWhite,
-            fit: BoxFit.scaleDown,
-          ),
-          actions: [
-            IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset(
-                  Svgs.whiteSearch,
-                  height: 20,
-                )),
-            IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset(
-                  Svgs.whiteProfile,
-                  height: 20,
-                )),
-            IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset(
-                  Svgs.whiteMenu,
-                  height: 20,
-                )),
-          ],
-          pinned: true,
-          expandedHeight: context.height / 5,
-          flexibleSpace: FlexibleSpaceBar(
-            centerTitle: true,
-            background: Image.asset(
-              Images.appbarBackgroundImage,
-              fit: BoxFit.cover,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            backgroundColor: AppColors.colorBlack,
+            leadingWidth: context.width / 3,
+            leading: SvgPicture.asset(
+              Svgs.megalabIconWhite,
+              fit: BoxFit.scaleDown,
             ),
-            title: const Text(
-              'Новости',
-              style: AppConstants.textWhitew500s30,
-            ),
-          ),
-        ),
-        SliverPadding(
-          padding: const EdgeInsets.only(top: 17, left: 20, right: 20),
-          sliver: SliverToBoxAdapter(
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: IconButton(
-                onPressed: () {},
-                icon: SvgPicture.asset(Svgs.arrowLeft),
+            actions: [
+              IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset(
+                    Svgs.whiteSearch,
+                    height: 20,
+                  )),
+              IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset(
+                    Svgs.whiteProfile,
+                    height: 20,
+                  )),
+              IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset(
+                    Svgs.whiteMenu,
+                    height: 20,
+                  )),
+            ],
+            pinned: true,
+            expandedHeight: context.height / 5,
+            flexibleSpace: FlexibleSpaceBar(
+              centerTitle: true,
+              background: Image.asset(
+                Images.appbarBackgroundImage,
+                fit: BoxFit.cover,
+              ),
+              title: const Text(
+                'Новости',
+                style: AppConstants.textWhitew500s30,
               ),
             ),
           ),
-        ),
-        SliverPadding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          sliver: SliverList(
+          SliverPadding(
+            padding: const EdgeInsets.only(top: 17),
+            sliver: SliverToBoxAdapter(
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: IconButton(
+                  onPressed: () {},
+                  icon: SvgPicture.asset(Svgs.arrowLeft),
+                ),
+              ),
+            ),
+          ),
+          SliverList(
             delegate: SliverChildListDelegate(
               [
                 const DetailItemWidget(),
@@ -85,7 +85,7 @@ class DetailScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 32),
-                const Text('Коментарии',style: AppConstants.textBlackw500s24),
+                const Text('Коментарии', style: AppConstants.textBlackw500s24),
                 const SizedBox(height: 25),
                 const CommentWidget(),
                 const CommentAnswerWidget(),
@@ -94,14 +94,12 @@ class DetailScreen extends StatelessWidget {
               ],
             ),
           ),
-        ),
-        const SliverFillRemaining(
-          hasScrollBody: false,
-          child: FooterWidget(),
-        )
-      ],
+          const SliverFillRemaining(
+            hasScrollBody: false,
+            child: FooterWidget(),
+          )
+        ],
+      ),
     );
   }
 }
-
-

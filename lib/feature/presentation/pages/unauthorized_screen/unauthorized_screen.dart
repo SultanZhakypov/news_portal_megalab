@@ -23,7 +23,10 @@ class UnAuthorizedScreen extends StatelessWidget {
           const CustomTextFieldPassword(title: 'Пароль'),
           const CustomTextFieldPassword(title: 'Подтверждение пароля'),
           const SizedBox(height: 30),
-          const CustomButton(title: 'Регистрация'),
+          CustomButtonText(
+            title: 'Регистрация',
+            onPress: () {},
+          ),
           const SizedBox(height: 22),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

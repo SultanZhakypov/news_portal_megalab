@@ -7,8 +7,8 @@ import 'package:news_portal_megalab/resources/app_colors.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 import 'package:news_portal_megalab/resources/resources.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class LikedScreen extends StatelessWidget {
+  const LikedScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,65 +17,52 @@ class HomeScreen extends StatelessWidget {
       child: CustomScrollView(
         slivers: [
           SliverAppBar(
-            backgroundColor: AppColors.colorBlack,
+            backgroundColor: AppColors.colorWhite,
             leadingWidth: context.width / 3,
             leading: SvgPicture.asset(
-              Svgs.megalabIconWhite,
+              Svgs.megalabIconPurple,
               fit: BoxFit.scaleDown,
             ),
             actions: [
               IconButton(
                   onPressed: () {},
                   icon: SvgPicture.asset(
-                    Svgs.whiteSearch,
+                    Svgs.purpleSearch,
                     height: 20,
                   )),
               IconButton(
                   onPressed: () {},
                   icon: SvgPicture.asset(
-                    Svgs.whiteProfile,
+                    Svgs.purpleProfile,
                     height: 20,
                   )),
               IconButton(
                 onPressed: () {},
                 icon: SvgPicture.asset(
-                  Svgs.whiteMenu,
+                  Svgs.purpleMenu,
                   height: 20,
                 ),
               ),
             ],
             pinned: true,
             expandedHeight: context.height / 5,
-            flexibleSpace: FlexibleSpaceBar(
+            flexibleSpace: const FlexibleSpaceBar(
               centerTitle: true,
-              background: Image.asset(
-                Images.appbarBackgroundImage,
-                fit: BoxFit.cover,
-              ),
-              title: const Text(
-                'Новости',
-                style: AppConstants.textWhitew500s30,
+              title: Text(
+                'Избранные',
+                style: AppConstants.textBlackw500s30,
               ),
             ),
           ),
           SliverPadding(
-            padding: const EdgeInsets.symmetric(vertical: 17),
-            sliver: SliverToBoxAdapter(
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset(Svgs.filterIcon),
-                ),
+            padding: const EdgeInsets.only(top: 17),
+            sliver: SliverList(
+              delegate: SliverChildBuilderDelegate(
+                childCount: 15,
+                (context, index) {
+                  return const ItemsWidget();
+                },
               ),
-            ),
-          ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              childCount: 15,
-              (context, index) {
-                return const ItemsWidget();
-              },
             ),
           ),
           const SliverFillRemaining(
