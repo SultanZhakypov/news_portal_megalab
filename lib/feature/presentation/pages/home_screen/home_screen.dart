@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:news_portal_megalab/core/extension.dart';
+import 'package:news_portal_megalab/resources/extension.dart';
 import 'package:news_portal_megalab/feature/presentation/widgets/items_widget.dart';
 import 'package:news_portal_megalab/feature/presentation/widgets/footer_widget.dart';
 import 'package:news_portal_megalab/resources/app_colors.dart';

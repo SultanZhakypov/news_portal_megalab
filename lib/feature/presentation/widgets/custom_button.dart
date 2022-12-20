@@ -19,7 +19,7 @@ class CustomButtonText extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           )),
-      onPressed: () {},
+      onPressed: onPress,
       child: Text(title, style: AppConstants.textWhitew500s16),
     );
   }
