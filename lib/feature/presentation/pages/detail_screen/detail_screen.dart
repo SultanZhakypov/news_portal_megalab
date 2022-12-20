@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:news_portal_megalab/resources/extension.dart';
 import 'package:news_portal_megalab/feature/presentation/pages/detail_screen/widgets/comment_answer_widget.dart';
 import 'package:news_portal_megalab/feature/presentation/pages/detail_screen/widgets/comment_textfield.dart';
 import 'package:news_portal_megalab/feature/presentation/pages/detail_screen/widgets/comment_widget.dart';
 import 'package:news_portal_megalab/feature/presentation/pages/detail_screen/widgets/detail_item_widget.dart';
 import 'package:news_portal_megalab/feature/presentation/widgets/footer_widget.dart';
-import 'package:news_portal_megalab/resources/app_colors.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 import 'package:news_portal_megalab/resources/resources.dart';
+import '../../widgets/appbar_white.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key});
@@ -19,47 +18,7 @@ class DetailScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            backgroundColor: AppColors.colorBlack,
-            leadingWidth: context.width / 3,
-            leading: SvgPicture.asset(
-              Svgs.megalabIconWhite,
-              fit: BoxFit.scaleDown,
-            ),
-            actions: [
-              IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset(
-                    Svgs.whiteSearch,
-                    height: 20,
-                  )),
-              IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset(
-                    Svgs.whiteProfile,
-                    height: 20,
-                  )),
-              IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset(
-                    Svgs.whiteMenu,
-                    height: 20,
-                  )),
-            ],
-            pinned: true,
-            expandedHeight: context.height / 5,
-            flexibleSpace: FlexibleSpaceBar(
-              centerTitle: true,
-              background: Image.asset(
-                Images.appbarBackgroundImage,
-                fit: BoxFit.cover,
-              ),
-              title: const Text(
-                'Новости',
-                style: AppConstants.textWhitew500s30,
-              ),
-            ),
-          ),
+          const SliverAppbarWhite(),
           SliverPadding(
             padding: const EdgeInsets.only(top: 17),
             sliver: SliverToBoxAdapter(
