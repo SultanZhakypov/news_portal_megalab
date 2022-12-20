@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:news_portal_megalab/feature/presentation/pages/liked_screen/liked_screen.dart';
-import 'package:news_portal_megalab/feature/presentation/pages/profile_screen/profile_screen.dart';
+import 'package:news_portal_megalab/feature/profile/presentation/pages/profile_screen.dart';
 import 'package:news_portal_megalab/resources/app_colors.dart';
-import 'feature/presentation/widgets/app_unfocuser.dart';
+import 'feature/widgets/app_unfocuser.dart';
 
 void main() => runApp(const MyApp());
 
