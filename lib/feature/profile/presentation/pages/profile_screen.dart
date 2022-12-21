@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_portal_megalab/feature/profile/presentation/widgets/app_edit.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/widgets/profile_edit_widget.dart';
 import 'package:news_portal_megalab/feature/widgets/custom_button.dart';
 import 'package:news_portal_megalab/feature/widgets/items_widget.dart';
@@ -35,8 +36,8 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 CustomButtonSvg(
                   svg: Svgs.plus,
-                  onPress: () {},
-                )
+                  onPress: () => AppEdit.showEdit(context),
+                ),
               ],
             ),
           ),

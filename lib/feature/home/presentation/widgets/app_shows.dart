@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:news_portal_megalab/feature/home/presentation/widgets/snackbar_textfield.dart';
+import 'package:news_portal_megalab/feature/home/presentation/widgets/social_buttons.dart';
 import 'package:news_portal_megalab/feature/widgets/custom_button.dart';
 import 'package:news_portal_megalab/resources/export_resources.dart';
 import '../../../../main.dart';
@@ -113,56 +115,6 @@ abstract class AppShows {
       ),
     );
   }
-}
 
-class SnackBarTextField extends StatelessWidget {
-  const SnackBarTextField({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      cursorColor: AppColors.colorBlack,
-      style: AppConstants.textBlackw400s16,
-      decoration: InputDecoration(
-        hintText: 'Текст ссылки',
-        hintStyle: AppConstants.textBlackw400s14,
-        suffixIcon: IconButton(
-          icon: SvgPicture.asset(Svgs.copy),
-          onPressed: () {},
-        ),
-        fillColor: AppColors.colorBlWhite,
-        filled: true,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 15),
-        border: OutlineInputBorder(
-          borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(10),
-        ),
-      ),
-    );
-  }
-}
-
-class SocialButtons extends StatelessWidget {
-  const SocialButtons({
-    Key? key,
-    required this.svg,
-    required this.onPress,
-  }) : super(key: key);
-  final String svg;
-  final Function() onPress;
-
-  @override
-  Widget build(BuildContext context) {
-    return CircleAvatar(
-      backgroundColor: AppColors.colorBlWhite,
-      radius: 40,
-      child: IconButton(
-        onPressed: onPress,
-        icon: SvgPicture.asset(
-          svg,
-          height: 25,
-        ),
-      ),
-    );
-  }
+  
 }

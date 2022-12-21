@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:news_portal_megalab/feature/home/presentation/pages/home_screen.dart';
+import 'package:news_portal_megalab/feature/profile/presentation/pages/profile_screen.dart';
 import 'package:news_portal_megalab/resources/app_colors.dart';
 import 'feature/widgets/app_unfocuser.dart';
 
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         title: 'News Portal',
         home: const Scaffold(
           backgroundColor: AppColors.colorWhite,
-          body: HomeScreen(),
+          body: ProfileScreen(),
         ),
       ),
     );

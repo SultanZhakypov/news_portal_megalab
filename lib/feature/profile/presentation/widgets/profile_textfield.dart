@@ -5,9 +5,15 @@ class ProfileTextFieldWidget extends StatelessWidget {
   const ProfileTextFieldWidget({
     Key? key,
     required this.title,
+    this.maxLines = 1,
+    this.height = 32,
+    this.top = 0,
+    this.bottom = 0,
   }) : super(key: key);
 
   final String title;
+  final int maxLines;
+  final double height, top, bottom;
 
   @override
   Widget build(BuildContext context) {
@@ -19,21 +25,27 @@ class ProfileTextFieldWidget extends StatelessWidget {
           Text(title, style: AppConstants.textBlackw400s14),
           const SizedBox(height: 5),
           SizedBox(
-            height: 32,
+            height: height,
             child: Expanded(
               child: TextField(
+                maxLines: maxLines,
                 style: AppConstants.textBlackw400s16,
                 cursorColor: AppColors.colorPurple,
                 decoration: InputDecoration(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 15),
+                  contentPadding: EdgeInsets.only(
+                    right: 15,
+                    left: 15,
+                    top: top,
+                    bottom: bottom,
+                  ),
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(5),
                       borderSide: const BorderSide(
                         color: AppColors.colorPurple,
                         width: 2,
                       )),
                   border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(5),
                     borderSide: const BorderSide(
                       width: 2,
                       color: AppColors.colorGrey,
