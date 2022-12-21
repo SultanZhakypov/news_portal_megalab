@@ -4,6 +4,7 @@ import 'package:news_portal_megalab/resources/app_colors.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 
 import '../../resources/resources.dart';
+import '../home/presentation/widgets/app_shows.dart';
 
 class ItemsWidget extends StatelessWidget {
   const ItemsWidget({
@@ -51,7 +52,7 @@ class ItemsWidget extends StatelessWidget {
         ),
         const SizedBox(height: 18),
         IconButton(
-          onPressed: () {},
+          onPressed: () => AppShows.showSnackBarUrl(context),
           icon: SvgPicture.asset(Svgs.share),
         ),
         const Padding(

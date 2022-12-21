@@ -10,24 +10,24 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: CustomScrollView(
-        slivers: [
-          const SliverAppbarWhite(),
-          SliverPadding(
-            padding: const EdgeInsets.only(top: 17),
-            sliver: SliverToBoxAdapter(
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset(Svgs.arrowLeft),
-                ),
+    return CustomScrollView(
+      slivers: [
+        const SliverAppbarWhite(),
+        SliverPadding(
+          padding: const EdgeInsets.only(top: 17, right: 20, left: 20),
+          sliver: SliverToBoxAdapter(
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: IconButton(
+                onPressed: () {},
+                icon: SvgPicture.asset(Svgs.arrowLeft),
               ),
             ),
           ),
-          SliverList(
+        ),
+        SliverPadding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          sliver: SliverList(
             delegate: SliverChildListDelegate(
               [
                 const DetailItemWidget(),
@@ -49,12 +49,12 @@ class DetailScreen extends StatelessWidget {
               ],
             ),
           ),
-          const SliverFillRemaining(
-            hasScrollBody: false,
-            child: FooterWidget(),
-          )
-        ],
-      ),
+        ),
+        const SliverFillRemaining(
+          hasScrollBody: false,
+          child: FooterWidget(),
+        )
+      ],
     );
   }
 }

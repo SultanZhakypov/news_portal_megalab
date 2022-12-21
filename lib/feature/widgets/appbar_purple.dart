@@ -20,7 +20,7 @@ class SliverAppbarPurple extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       backgroundColor: AppColors.colorWhite,
-      leadingWidth: context.width / 3,
+      leadingWidth: context.width / 4,
       leading: SvgPicture.asset(
         Svgs.megalabIconPurple,
         fit: BoxFit.scaleDown,
@@ -53,7 +53,7 @@ class SliverAppbarPurple extends StatelessWidget {
               centerTitle: true,
               title: Text(
                 title,
-                style: AppConstants.textBlackw500s30,
+                style: AppConstants.textBlackw500s24,
               ),
             )
           : null,

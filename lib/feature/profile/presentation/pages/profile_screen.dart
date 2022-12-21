@@ -13,51 +13,49 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: CustomScrollView(
-          slivers: [
-            const SliverAppbarPurple(
-              title: '',
-              flexibleSpaceParam: false,
-            ),
-            const SliverPadding(
-              padding: EdgeInsets.symmetric(vertical: 32),
-              sliver: SliverProfileEditWidget(),
-            ),
-            SliverToBoxAdapter(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Мои публикации',
-                    style: AppConstants.textBlackw500s24,
-                  ),
-                  CustomButtonSvg(
-                    svg: Svgs.plus,
-                    onPress: () {},
-                  )
-                ],
-              ),
-            ),
-            SliverPadding(
-              padding: const EdgeInsets.only(top: 17),
-              sliver: SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  childCount: 15,
-                  (context, index) {
-                    return const ItemsWidget();
-                  },
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: CustomScrollView(
+        slivers: [
+          const SliverAppbarPurple(
+            title: '',
+            flexibleSpaceParam: false,
+          ),
+          const SliverPadding(
+            padding: EdgeInsets.symmetric(vertical: 32),
+            sliver: SliverProfileEditWidget(),
+          ),
+          SliverToBoxAdapter(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Мои публикации',
+                  style: AppConstants.textBlackw500s24,
                 ),
+                CustomButtonSvg(
+                  svg: Svgs.plus,
+                  onPress: () {},
+                )
+              ],
+            ),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.only(top: 17),
+            sliver: SliverList(
+              delegate: SliverChildBuilderDelegate(
+                childCount: 15,
+                (context, index) {
+                  return const ItemsWidget();
+                },
               ),
             ),
-            const SliverFillRemaining(
-              hasScrollBody: false,
-              child: FooterWidget(),
-            )
-          ],
-        ),
+          ),
+          const SliverFillRemaining(
+            hasScrollBody: false,
+            child: FooterWidget(),
+          )
+        ],
       ),
     );
   }
