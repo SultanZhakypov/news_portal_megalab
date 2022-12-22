@@ -7,8 +7,10 @@ class CustomTextField extends StatelessWidget {
   const CustomTextField({
     Key? key,
     required this.title,
+    required this.controller,
   }) : super(key: key);
   final String title;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,9 @@ class CustomTextField extends StatelessWidget {
             style: AppConstants.textBlackw400s16,
           ),
           const SizedBox(height: 2),
-          TextField(
+          TextFormField(
+            validator: (value) => value!.isEmpty ? 'Заполните поле' : null,
+            controller: controller,
             cursorColor: AppColors.colorPurple,
             textInputAction: TextInputAction.next,
             style: AppConstants.textBlackw400s16,
@@ -50,9 +54,14 @@ class CustomTextField extends StatelessWidget {
 }
 
 class CustomTextFieldPassword extends StatefulWidget {
-  const CustomTextFieldPassword({super.key, required this.title});
+  const CustomTextFieldPassword({
+    super.key,
+    required this.title,
+    required this.controller,
+  });
 
   final String title;
+  final TextEditingController controller;
 
   @override
   State<CustomTextFieldPassword> createState() =>
@@ -74,42 +83,45 @@ class _CustomTextFieldPasswordState extends State<CustomTextFieldPassword> {
           ),
           const SizedBox(height: 2),
           ValueListenableBuilder(
-              valueListenable: _isPasswordVisible,
-              builder: (context, _, __) {
-                return TextField(
-                  cursorColor: AppColors.colorPurple,
-                  textInputAction: TextInputAction.next,
-                  style: AppConstants.textBlackw400s16,
-                  decoration: InputDecoration(
-                    suffixIcon: IconButton(
-                      onPressed: () {
-                        _isPasswordVisible.value = !_isPasswordVisible.value;
-                      },
-                      icon: Icon(
-                        _isPasswordVisible.value
-                            ? Icons.visibility
-                            : Icons.visibility_off,
-                      ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(
-                        color: AppColors.colorPurple,
-                        width: 2,
-                      ),
-                    ),
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 5),
-                    border: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Colors.grey,
-                        width: 2,
-                      ),
-                      borderRadius: BorderRadius.circular(10),
+            valueListenable: _isPasswordVisible,
+            builder: (context, _, __) {
+              return TextFormField(
+                controller: widget.controller,
+                validator: (value) => value!.isEmpty ? 'Введите пароль' : null,
+                cursorColor: AppColors.colorPurple,
+                textInputAction: TextInputAction.next,
+                style: AppConstants.textBlackw400s16,
+                decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      _isPasswordVisible.value = !_isPasswordVisible.value;
+                    },
+                    icon: Icon(
+                      _isPasswordVisible.value
+                          ? Icons.visibility
+                          : Icons.visibility_off,
                     ),
                   ),
-                  obscureText: _isPasswordVisible.value,
-                );
-              }),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: const BorderSide(
+                      color: AppColors.colorPurple,
+                      width: 2,
+                    ),
+                  ),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 5),
+                  border: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.grey,
+                      width: 2,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+                obscureText: _isPasswordVisible.value,
+              );
+            },
+          ),
         ],
       ),
     );
