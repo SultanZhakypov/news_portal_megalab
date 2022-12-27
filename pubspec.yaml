@@ -45,15 +45,16 @@ dependencies:
   auto_route: ^5.0.4
   internet_connection_checker_plus: ^1.0.1
   dartz: ^0.10.1
-  http: ^0.13.5
-  url_launcher: ^6.1.7
   dropdown_button2: ^1.9.2
+  dio: ^4.0.6
+  json_annotation: ^4.7.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   auto_route_generator: ^5.0.3
   build_runner: ^2.3.2
+  json_serializable: ^6.5.4
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

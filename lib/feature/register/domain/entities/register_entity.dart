@@ -1,13 +1,14 @@
 import 'package:equatable/equatable.dart';
 
 class RegisterEntity extends Equatable {
-  final String nickname, name, lastName, image, password, password2;
+  final String nickname, name, lastName, password, password2;
+  final String? imageProfile;
 
   const RegisterEntity({
     required this.nickname,
     required this.name,
     required this.lastName,
-    required this.image,
+    required this.imageProfile,
     required this.password,
     required this.password2,
   });
@@ -17,7 +18,7 @@ class RegisterEntity extends Equatable {
         nickname,
         name,
         lastName,
-        image,
+        imageProfile,
         password,
         password2,
       ];

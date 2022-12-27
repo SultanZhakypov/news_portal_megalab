@@ -58,10 +58,12 @@ class CustomTextFieldPassword extends StatefulWidget {
     super.key,
     required this.title,
     required this.controller,
+    this.validator,
   });
 
   final String title;
   final TextEditingController controller;
+  final String? Function(String?)? validator;
 
   @override
   State<CustomTextFieldPassword> createState() =>
@@ -87,7 +89,7 @@ class _CustomTextFieldPasswordState extends State<CustomTextFieldPassword> {
             builder: (context, _, __) {
               return TextFormField(
                 controller: widget.controller,
-                validator: (value) => value!.isEmpty ? 'Введите пароль' : null,
+                validator: widget.validator,
                 cursorColor: AppColors.colorPurple,
                 textInputAction: TextInputAction.next,
                 style: AppConstants.textBlackw400s16,
