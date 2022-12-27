@@ -9,9 +9,7 @@ import '../../../../resources/resources.dart';
 import '../../../widgets/widgets.dart';
 
 class UnAuthorizedScreen extends StatefulWidget {
-  const UnAuthorizedScreen({
-    super.key,
-  });
+  const UnAuthorizedScreen({super.key});
 
   @override
   State<UnAuthorizedScreen> createState() => _UnAuthorizedScreenState();

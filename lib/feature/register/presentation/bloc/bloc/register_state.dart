@@ -11,18 +11,6 @@ class RegisterInitialState extends RegisterState {}
 
 class RegisterLoadingState extends RegisterState {}
 
-class RegisterSuccessState extends RegisterState {
-  final String message;
+class RegisterSuccessState extends RegisterState {}
 
-  const RegisterSuccessState({required this.message});
-  @override
-  List<Object> get props => [message];
-}
-
-class RegisterErrorState extends RegisterState {
-  final String message;
-
-  const RegisterErrorState({required this.message});
-  @override
-  List<Object> get props => [message];
-}
+class RegisterErrorState extends RegisterState {}
