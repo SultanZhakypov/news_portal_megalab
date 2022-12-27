@@ -1,7 +1,9 @@
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:news_portal_megalab/generated/locale_keys.g.dart';
 import 'package:news_portal_megalab/main.dart';
-import 'package:news_portal_megalab/resources/resources.dart';
+import '../../../../resources/export_resources.dart';
 import '../../../widgets/widgets.dart';
 
 class AuthorizedScreen extends StatefulWidget {
@@ -22,25 +24,42 @@ class _AuthorizedScreenState extends State<AuthorizedScreen> {
       child: Form(
         key: formKey,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SvgPicture.asset(Svgs.megalabIconPurple),
             const SizedBox(height: 15),
             CustomTextField(
-              title: 'Никнейм',
+              title: LocaleKeys.nickname,
               controller: nicknameController,
             ),
             CustomTextFieldPassword(
-              title: 'Пароль',
+              title: LocaleKeys.password,
               controller: passwordController,
             ),
             const SizedBox(height: 30),
             CustomButtonText(
-              title: 'Войти',
+              title: (LocaleKeys.login.tr()),
               onPress: () {
                 formKey.currentState!.validate();
               },
+            ),
+            const SizedBox(height: 32),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  LocaleKeys.no_account.tr(),
+                  style: AppConstants.textGreyw400s12,
+                ),
+                const SizedBox(width: 5),
+                InkWell(
+                  onTap: () {},
+                  child: Text(
+                    LocaleKeys.register.tr(),
+                    style: AppConstants.textBluew400s12,
+                  ),
+                ),
+              ],
             ),
           ],
         ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:news_portal_megalab/resources/app_colors.dart';
 
@@ -20,7 +21,7 @@ class CustomTextField extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            title,
+            title.tr(),
             style: AppConstants.textBlackw400s16,
           ),
           const SizedBox(height: 2),
@@ -80,7 +81,7 @@ class _CustomTextFieldPasswordState extends State<CustomTextFieldPassword> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            widget.title,
+            widget.title.tr(),
             style: AppConstants.textBlackw400s16,
           ),
           const SizedBox(height: 2),

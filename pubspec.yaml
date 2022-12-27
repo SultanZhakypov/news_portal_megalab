@@ -48,6 +48,7 @@ dependencies:
   dropdown_button2: ^1.9.2
   dio: ^4.0.6
   json_annotation: ^4.7.0
+  easy_localization: ^3.0.1
 
 dev_dependencies:
   flutter_test:
@@ -78,6 +79,7 @@ flutter:
   assets:
     - assets/images/
     - assets/svgs/
+    - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

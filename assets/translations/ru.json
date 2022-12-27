@@ -1,0 +1,13 @@
+{
+    "nickname": "Никнейм",
+    "name": "Имя",
+    "last_name": "Имя",
+    "password": "Пароль",
+    "password2": "Подтверждение пароля",
+    "no_account": "Еще нет аккаунта?",
+    "yes_account": "Уже есть логин?",
+    "register": "Регистрация",
+    "login": "Войти",
+    "valid_pass": "Введите пароль",
+    "valid_pass_confirm": "Пароли не совпадают"
+}

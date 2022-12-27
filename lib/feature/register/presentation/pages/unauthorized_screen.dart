@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news_portal_megalab/feature/register/domain/entities/register_entity.dart';
 import 'package:news_portal_megalab/feature/register/presentation/bloc/bloc/register_bloc.dart';
+import 'package:news_portal_megalab/generated/locale_keys.g.dart';
 import 'package:news_portal_megalab/main.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 import '../../../../resources/resources.dart';
@@ -54,56 +56,56 @@ class _UnAuthorizedScreenState extends State<UnAuthorizedScreen> {
               SvgPicture.asset(Svgs.megalabIconPurple),
               const SizedBox(height: 15),
               CustomTextField(
-                title: 'Фамилия',
+                title: LocaleKeys.last_name,
                 controller: surNameController,
               ),
               CustomTextField(
-                title: 'Имя',
+                title: LocaleKeys.name,
                 controller: nameController,
               ),
               CustomTextField(
-                title: 'Никнейм',
+                title: LocaleKeys.nickname,
                 controller: nicknameController,
               ),
               CustomTextFieldPassword(
-                  title: 'Пароль',
+                  title: LocaleKeys.password,
                   controller: passwordController,
                   validator: (p0) {
                     if (p0!.isEmpty) {
-                      return 'Введите пароль';
+                      return LocaleKeys.valid_pass;
                     }
                     return null;
                   }),
               CustomTextFieldPassword(
-                title: 'Подтверждение пароля',
+                title: LocaleKeys.password2.tr(),
                 controller: password2Controller,
                 validator: (p0) {
                   if (p0!.isEmpty) {
-                    return 'Введите пароль';
+                    return LocaleKeys.valid_pass.tr();
                   }
                   if (passwordController.text != password2Controller.text) {
-                    return 'Пароли не совпадают';
+                    return LocaleKeys.valid_pass_confirm.tr();
                   }
                   return null;
                 },
               ),
               const SizedBox(height: 30),
               CustomButtonText(
-                title: 'Регистрация',
+                title: LocaleKeys.register,
                 onPress: () => registerButton(),
               ),
               const SizedBox(height: 22),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    'Уже есть логин?',
+                  Text(
+                    LocaleKeys.yes_account.tr(),
                     style: AppConstants.textGreyw400s12,
                   ),
                   InkWell(
                     onTap: () {},
-                    child: const Text(
-                      'Войти',
+                    child: Text(
+                      LocaleKeys.login.tr(),
                       style: AppConstants.textBluew400s12,
                     ),
                   ),
