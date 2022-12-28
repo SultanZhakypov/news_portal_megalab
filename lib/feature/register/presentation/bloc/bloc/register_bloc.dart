@@ -11,8 +11,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   RegisterBloc({required this.postRegister}) : super(RegisterInitialState()) {
     on<RegisterEvent>((event, emit) async {
       if (event is RegisterPostEvent) {
-        emit(RegisterLoadingState());
-        final failureOrDoneMessage = await postRegister(event.registerEntity);
+        await postRegister(event.registerEntity);
       }
     });
   }

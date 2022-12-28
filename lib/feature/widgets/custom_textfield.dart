@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:news_portal_megalab/generated/locale_keys.g.dart';
 import 'package:news_portal_megalab/resources/app_colors.dart';
-
 import '../../resources/app_constants.dart';
 
 class CustomTextField extends StatelessWidget {
@@ -26,7 +26,8 @@ class CustomTextField extends StatelessWidget {
           ),
           const SizedBox(height: 2),
           TextFormField(
-            validator: (value) => value!.isEmpty ? 'Заполните поле' : null,
+            validator: (value) =>
+                value!.isEmpty ? LocaleKeys.zapolnite_pole.tr() : null,
             controller: controller,
             cursorColor: AppColors.colorPurple,
             textInputAction: TextInputAction.next,

@@ -9,37 +9,39 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: [
-        const SliverAppbarWhite(),
-        SliverPadding(
-          padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 20),
-          sliver: SliverToBoxAdapter(
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: IconButton(
-                onPressed: () => AppShows.showFilter(context),
-                icon: SvgPicture.asset(Svgs.filterIcon),
+    return Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          const SliverAppbarWhite(),
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 20),
+            sliver: SliverToBoxAdapter(
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: IconButton(
+                  onPressed: () => AppShows.showFilter(context),
+                  icon: SvgPicture.asset(Svgs.filterIcon),
+                ),
               ),
             ),
           ),
-        ),
-        SliverPadding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          sliver: SliverList(
-            delegate: SliverChildBuilderDelegate(
-              childCount: 15,
-              (context, index) {
-                return const ItemsWidget();
-              },
+          SliverPadding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            sliver: SliverList(
+              delegate: SliverChildBuilderDelegate(
+                childCount: 15,
+                (context, index) {
+                  return const ItemsWidget();
+                },
+              ),
             ),
           ),
-        ),
-        const SliverFillRemaining(
-          hasScrollBody: false,
-          child: FooterWidget(),
-        )
-      ],
+          const SliverFillRemaining(
+            hasScrollBody: false,
+            child: FooterWidget(),
+          )
+        ],
+      ),
     );
   }
 }

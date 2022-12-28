@@ -17,7 +17,7 @@ class CodegenLoader extends AssetLoader{
   static const Map<String,dynamic> ru = {
   "nickname": "Никнейм",
   "name": "Имя",
-  "last_name": "Имя",
+  "last_name": "Фамилия",
   "password": "Пароль",
   "password2": "Подтверждение пароля",
   "no_account": "Еще нет аккаунта?",
@@ -25,7 +25,13 @@ class CodegenLoader extends AssetLoader{
   "register": "Регистрация",
   "login": "Войти",
   "valid_pass": "Введите пароль",
-  "valid_pass_confirm": "Пароли не совпадают"
+  "valid_pass_confirm": "Пароли не совпадают",
+  "valid_pass_length": "Пароль должен содержать 8 символов",
+  "oblojka_novosti": "Обложка новости",
+  "download": "Загрузить",
+  "text_news": "Текст новости",
+  "create": "Создать",
+  "zapolnite_pole": "Заполните поле"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ru": ru};
 }

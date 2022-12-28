@@ -12,5 +12,11 @@ abstract class  LocaleKeys {
   static const login = 'login';
   static const valid_pass = 'valid_pass';
   static const valid_pass_confirm = 'valid_pass_confirm';
+  static const valid_pass_length = 'valid_pass_length';
+  static const oblojka_novosti = 'oblojka_novosti';
+  static const download = 'download';
+  static const text_news = 'text_news';
+  static const create = 'create';
+  static const zapolnite_pole = 'zapolnite_pole';
 
 }

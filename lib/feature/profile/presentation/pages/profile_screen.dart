@@ -14,49 +14,51 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: CustomScrollView(
-        slivers: [
-          const SliverAppbarPurple(
-            title: '',
-            flexibleSpaceParam: false,
-          ),
-          const SliverPadding(
-            padding: EdgeInsets.symmetric(vertical: 32),
-            sliver: SliverProfileEditWidget(),
-          ),
-          SliverToBoxAdapter(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Мои публикации',
-                  style: AppConstants.textBlackw500s24,
-                ),
-                CustomButtonSvg(
-                  svg: Svgs.plus,
-                  onPress: () => AppEdit.showEdit(context),
-                ),
-              ],
+    return Scaffold(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: CustomScrollView(
+          slivers: [
+            const SliverAppbarPurple(
+              title: '',
+              flexibleSpaceParam: false,
             ),
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.only(top: 17),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                childCount: 15,
-                (context, index) {
-                  return const ItemsWidget();
-                },
+            const SliverPadding(
+              padding: EdgeInsets.symmetric(vertical: 32),
+              sliver: SliverProfileEditWidget(),
+            ),
+            SliverToBoxAdapter(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Мои публикации',
+                    style: AppConstants.textBlackw500s24,
+                  ),
+                  CustomButtonSvg(
+                    svg: Svgs.plus,
+                    onPress: () => AppEdit.showEdit(context),
+                  ),
+                ],
               ),
             ),
-          ),
-          const SliverFillRemaining(
-            hasScrollBody: false,
-            child: FooterWidget(),
-          )
-        ],
+            SliverPadding(
+              padding: const EdgeInsets.only(top: 17),
+              sliver: SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  childCount: 15,
+                  (context, index) {
+                    return const ItemsWidget();
+                  },
+                ),
+              ),
+            ),
+            const SliverFillRemaining(
+              hasScrollBody: false,
+              child: FooterWidget(),
+            )
+          ],
+        ),
       ),
     );
   }
