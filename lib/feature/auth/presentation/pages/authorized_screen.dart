@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_portal_megalab/core/routes/routes.dart';
 import 'package:news_portal_megalab/feature/auth/domain/entities/auth_entity.dart';
 import 'package:news_portal_megalab/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'package:news_portal_megalab/feature/widgets/app_menu.dart';
 import 'package:news_portal_megalab/generated/locale_keys.g.dart';
 import 'package:news_portal_megalab/main.dart';
 import '../../../../resources/export_resources.dart';
@@ -41,65 +42,79 @@ class _AuthorizedScreenState extends State<AuthorizedScreen> {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 45),
-        child: Form(
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(Svgs.megalabIconPurple),
-              const SizedBox(height: 15),
-              CustomTextField(
-                title: LocaleKeys.nickname,
-                controller: _nicknameController,
-              ),
-              CustomTextFieldPassword(
-                title: LocaleKeys.password,
-                controller: _passwordController,
-              ),
-              const SizedBox(height: 30),
-              CustomButtonText(
-                title: (LocaleKeys.login.tr()),
-                onPress: () => authButton(),
-              ),
-              const SizedBox(height: 32),
-              Row(
+        child: BlocConsumer<AuthBloc, AuthState>(
+          listener: (context, state) {
+            if (state is AuthErrorState) {
+              AppMenuShow.showSnackBarGlobal(context, state.message);
+            }
+            if (state is AuthSuccessState) {
+              context.router.pushAndPopUntil(
+                const HomeScreenRoute(),
+                predicate: (route) => false,
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is AuthLoadingState) {
+              return const Center(
+                child: CircularProgressIndicator.adaptive(),
+              );
+            }
+            return Form(
+              key: formKey,
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    LocaleKeys.no_account.tr(),
-                    style: AppConstants.textGreyw400s12,
+                  SvgPicture.asset(Svgs.megalabIconPurple),
+                  const SizedBox(height: 15),
+                  CustomTextField(
+                    title: LocaleKeys.nickname,
+                    controller: _nicknameController,
                   ),
-                  const SizedBox(width: 5),
-                  InkWell(
-                    onTap: () {
-                      context.router.push(const UnAuthorizedScreenRoute());
+                  CustomTextFieldPassword(
+                    title: LocaleKeys.password,
+                    controller: _passwordController,
+                  ),
+                  const SizedBox(height: 30),
+                  CustomButtonText(
+                    title: (LocaleKeys.login.tr()),
+                    onPress: () {
+                      BlocProvider.of<AuthBloc>(context).add(
+                        AuthPostEvent(
+                          authEntity: AuthEntity(
+                            nickname: _nicknameController.text,
+                            password: _passwordController.text,
+                          ),
+                        ),
+                      );
                     },
-                    child: Text(
-                      LocaleKeys.register.tr(),
-                      style: AppConstants.textBluew400s12,
-                    ),
+                  ),
+                  const SizedBox(height: 32),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        LocaleKeys.no_account.tr(),
+                        style: AppConstants.textGreyw400s12,
+                      ),
+                      const SizedBox(width: 5),
+                      InkWell(
+                        onTap: () {
+                          context.router.push(const UnAuthorizedScreenRoute());
+                        },
+                        child: Text(
+                          LocaleKeys.register.tr(),
+                          style: AppConstants.textBluew400s12,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );
-  }
-
-  void authButton() {
-    {
-      final isValid = formKey.currentState!.validate();
-      if (isValid) {
-        final post = AuthEntity(
-          nickname: _nicknameController.text,
-          password: _passwordController.text,
-        );
-
-        BlocProvider.of<AuthBloc>(context).add(AuthPostEvent(authEntity: post));
-        context.router.replace(const HomeScreenRoute());
-      }
-    }
   }
 }

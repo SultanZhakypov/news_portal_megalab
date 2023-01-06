@@ -1,27 +1,20 @@
-import 'package:json_annotation/json_annotation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:news_portal_megalab/feature/register/domain/entities/register_entity.dart';
 
 part 'register_model.g.dart';
+part 'register_model.freezed.dart';
 
-@JsonSerializable()
-class RegisterModel extends RegisterEntity {
-  @override
-  @JsonKey(name: 'last_name')
-  String get lastName => super.lastName;
-  @override
-  @JsonKey(name: 'profile_image')
-  String? get imageProfile => super.imageProfile;
-  const RegisterModel({
-    required super.nickname,
-    required super.name,
-    required super.lastName,
-    required super.imageProfile,
-    required super.password,
-    required super.password2,
-  });
+@freezed
+class RegisterModel with _$RegisterModel implements RegisterEntity {
+  const factory RegisterModel({
+    required String nickname,
+    required String name,
+    @JsonKey(name: 'last_name') required String lastName,
+    @JsonKey(name: 'profile_image') String? imageProfile,
+    required String password,
+    required String password2,
+  }) = _RegisterModel;
 
   factory RegisterModel.fromJson(Map<String, dynamic> json) =>
       _$RegisterModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$RegisterModelToJson(this);
 }

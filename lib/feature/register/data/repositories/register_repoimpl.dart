@@ -30,8 +30,7 @@ class RegisterRepoImpl implements RegisterRepo {
 
     if (await networkInfo.isConnected) {
       try {
-        final remoteRegister =
-            await remoteRegisterSource.addPost(registerModel);
+        await remoteRegisterSource.addPost(registerModel);
         return const Right(unit);
       } on ServerException {
         return Left(ServerFailure());

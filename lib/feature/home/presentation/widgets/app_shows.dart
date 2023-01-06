@@ -14,7 +14,7 @@ abstract class AppShows {
       builder: (BuildContext context) {
         return AlertDialog(
           content: SizedBox(
-            height: context.height / 2.2,
+            height: context.height / 2,
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Column(
@@ -115,6 +115,4 @@ abstract class AppShows {
       ),
     );
   }
-
-  
 }

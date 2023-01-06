@@ -52,5 +52,21 @@ abstract class AppMenuShow {
     );
   }
 
-
+  static showSnackBarGlobal(BuildContext context, String message) {
+    globalKey.currentState?.showSnackBar(SnackBar(
+      backgroundColor: AppColors.colorPurple,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(50),
+      ),
+      content: SizedBox(
+        height: context.height / 10,
+        child: Center(
+          child: Text(
+            message,
+            style: AppConstants.textWhitew500s30,
+          ),
+        ),
+      ),
+    ));
+  }
 }

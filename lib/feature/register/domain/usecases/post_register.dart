@@ -4,8 +4,6 @@ import 'package:news_portal_megalab/feature/register/domain/repositories/registe
 
 import '../../../../core/error/failure.dart';
 
-
-
 class PostRegisterUseCase {
   final RegisterRepo registerRepo;
 
@@ -15,3 +13,4 @@ class PostRegisterUseCase {
     return await registerRepo.postRegister(registerEntity);
   }
 }
+

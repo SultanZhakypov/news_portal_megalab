@@ -5,11 +5,14 @@ class DioSettings {
   DioSettings() {
     setup();
   }
-  final  _dio = Dio(
+
+  final _dio = Dio(
     BaseOptions(
       baseUrl: 'https://megalab.pythonanywhere.com/',
       contentType: 'application/json',
-      headers: {'Accept': 'application/json'},
+      headers: {
+        'Accept': 'application/json',
+      },
     ),
   );
 

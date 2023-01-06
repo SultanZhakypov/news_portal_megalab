@@ -6,8 +6,8 @@ part of 'register_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-RegisterModel _$RegisterModelFromJson(Map<String, dynamic> json) =>
-    RegisterModel(
+_$_RegisterModel _$$_RegisterModelFromJson(Map<String, dynamic> json) =>
+    _$_RegisterModel(
       nickname: json['nickname'] as String,
       name: json['name'] as String,
       lastName: json['last_name'] as String,
@@ -16,12 +16,12 @@ RegisterModel _$RegisterModelFromJson(Map<String, dynamic> json) =>
       password2: json['password2'] as String,
     );
 
-Map<String, dynamic> _$RegisterModelToJson(RegisterModel instance) =>
+Map<String, dynamic> _$$_RegisterModelToJson(_$_RegisterModel instance) =>
     <String, dynamic>{
       'nickname': instance.nickname,
       'name': instance.name,
-      'password': instance.password,
-      'password2': instance.password2,
       'last_name': instance.lastName,
       'profile_image': instance.imageProfile,
+      'password': instance.password,
+      'password2': instance.password2,
     };

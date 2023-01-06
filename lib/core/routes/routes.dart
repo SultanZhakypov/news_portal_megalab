@@ -5,6 +5,7 @@ import 'package:news_portal_megalab/feature/home/presentation/pages/home_screen.
 import 'package:news_portal_megalab/feature/like/presentation/pages/liked_screen.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/pages/profile_screen.dart';
 import 'package:news_portal_megalab/feature/register/presentation/pages/unauthorized_screen.dart';
+import 'package:news_portal_megalab/feature/splash/page/splash_screen.dart';
 
 export 'routes.gr.dart';
 
@@ -12,8 +13,12 @@ export 'routes.gr.dart';
   routes: <AutoRoute>[
     AutoRoute(
       initial: true,
-      page: UnAuthorizedScreen,
+      page: SplashScreen,
       path: '/',
+    ),
+    AutoRoute(
+      page: UnAuthorizedScreen,
+      path: '/unauth',
     ),
     AutoRoute(
       page: AuthorizedScreen,

@@ -22,14 +22,15 @@ class RemoteRegisterSourceImpl implements RemoteRegisterSource {
       'password': model.password,
       'password2': model.password2,
     });
-    final response = await dio.post(
-      'registration/',
-      data: formData,
-      
-    );
-    if (response.statusCode == 201) {
+
+    try {
+      final response = await dio.post(
+        'registration/',
+        data: formData,
+      );
+
       return Future.value(unit);
-    } else {
+    } on DioError {
       throw ServerException();
     }
   }

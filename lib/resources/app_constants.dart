@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:news_portal_megalab/resources/app_colors.dart';
 
 abstract class AppConstants {
+  static const token = 'token';
   static const textBlackw400s16 = TextStyle(
     color: AppColors.colorBlack,
     fontFamily: 'Ubuntu400',

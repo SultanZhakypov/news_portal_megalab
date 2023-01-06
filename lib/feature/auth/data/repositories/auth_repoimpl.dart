@@ -26,7 +26,7 @@ class AuthRepoImpl implements AuthRepo {
 
     if (await networkInfo.isConnected) {
       try {
-        final remoteAuth = await remoteAuthSource.addPost(authModel);
+        await remoteAuthSource.addPost(authModel);
         return const Right(unit);
       } on ServerException {
         return Left(ServerFailure());

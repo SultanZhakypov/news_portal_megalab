@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_portal_megalab/core/routes/routes.gr.dart';
 import 'package:news_portal_megalab/feature/register/presentation/bloc/bloc/register_bloc.dart';
 import 'feature/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'feature/splash/cubit/global_cubit.dart';
 import 'feature/widgets/app_unfocuser.dart';
 import 'generated/codegen_loader.g.dart';
 import 'service_locator.dart' as di;
@@ -12,12 +13,13 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await di.init();
+
   runApp(const InitLocaleWidget(child: MyApp()));
 }
 
 final globalKey = GlobalKey<ScaffoldMessengerState>();
 final formKey = GlobalKey<FormState>();
-final appRouter = AppRouter();
+final _appRouter = AppRouter();
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -26,8 +28,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return InitWidget(
       child: MaterialApp.router(
-        routeInformationParser: appRouter.defaultRouteParser(),
-        routerDelegate: appRouter.delegate(),
+        routeInformationParser: _appRouter.defaultRouteParser(),
+        routerDelegate: _appRouter.delegate(),
         localizationsDelegates: context.localizationDelegates,
         supportedLocales: context.supportedLocales,
         locale: context.locale,
@@ -52,6 +54,9 @@ class InitWidget extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => di.sl<AuthBloc>(),
+          ),
+          BlocProvider(
+            create: (context) => di.sl<GlobalCubit>(),
           ),
         ],
         child: child,
