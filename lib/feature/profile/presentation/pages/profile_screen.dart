@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_portal_megalab/feature/home/domain/entities/home_entity.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/widgets/app_edit.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/widgets/profile_edit_widget.dart';
 import 'package:news_portal_megalab/feature/widgets/custom_button.dart';
@@ -42,17 +43,22 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SliverPadding(
-              padding: const EdgeInsets.only(top: 17),
-              sliver: SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  childCount: 15,
-                  (context, index) {
-                    return const ItemsWidget();
-                  },
-                ),
-              ),
-            ),
+
+      
+         
+            // SliverPadding(
+            //   padding: const EdgeInsets.only(top: 17),
+            //   sliver: SliverList(
+            //     delegate: SliverChildBuilderDelegate(
+            //       childCount: 15,
+            //       (context, index) {
+            //         return  ItemsWidget(
+            //           posts: HomeEntity(),
+            //         );
+            //       },
+            //     ),
+            //   ),
+            // ),
             const SliverFillRemaining(
               hasScrollBody: false,
               child: FooterWidget(),

@@ -16,7 +16,7 @@ class SharedPrefs {
     }
   }
 
-  static Future<dynamic> getStringData(String key) async {
+  static Future<dynamic> getData(String key) async {
     final prefs = await SharedPreferences.getInstance();
     dynamic result = prefs.get(key);
     return result;

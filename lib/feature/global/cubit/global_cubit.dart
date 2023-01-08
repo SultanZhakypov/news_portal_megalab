@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:news_portal_megalab/core/platform/prefs_settings.dart';
 
@@ -13,7 +13,7 @@ class GlobalCubit extends Cubit<GlobalState> {
   }
 
   init() async {
-    final token = await SharedPrefs.getStringData(AppConstants.token);
+    final token = await SharedPrefs.getData(AppConstants.token);
 
     if (token != null) {
       emit(const GlobalState.authorized());

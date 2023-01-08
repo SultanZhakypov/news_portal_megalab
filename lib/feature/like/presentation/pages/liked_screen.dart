@@ -15,17 +15,20 @@ class LikedScreen extends StatelessWidget {
               title: 'Избранные',
               flexibleSpaceParam: true,
             ),
-            SliverPadding(
-              padding: const EdgeInsets.only(top: 17),
-              sliver: SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  childCount: 15,
-                  (context, index) {
-                    return const ItemsWidget();
-                  },
-                ),
-              ),
-            ),
+            // SliverPadding(
+            //   padding: const EdgeInsets.only(top: 17),
+            //   sliver: SliverList(
+            //     delegate: SliverChildBuilderDelegate(
+            //       childCount: 15,
+            //       (context, index) {
+            //         return const ItemsWidget(
+            //           text: '',
+            //           title: '',
+            //         );
+            //       },
+            //     ),
+            //   ),
+            // ),
             const SliverFillRemaining(
               hasScrollBody: false,
               child: FooterWidget(),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:news_portal_megalab/feature/home/domain/entities/home_entity.dart';
 import 'package:news_portal_megalab/resources/app_colors.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 
@@ -9,7 +10,9 @@ import '../home/presentation/widgets/app_shows.dart';
 class ItemsWidget extends StatelessWidget {
   const ItemsWidget({
     Key? key,
+    required this.posts,
   }) : super(key: key);
+  final HomeEntity posts;
 
   @override
   Widget build(BuildContext context) {
@@ -31,15 +34,15 @@ class ItemsWidget extends StatelessWidget {
             ),
           ],
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: 8),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8),
           child: Text(
-            'Заголовок новости',
+            posts.title,
             style: AppConstants.textBlackw500s24,
           ),
         ),
-        const Text(
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.',
+        Text(
+          posts.text,
           style: AppConstants.textLightGreyw400s16,
         ),
         const SizedBox(height: 8),

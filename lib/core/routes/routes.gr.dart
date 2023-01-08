@@ -16,12 +16,12 @@ import 'package:flutter/material.dart' as _i9;
 
 import '../../feature/auth/presentation/pages/authorized_screen.dart' as _i3;
 import '../../feature/detail/presentation/pages/detail_screen.dart' as _i7;
+import '../../feature/global/page/global.dart' as _i1;
 import '../../feature/home/presentation/pages/home_screen.dart' as _i6;
 import '../../feature/like/presentation/pages/liked_screen.dart' as _i5;
 import '../../feature/profile/presentation/pages/profile_screen.dart' as _i4;
 import '../../feature/register/presentation/pages/unauthorized_screen.dart'
     as _i2;
-import '../../feature/splash/page/splash_screen.dart' as _i1;
 
 class AppRouter extends _i8.RootStackRouter {
   AppRouter([_i9.GlobalKey<_i9.NavigatorState>? navigatorKey])
@@ -29,46 +29,64 @@ class AppRouter extends _i8.RootStackRouter {
 
   @override
   final Map<String, _i8.PageFactory> pagesMap = {
-    SplashScreenRoute.name: (routeData) {
+    GlobalWidgetRoute.name: (routeData) {
       return _i8.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i1.SplashScreen(),
+        child: const _i1.GlobalWidget(),
       );
     },
     UnAuthorizedScreenRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i8.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i2.UnAuthorizedScreen(),
+        transitionsBuilder: _i8.TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
       );
     },
     AuthorizedScreenRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i8.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i3.AuthorizedScreen(),
+        transitionsBuilder: _i8.TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
       );
     },
     ProfileScreenRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i8.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i4.ProfileScreen(),
+        transitionsBuilder: _i8.TransitionsBuilders.zoomIn,
+        opaque: true,
+        barrierDismissible: false,
       );
     },
     LikedScreenRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i8.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i5.LikedScreen(),
+        transitionsBuilder: _i8.TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
       );
     },
     HomeScreenRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i8.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i6.HomeScreen(),
+        transitionsBuilder: _i8.TransitionsBuilders.zoomIn,
+        opaque: true,
+        barrierDismissible: false,
       );
     },
     DetailScreenRoute.name: (routeData) {
-      return _i8.MaterialPageX<dynamic>(
+      return _i8.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i7.DetailScreen(),
+        transitionsBuilder: _i8.TransitionsBuilders.fadeIn,
+        opaque: true,
+        barrierDismissible: false,
       );
     },
   };
@@ -76,7 +94,7 @@ class AppRouter extends _i8.RootStackRouter {
   @override
   List<_i8.RouteConfig> get routes => [
         _i8.RouteConfig(
-          SplashScreenRoute.name,
+          GlobalWidgetRoute.name,
           path: '/',
         ),
         _i8.RouteConfig(
@@ -107,15 +125,15 @@ class AppRouter extends _i8.RootStackRouter {
 }
 
 /// generated route for
-/// [_i1.SplashScreen]
-class SplashScreenRoute extends _i8.PageRouteInfo<void> {
-  const SplashScreenRoute()
+/// [_i1.GlobalWidget]
+class GlobalWidgetRoute extends _i8.PageRouteInfo<void> {
+  const GlobalWidgetRoute()
       : super(
-          SplashScreenRoute.name,
+          GlobalWidgetRoute.name,
           path: '/',
         );
 
-  static const String name = 'SplashScreenRoute';
+  static const String name = 'GlobalWidgetRoute';
 }
 
 /// generated route for

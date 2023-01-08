@@ -1,27 +1,23 @@
-// import 'package:dartz/dartz.dart';
-// import 'package:news_portal_megalab/feature/register/domain/entities/register_entity.dart';
-// import 'package:news_portal_megalab/feature/register/domain/repositories/register_repo.dart';
+import 'package:dartz/dartz.dart';
+import 'package:news_portal_megalab/feature/home/domain/entities/home_entity.dart';
+import 'package:news_portal_megalab/feature/home/domain/repositories/postlist_repo.dart';
 
-// import '../../../../core/error/failure.dart';
+import '../../../../core/error/failure.dart';
 
-// class GetPostListUseCase {
-//   final RegisterRepo registerRepo;
+class GetPostListUseCase {
+  final PostListRepo postListRepo;
 
-//   PostRegisterUseCase(this.registerRepo);
+  GetPostListUseCase(this.postListRepo);
 
-//   Future<Either<Failure, Unit>> call(RegisterEntity registerEntity) async {
-//     return await registerRepo.postRegister(registerEntity);
-//   }
-// }
-
-// class PostListParams {
-//   final String search;
-//   final String tag;
-//   final String author;
-
-//   PostListParams({
-//     required this.search,
-//     required this.tag,
-//     required this.author,
-//   });
-// }
+  Future<Either<Failure, List<HomeEntity>>> call({
+    required String search,
+    required String author,
+    required String tag,
+  }) async {
+    return await postListRepo.getPostList(
+      search: search,
+      author: author,
+      tag: tag,
+    );
+  }
+}

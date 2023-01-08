@@ -206,40 +206,47 @@ class __$$_PostListModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_PostListModel implements _PostListModel {
   const _$_PostListModel(
-      {required this.id,
-      required this.tag,
-      required this.title,
-      required this.text,
-      required this.image,
-      @JsonKey(name: 'short_desc') required this.shortDesc,
-      required this.author,
-      @JsonKey(name: 'is_liked') required this.isLiked,
-      required final List<Comment> comment})
+      {this.id = 1,
+      this.tag = '',
+      this.title = '',
+      this.text = '',
+      this.image = '',
+      @JsonKey(name: 'short_desc') this.shortDesc = '',
+      this.author = '',
+      @JsonKey(name: 'is_liked') this.isLiked = false,
+      final List<Comment> comment = const []})
       : _comment = comment;
 
   factory _$_PostListModel.fromJson(Map<String, dynamic> json) =>
       _$$_PostListModelFromJson(json);
 
   @override
+  @JsonKey()
   final int id;
   @override
+  @JsonKey()
   final String tag;
   @override
+  @JsonKey()
   final String title;
   @override
+  @JsonKey()
   final String text;
   @override
+  @JsonKey()
   final String image;
   @override
   @JsonKey(name: 'short_desc')
   final String shortDesc;
   @override
+  @JsonKey()
   final String author;
   @override
   @JsonKey(name: 'is_liked')
   final bool isLiked;
   final List<Comment> _comment;
   @override
+  @JsonKey()
   List<Comment> get comment {
     if (_comment is EqualUnmodifiableListView) return _comment;
     // ignore: implicit_dynamic_type
@@ -298,15 +305,15 @@ class _$_PostListModel implements _PostListModel {
 
 abstract class _PostListModel implements PostListModel {
   const factory _PostListModel(
-      {required final int id,
-      required final String tag,
-      required final String title,
-      required final String text,
-      required final String image,
-      @JsonKey(name: 'short_desc') required final String shortDesc,
-      required final String author,
-      @JsonKey(name: 'is_liked') required final bool isLiked,
-      required final List<Comment> comment}) = _$_PostListModel;
+      {final int id,
+      final String tag,
+      final String title,
+      final String text,
+      final String image,
+      @JsonKey(name: 'short_desc') final String shortDesc,
+      final String author,
+      @JsonKey(name: 'is_liked') final bool isLiked,
+      final List<Comment> comment}) = _$_PostListModel;
 
   factory _PostListModel.fromJson(Map<String, dynamic> json) =
       _$_PostListModel.fromJson;
@@ -344,7 +351,7 @@ Comment _$CommentFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Comment {
   int get id => throw _privateConstructorUsedError;
-  String get user => throw _privateConstructorUsedError;
+  User get user => throw _privateConstructorUsedError;
   List<dynamic> get child => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
 
@@ -358,7 +365,9 @@ abstract class $CommentCopyWith<$Res> {
   factory $CommentCopyWith(Comment value, $Res Function(Comment) then) =
       _$CommentCopyWithImpl<$Res, Comment>;
   @useResult
-  $Res call({int id, String user, List<dynamic> child, String text});
+  $Res call({int id, User user, List<dynamic> child, String text});
+
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -387,7 +396,7 @@ class _$CommentCopyWithImpl<$Res, $Val extends Comment>
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as String,
+              as User,
       child: null == child
           ? _value.child
           : child // ignore: cast_nullable_to_non_nullable
@@ -398,6 +407,14 @@ class _$CommentCopyWithImpl<$Res, $Val extends Comment>
               as String,
     ) as $Val);
   }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserCopyWith<$Res> get user {
+    return $UserCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -407,7 +424,10 @@ abstract class _$$_CommentCopyWith<$Res> implements $CommentCopyWith<$Res> {
       __$$_CommentCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, String user, List<dynamic> child, String text});
+  $Res call({int id, User user, List<dynamic> child, String text});
+
+  @override
+  $UserCopyWith<$Res> get user;
 }
 
 /// @nodoc
@@ -433,7 +453,7 @@ class __$$_CommentCopyWithImpl<$Res>
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
-              as String,
+              as User,
       child: null == child
           ? _value._child
           : child // ignore: cast_nullable_to_non_nullable
@@ -450,21 +470,24 @@ class __$$_CommentCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Comment implements _Comment {
   const _$_Comment(
-      {required this.id,
-      required this.user,
-      required final List<dynamic> child,
-      required this.text})
+      {this.id = 1,
+      this.user = const User(),
+      final List<dynamic> child = const [],
+      this.text = ''})
       : _child = child;
 
   factory _$_Comment.fromJson(Map<String, dynamic> json) =>
       _$$_CommentFromJson(json);
 
   @override
+  @JsonKey()
   final int id;
   @override
-  final String user;
+  @JsonKey()
+  final User user;
   final List<dynamic> _child;
   @override
+  @JsonKey()
   List<dynamic> get child {
     if (_child is EqualUnmodifiableListView) return _child;
     // ignore: implicit_dynamic_type
@@ -472,6 +495,7 @@ class _$_Comment implements _Comment {
   }
 
   @override
+  @JsonKey()
   final String text;
 
   @override
@@ -511,17 +535,17 @@ class _$_Comment implements _Comment {
 
 abstract class _Comment implements Comment {
   const factory _Comment(
-      {required final int id,
-      required final String user,
-      required final List<dynamic> child,
-      required final String text}) = _$_Comment;
+      {final int id,
+      final User user,
+      final List<dynamic> child,
+      final String text}) = _$_Comment;
 
   factory _Comment.fromJson(Map<String, dynamic> json) = _$_Comment.fromJson;
 
   @override
   int get id;
   @override
-  String get user;
+  User get user;
   @override
   List<dynamic> get child;
   @override
@@ -652,21 +676,24 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 @JsonSerializable()
 class _$_User implements _User {
   const _$_User(
-      {required this.id,
-      required this.name,
-      @JsonKey(name: 'last_name') required this.lastName,
-      required this.nickname});
+      {this.id = 1,
+      this.name = '',
+      @JsonKey(name: 'last_name') this.lastName = '',
+      this.nickname = ''});
 
   factory _$_User.fromJson(Map<String, dynamic> json) => _$$_UserFromJson(json);
 
   @override
+  @JsonKey()
   final int id;
   @override
+  @JsonKey()
   final String name;
   @override
   @JsonKey(name: 'last_name')
   final String lastName;
   @override
+  @JsonKey()
   final String nickname;
 
   @override
@@ -707,10 +734,10 @@ class _$_User implements _User {
 
 abstract class _User implements User {
   const factory _User(
-      {required final int id,
-      required final String name,
-      @JsonKey(name: 'last_name') required final String lastName,
-      required final String nickname}) = _$_User;
+      {final int id,
+      final String name,
+      @JsonKey(name: 'last_name') final String lastName,
+      final String nickname}) = _$_User;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$_User.fromJson;
 

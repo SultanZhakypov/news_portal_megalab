@@ -4,7 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_portal_megalab/core/routes/routes.gr.dart';
 import 'package:news_portal_megalab/feature/register/presentation/bloc/bloc/register_bloc.dart';
 import 'feature/auth/presentation/bloc/bloc/auth_bloc.dart';
-import 'feature/splash/cubit/global_cubit.dart';
+import 'feature/global/cubit/global_cubit.dart';
+import 'feature/home/presentation/bloc/bloc/get_post_list_bloc.dart';
 import 'feature/widgets/app_unfocuser.dart';
 import 'generated/codegen_loader.g.dart';
 import 'service_locator.dart' as di;
@@ -57,6 +58,10 @@ class InitWidget extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => di.sl<GlobalCubit>(),
+          ),
+          BlocProvider(
+            create: (context) => di.sl<GetPostListBloc>()
+              ..add(const GetPostListEvent.getPostsEvent()),
           ),
         ],
         child: child,

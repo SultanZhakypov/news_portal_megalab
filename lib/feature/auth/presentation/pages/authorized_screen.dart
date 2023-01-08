@@ -44,22 +44,24 @@ class _AuthorizedScreenState extends State<AuthorizedScreen> {
         padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 45),
         child: BlocConsumer<AuthBloc, AuthState>(
           listener: (context, state) {
-            if (state is AuthErrorState) {
-              AppMenuShow.showSnackBarGlobal(context, state.message);
-            }
-            if (state is AuthSuccessState) {
-              context.router.pushAndPopUntil(
+            state.maybeWhen(
+              orElse: () {},
+              error: (message) =>
+                  AppMenuShow.showSnackBarGlobal(context, message),
+              success: () => context.router.pushAndPopUntil(
                 const HomeScreenRoute(),
                 predicate: (route) => false,
-              );
-            }
+              ),
+            );
           },
           builder: (context, state) {
-            if (state is AuthLoadingState) {
-              return const Center(
+            state.maybeWhen(
+              loading: () => const Center(
                 child: CircularProgressIndicator.adaptive(),
-              );
-            }
+              ),
+              orElse: () {},
+            );
+
             return Form(
               key: formKey,
               child: Column(
@@ -80,7 +82,7 @@ class _AuthorizedScreenState extends State<AuthorizedScreen> {
                     title: (LocaleKeys.login.tr()),
                     onPress: () {
                       BlocProvider.of<AuthBloc>(context).add(
-                        AuthPostEvent(
+                        AuthEvent.postAuthEvent(
                           authEntity: AuthEntity(
                             nickname: _nicknameController.text,
                             password: _passwordController.text,

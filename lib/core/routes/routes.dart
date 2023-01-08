@@ -1,11 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:news_portal_megalab/feature/auth/presentation/pages/authorized_screen.dart';
 import 'package:news_portal_megalab/feature/detail/presentation/pages/detail_screen.dart';
+import 'package:news_portal_megalab/feature/global/page/global.dart';
 import 'package:news_portal_megalab/feature/home/presentation/pages/home_screen.dart';
 import 'package:news_portal_megalab/feature/like/presentation/pages/liked_screen.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/pages/profile_screen.dart';
 import 'package:news_portal_megalab/feature/register/presentation/pages/unauthorized_screen.dart';
-import 'package:news_portal_megalab/feature/splash/page/splash_screen.dart';
 
 export 'routes.gr.dart';
 
@@ -13,30 +13,36 @@ export 'routes.gr.dart';
   routes: <AutoRoute>[
     AutoRoute(
       initial: true,
-      page: SplashScreen,
+      page: GlobalWidget,
       path: '/',
     ),
-    AutoRoute(
+    CustomRoute(
+      transitionsBuilder: TransitionsBuilders.fadeIn,
       page: UnAuthorizedScreen,
       path: '/unauth',
     ),
-    AutoRoute(
+    CustomRoute(
+      transitionsBuilder: TransitionsBuilders.fadeIn,
       page: AuthorizedScreen,
       path: '/auth',
     ),
-    AutoRoute(
+    CustomRoute(
+      transitionsBuilder: TransitionsBuilders.zoomIn,
       page: ProfileScreen,
       path: '/profile',
     ),
-    AutoRoute(
+    CustomRoute(
+      transitionsBuilder: TransitionsBuilders.fadeIn,
       page: LikedScreen,
       path: '/liked',
     ),
-    AutoRoute(
+    CustomRoute(
+      transitionsBuilder: TransitionsBuilders.zoomIn,
       page: HomeScreen,
       path: '/home',
     ),
-    AutoRoute(
+    CustomRoute(
+      transitionsBuilder: TransitionsBuilders.fadeIn,
       page: DetailScreen,
       path: '/detail',
     ),

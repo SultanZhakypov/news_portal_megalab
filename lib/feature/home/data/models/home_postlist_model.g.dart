@@ -8,17 +8,18 @@ part of 'home_postlist_model.dart';
 
 _$_PostListModel _$$_PostListModelFromJson(Map<String, dynamic> json) =>
     _$_PostListModel(
-      id: json['id'] as int,
-      tag: json['tag'] as String,
-      title: json['title'] as String,
-      text: json['text'] as String,
-      image: json['image'] as String,
-      shortDesc: json['short_desc'] as String,
-      author: json['author'] as String,
-      isLiked: json['is_liked'] as bool,
-      comment: (json['comment'] as List<dynamic>)
-          .map((e) => Comment.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      id: json['id'] as int? ?? 1,
+      tag: json['tag'] as String? ?? '',
+      title: json['title'] as String? ?? '',
+      text: json['text'] as String? ?? '',
+      image: json['image'] as String? ?? '',
+      shortDesc: json['short_desc'] as String? ?? '',
+      author: json['author'] as String? ?? '',
+      isLiked: json['is_liked'] as bool? ?? false,
+      comment: (json['comment'] as List<dynamic>?)
+              ?.map((e) => Comment.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_PostListModelToJson(_$_PostListModel instance) =>
@@ -35,10 +36,12 @@ Map<String, dynamic> _$$_PostListModelToJson(_$_PostListModel instance) =>
     };
 
 _$_Comment _$$_CommentFromJson(Map<String, dynamic> json) => _$_Comment(
-      id: json['id'] as int,
-      user: json['user'] as String,
-      child: json['child'] as List<dynamic>,
-      text: json['text'] as String,
+      id: json['id'] as int? ?? 1,
+      user: json['user'] == null
+          ? const User()
+          : User.fromJson(json['user'] as Map<String, dynamic>),
+      child: json['child'] as List<dynamic>? ?? const [],
+      text: json['text'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_CommentToJson(_$_Comment instance) =>
@@ -50,10 +53,10 @@ Map<String, dynamic> _$$_CommentToJson(_$_Comment instance) =>
     };
 
 _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
-      id: json['id'] as int,
-      name: json['name'] as String,
-      lastName: json['last_name'] as String,
-      nickname: json['nickname'] as String,
+      id: json['id'] as int? ?? 1,
+      name: json['name'] as String? ?? '',
+      lastName: json['last_name'] as String? ?? '',
+      nickname: json['nickname'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_UserToJson(_$_User instance) => <String, dynamic>{
