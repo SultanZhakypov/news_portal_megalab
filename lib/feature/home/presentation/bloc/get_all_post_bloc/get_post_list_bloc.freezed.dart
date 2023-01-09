@@ -19,50 +19,32 @@ mixin _$GetPostListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPostsEvent,
-    required TResult Function(String searchText) searchEvent,
-    required TResult Function(String filterTag) filterTagEvent,
-    required TResult Function(String filterAuthor) filterAuthorEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getPostsEvent,
-    TResult? Function(String searchText)? searchEvent,
-    TResult? Function(String filterTag)? filterTagEvent,
-    TResult? Function(String filterAuthor)? filterAuthorEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPostsEvent,
-    TResult Function(String searchText)? searchEvent,
-    TResult Function(String filterTag)? filterTagEvent,
-    TResult Function(String filterAuthor)? filterAuthorEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetPostsEvent value) getPostsEvent,
-    required TResult Function(_SearchEvent value) searchEvent,
-    required TResult Function(_FilterTagEvent value) filterTagEvent,
-    required TResult Function(_FilterAuthorEvent value) filterAuthorEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetPostsEvent value)? getPostsEvent,
-    TResult? Function(_SearchEvent value)? searchEvent,
-    TResult? Function(_FilterTagEvent value)? filterTagEvent,
-    TResult? Function(_FilterAuthorEvent value)? filterAuthorEvent,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetPostsEvent value)? getPostsEvent,
-    TResult Function(_SearchEvent value)? searchEvent,
-    TResult Function(_FilterTagEvent value)? filterTagEvent,
-    TResult Function(_FilterAuthorEvent value)? filterAuthorEvent,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -125,9 +107,6 @@ class _$_GetPostsEvent implements _GetPostsEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPostsEvent,
-    required TResult Function(String searchText) searchEvent,
-    required TResult Function(String filterTag) filterTagEvent,
-    required TResult Function(String filterAuthor) filterAuthorEvent,
   }) {
     return getPostsEvent();
   }
@@ -136,9 +115,6 @@ class _$_GetPostsEvent implements _GetPostsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getPostsEvent,
-    TResult? Function(String searchText)? searchEvent,
-    TResult? Function(String filterTag)? filterTagEvent,
-    TResult? Function(String filterAuthor)? filterAuthorEvent,
   }) {
     return getPostsEvent?.call();
   }
@@ -147,9 +123,6 @@ class _$_GetPostsEvent implements _GetPostsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPostsEvent,
-    TResult Function(String searchText)? searchEvent,
-    TResult Function(String filterTag)? filterTagEvent,
-    TResult Function(String filterAuthor)? filterAuthorEvent,
     required TResult orElse(),
   }) {
     if (getPostsEvent != null) {
@@ -162,9 +135,6 @@ class _$_GetPostsEvent implements _GetPostsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetPostsEvent value) getPostsEvent,
-    required TResult Function(_SearchEvent value) searchEvent,
-    required TResult Function(_FilterTagEvent value) filterTagEvent,
-    required TResult Function(_FilterAuthorEvent value) filterAuthorEvent,
   }) {
     return getPostsEvent(this);
   }
@@ -173,9 +143,6 @@ class _$_GetPostsEvent implements _GetPostsEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetPostsEvent value)? getPostsEvent,
-    TResult? Function(_SearchEvent value)? searchEvent,
-    TResult? Function(_FilterTagEvent value)? filterTagEvent,
-    TResult? Function(_FilterAuthorEvent value)? filterAuthorEvent,
   }) {
     return getPostsEvent?.call(this);
   }
@@ -184,9 +151,6 @@ class _$_GetPostsEvent implements _GetPostsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetPostsEvent value)? getPostsEvent,
-    TResult Function(_SearchEvent value)? searchEvent,
-    TResult Function(_FilterTagEvent value)? filterTagEvent,
-    TResult Function(_FilterAuthorEvent value)? filterAuthorEvent,
     required TResult orElse(),
   }) {
     if (getPostsEvent != null) {
@@ -198,448 +162,6 @@ class _$_GetPostsEvent implements _GetPostsEvent {
 
 abstract class _GetPostsEvent implements GetPostListEvent {
   const factory _GetPostsEvent() = _$_GetPostsEvent;
-}
-
-/// @nodoc
-abstract class _$$_SearchEventCopyWith<$Res> {
-  factory _$$_SearchEventCopyWith(
-          _$_SearchEvent value, $Res Function(_$_SearchEvent) then) =
-      __$$_SearchEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String searchText});
-}
-
-/// @nodoc
-class __$$_SearchEventCopyWithImpl<$Res>
-    extends _$GetPostListEventCopyWithImpl<$Res, _$_SearchEvent>
-    implements _$$_SearchEventCopyWith<$Res> {
-  __$$_SearchEventCopyWithImpl(
-      _$_SearchEvent _value, $Res Function(_$_SearchEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? searchText = null,
-  }) {
-    return _then(_$_SearchEvent(
-      searchText: null == searchText
-          ? _value.searchText
-          : searchText // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_SearchEvent implements _SearchEvent {
-  const _$_SearchEvent({required this.searchText});
-
-  @override
-  final String searchText;
-
-  @override
-  String toString() {
-    return 'GetPostListEvent.searchEvent(searchText: $searchText)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_SearchEvent &&
-            (identical(other.searchText, searchText) ||
-                other.searchText == searchText));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, searchText);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_SearchEventCopyWith<_$_SearchEvent> get copyWith =>
-      __$$_SearchEventCopyWithImpl<_$_SearchEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getPostsEvent,
-    required TResult Function(String searchText) searchEvent,
-    required TResult Function(String filterTag) filterTagEvent,
-    required TResult Function(String filterAuthor) filterAuthorEvent,
-  }) {
-    return searchEvent(searchText);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getPostsEvent,
-    TResult? Function(String searchText)? searchEvent,
-    TResult? Function(String filterTag)? filterTagEvent,
-    TResult? Function(String filterAuthor)? filterAuthorEvent,
-  }) {
-    return searchEvent?.call(searchText);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getPostsEvent,
-    TResult Function(String searchText)? searchEvent,
-    TResult Function(String filterTag)? filterTagEvent,
-    TResult Function(String filterAuthor)? filterAuthorEvent,
-    required TResult orElse(),
-  }) {
-    if (searchEvent != null) {
-      return searchEvent(searchText);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetPostsEvent value) getPostsEvent,
-    required TResult Function(_SearchEvent value) searchEvent,
-    required TResult Function(_FilterTagEvent value) filterTagEvent,
-    required TResult Function(_FilterAuthorEvent value) filterAuthorEvent,
-  }) {
-    return searchEvent(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetPostsEvent value)? getPostsEvent,
-    TResult? Function(_SearchEvent value)? searchEvent,
-    TResult? Function(_FilterTagEvent value)? filterTagEvent,
-    TResult? Function(_FilterAuthorEvent value)? filterAuthorEvent,
-  }) {
-    return searchEvent?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetPostsEvent value)? getPostsEvent,
-    TResult Function(_SearchEvent value)? searchEvent,
-    TResult Function(_FilterTagEvent value)? filterTagEvent,
-    TResult Function(_FilterAuthorEvent value)? filterAuthorEvent,
-    required TResult orElse(),
-  }) {
-    if (searchEvent != null) {
-      return searchEvent(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _SearchEvent implements GetPostListEvent {
-  const factory _SearchEvent({required final String searchText}) =
-      _$_SearchEvent;
-
-  String get searchText;
-  @JsonKey(ignore: true)
-  _$$_SearchEventCopyWith<_$_SearchEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_FilterTagEventCopyWith<$Res> {
-  factory _$$_FilterTagEventCopyWith(
-          _$_FilterTagEvent value, $Res Function(_$_FilterTagEvent) then) =
-      __$$_FilterTagEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String filterTag});
-}
-
-/// @nodoc
-class __$$_FilterTagEventCopyWithImpl<$Res>
-    extends _$GetPostListEventCopyWithImpl<$Res, _$_FilterTagEvent>
-    implements _$$_FilterTagEventCopyWith<$Res> {
-  __$$_FilterTagEventCopyWithImpl(
-      _$_FilterTagEvent _value, $Res Function(_$_FilterTagEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? filterTag = null,
-  }) {
-    return _then(_$_FilterTagEvent(
-      filterTag: null == filterTag
-          ? _value.filterTag
-          : filterTag // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_FilterTagEvent implements _FilterTagEvent {
-  const _$_FilterTagEvent({required this.filterTag});
-
-  @override
-  final String filterTag;
-
-  @override
-  String toString() {
-    return 'GetPostListEvent.filterTagEvent(filterTag: $filterTag)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_FilterTagEvent &&
-            (identical(other.filterTag, filterTag) ||
-                other.filterTag == filterTag));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, filterTag);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_FilterTagEventCopyWith<_$_FilterTagEvent> get copyWith =>
-      __$$_FilterTagEventCopyWithImpl<_$_FilterTagEvent>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getPostsEvent,
-    required TResult Function(String searchText) searchEvent,
-    required TResult Function(String filterTag) filterTagEvent,
-    required TResult Function(String filterAuthor) filterAuthorEvent,
-  }) {
-    return filterTagEvent(filterTag);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getPostsEvent,
-    TResult? Function(String searchText)? searchEvent,
-    TResult? Function(String filterTag)? filterTagEvent,
-    TResult? Function(String filterAuthor)? filterAuthorEvent,
-  }) {
-    return filterTagEvent?.call(filterTag);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getPostsEvent,
-    TResult Function(String searchText)? searchEvent,
-    TResult Function(String filterTag)? filterTagEvent,
-    TResult Function(String filterAuthor)? filterAuthorEvent,
-    required TResult orElse(),
-  }) {
-    if (filterTagEvent != null) {
-      return filterTagEvent(filterTag);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetPostsEvent value) getPostsEvent,
-    required TResult Function(_SearchEvent value) searchEvent,
-    required TResult Function(_FilterTagEvent value) filterTagEvent,
-    required TResult Function(_FilterAuthorEvent value) filterAuthorEvent,
-  }) {
-    return filterTagEvent(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetPostsEvent value)? getPostsEvent,
-    TResult? Function(_SearchEvent value)? searchEvent,
-    TResult? Function(_FilterTagEvent value)? filterTagEvent,
-    TResult? Function(_FilterAuthorEvent value)? filterAuthorEvent,
-  }) {
-    return filterTagEvent?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetPostsEvent value)? getPostsEvent,
-    TResult Function(_SearchEvent value)? searchEvent,
-    TResult Function(_FilterTagEvent value)? filterTagEvent,
-    TResult Function(_FilterAuthorEvent value)? filterAuthorEvent,
-    required TResult orElse(),
-  }) {
-    if (filterTagEvent != null) {
-      return filterTagEvent(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _FilterTagEvent implements GetPostListEvent {
-  const factory _FilterTagEvent({required final String filterTag}) =
-      _$_FilterTagEvent;
-
-  String get filterTag;
-  @JsonKey(ignore: true)
-  _$$_FilterTagEventCopyWith<_$_FilterTagEvent> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_FilterAuthorEventCopyWith<$Res> {
-  factory _$$_FilterAuthorEventCopyWith(_$_FilterAuthorEvent value,
-          $Res Function(_$_FilterAuthorEvent) then) =
-      __$$_FilterAuthorEventCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String filterAuthor});
-}
-
-/// @nodoc
-class __$$_FilterAuthorEventCopyWithImpl<$Res>
-    extends _$GetPostListEventCopyWithImpl<$Res, _$_FilterAuthorEvent>
-    implements _$$_FilterAuthorEventCopyWith<$Res> {
-  __$$_FilterAuthorEventCopyWithImpl(
-      _$_FilterAuthorEvent _value, $Res Function(_$_FilterAuthorEvent) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? filterAuthor = null,
-  }) {
-    return _then(_$_FilterAuthorEvent(
-      filterAuthor: null == filterAuthor
-          ? _value.filterAuthor
-          : filterAuthor // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_FilterAuthorEvent implements _FilterAuthorEvent {
-  const _$_FilterAuthorEvent({required this.filterAuthor});
-
-  @override
-  final String filterAuthor;
-
-  @override
-  String toString() {
-    return 'GetPostListEvent.filterAuthorEvent(filterAuthor: $filterAuthor)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_FilterAuthorEvent &&
-            (identical(other.filterAuthor, filterAuthor) ||
-                other.filterAuthor == filterAuthor));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, filterAuthor);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_FilterAuthorEventCopyWith<_$_FilterAuthorEvent> get copyWith =>
-      __$$_FilterAuthorEventCopyWithImpl<_$_FilterAuthorEvent>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() getPostsEvent,
-    required TResult Function(String searchText) searchEvent,
-    required TResult Function(String filterTag) filterTagEvent,
-    required TResult Function(String filterAuthor) filterAuthorEvent,
-  }) {
-    return filterAuthorEvent(filterAuthor);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getPostsEvent,
-    TResult? Function(String searchText)? searchEvent,
-    TResult? Function(String filterTag)? filterTagEvent,
-    TResult? Function(String filterAuthor)? filterAuthorEvent,
-  }) {
-    return filterAuthorEvent?.call(filterAuthor);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getPostsEvent,
-    TResult Function(String searchText)? searchEvent,
-    TResult Function(String filterTag)? filterTagEvent,
-    TResult Function(String filterAuthor)? filterAuthorEvent,
-    required TResult orElse(),
-  }) {
-    if (filterAuthorEvent != null) {
-      return filterAuthorEvent(filterAuthor);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_GetPostsEvent value) getPostsEvent,
-    required TResult Function(_SearchEvent value) searchEvent,
-    required TResult Function(_FilterTagEvent value) filterTagEvent,
-    required TResult Function(_FilterAuthorEvent value) filterAuthorEvent,
-  }) {
-    return filterAuthorEvent(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_GetPostsEvent value)? getPostsEvent,
-    TResult? Function(_SearchEvent value)? searchEvent,
-    TResult? Function(_FilterTagEvent value)? filterTagEvent,
-    TResult? Function(_FilterAuthorEvent value)? filterAuthorEvent,
-  }) {
-    return filterAuthorEvent?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_GetPostsEvent value)? getPostsEvent,
-    TResult Function(_SearchEvent value)? searchEvent,
-    TResult Function(_FilterTagEvent value)? filterTagEvent,
-    TResult Function(_FilterAuthorEvent value)? filterAuthorEvent,
-    required TResult orElse(),
-  }) {
-    if (filterAuthorEvent != null) {
-      return filterAuthorEvent(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _FilterAuthorEvent implements GetPostListEvent {
-  const factory _FilterAuthorEvent({required final String filterAuthor}) =
-      _$_FilterAuthorEvent;
-
-  String get filterAuthor;
-  @JsonKey(ignore: true)
-  _$$_FilterAuthorEventCopyWith<_$_FilterAuthorEvent> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

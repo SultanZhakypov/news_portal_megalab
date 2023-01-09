@@ -1,11 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:news_portal_megalab/core/error/blocs_observer.dart';
 import 'package:news_portal_megalab/core/routes/routes.gr.dart';
-import 'package:news_portal_megalab/feature/register/presentation/bloc/bloc/register_bloc.dart';
+import 'package:news_portal_megalab/feature/register/presentation/bloc/register_bloc.dart';
 import 'feature/auth/presentation/bloc/bloc/auth_bloc.dart';
 import 'feature/global/cubit/global_cubit.dart';
-import 'feature/home/presentation/bloc/bloc/get_post_list_bloc.dart';
+import 'feature/home/presentation/bloc/get_all_post_bloc/get_post_list_bloc.dart';
+import 'feature/home/presentation/bloc/search_bloc/search_bloc.dart';
 import 'feature/widgets/app_unfocuser.dart';
 import 'generated/codegen_loader.g.dart';
 import 'service_locator.dart' as di;
@@ -14,7 +16,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await di.init();
-
+  Bloc.observer = BlocsObserver();
   runApp(const InitLocaleWidget(child: MyApp()));
 }
 
@@ -60,8 +62,11 @@ class InitWidget extends StatelessWidget {
             create: (context) => di.sl<GlobalCubit>(),
           ),
           BlocProvider(
-            create: (context) => di.sl<GetPostListBloc>()
+            create: (context) => di.sl<GetAllPostBloc>()
               ..add(const GetPostListEvent.getPostsEvent()),
+          ),
+          BlocProvider(
+            create: (context) => di.sl<SearchBloc>(),
           ),
         ],
         child: child,

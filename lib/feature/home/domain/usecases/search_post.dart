@@ -1,20 +1,20 @@
 import 'package:dartz/dartz.dart';
-import 'package:news_portal_megalab/feature/home/domain/entities/home_entity.dart';
-import 'package:news_portal_megalab/feature/home/domain/repositories/postlist_repo.dart';
 
 import '../../../../core/error/failure.dart';
+import '../entities/home_entity.dart';
+import '../repositories/postlist_repo.dart';
 
-class GetPostListUseCase {
+class SearchPostUseCase {
   final PostListRepo postListRepo;
 
-  GetPostListUseCase(this.postListRepo);
+  SearchPostUseCase({required this.postListRepo});
 
   Future<Either<Failure, List<HomeEntity>>> call({
     required String search,
     required String author,
     required String tag,
   }) async {
-    return await postListRepo.getPostList(
+    return await postListRepo.searchPost(
       search: search,
       author: author,
       tag: tag,

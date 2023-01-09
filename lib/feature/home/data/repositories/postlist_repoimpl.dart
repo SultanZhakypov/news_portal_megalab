@@ -13,13 +13,21 @@ class PostListRepoImpl implements PostListRepo {
 
   PostListRepoImpl({required this.remotePostList, required this.networkInfo});
   @override
-  Future<Either<Failure, List<HomeEntity>>> getPostList(
-      {required String search,
-      required String tag,
-      required String author}) async {
+  Future<Either<Failure, List<HomeEntity>>> searchPost({
+    required String search,
+    required String tag,
+    required String author,
+  }) async {
     return _getPosts(() {
-      return remotePostList.getPostList(
+      return remotePostList.searchPost(
           search: search, tag: tag, author: author);
+    });
+  }
+
+  @override
+  Future<Either<Failure, List<HomeEntity>>> getAllPost() {
+    return _getPosts(() {
+      return remotePostList.getAllPost();
     });
   }
 

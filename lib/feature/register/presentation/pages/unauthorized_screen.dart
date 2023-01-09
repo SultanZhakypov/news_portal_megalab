@@ -5,13 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news_portal_megalab/core/routes/routes.gr.dart';
 import 'package:news_portal_megalab/feature/register/domain/entities/register_entity.dart';
-import 'package:news_portal_megalab/feature/register/presentation/bloc/bloc/register_bloc.dart';
+
 import 'package:news_portal_megalab/feature/widgets/app_menu.dart';
 import 'package:news_portal_megalab/generated/locale_keys.g.dart';
 import 'package:news_portal_megalab/main.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 import '../../../../resources/resources.dart';
 import '../../../widgets/widgets.dart';
+import '../bloc/register_bloc.dart';
 
 class UnAuthorizedScreen extends StatefulWidget {
   const UnAuthorizedScreen({super.key});
@@ -55,19 +56,21 @@ class _UnAuthorizedScreenState extends State<UnAuthorizedScreen> {
           padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 45),
           child: BlocConsumer<RegisterBloc, RegisterState>(
             listener: (context, state) {
-              if (state is RegisterErrorState) {
-                AppMenuShow.showSnackBarGlobal(context, state.message);
-              }
-              if (state is RegisterSuccessState) {
-                context.router.push(const AuthorizedScreenRoute());
-              }
+              state.maybeWhen(
+                orElse: () {},
+                error: (message) =>
+                    AppMenuShow.showSnackBarGlobal(context, message),
+                success: () =>
+                    context.router.push(const AuthorizedScreenRoute()),
+              );
             },
             builder: (context, state) {
-              if (state is RegisterLoadingState) {
-                return const Center(
+              state.maybeWhen(
+                orElse: () {},
+                loading: () => const Center(
                   child: CircularProgressIndicator.adaptive(),
-                );
-              }
+                ),
+              );
               return Form(
                 key: formKey,
                 child: Column(
@@ -114,7 +117,7 @@ class _UnAuthorizedScreenState extends State<UnAuthorizedScreen> {
                         title: LocaleKeys.register.tr(),
                         onPress: () {
                           BlocProvider.of<RegisterBloc>(context).add(
-                            RegisterPostEvent(
+                            RegisterEvent.postRegister(
                               registerEntity: RegisterEntity(
                                 imageProfile: null,
                                 lastName: _surNameController.text,

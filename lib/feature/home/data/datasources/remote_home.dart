@@ -5,7 +5,8 @@ import 'package:news_portal_megalab/feature/home/data/models/home_postlist_model
 import 'package:news_portal_megalab/resources/app_constants.dart';
 
 abstract class RemotePostList {
-  Future<List<PostListModel>> getPostList(
+  Future<List<PostListModel>> getAllPost();
+  Future<List<PostListModel>> searchPost(
       {required String search, required String tag, required String author});
 }
 
@@ -15,18 +16,36 @@ class RemotePostListImpl implements RemotePostList {
   RemotePostListImpl({required this.dio});
 
   @override
-  Future<List<PostListModel>> getPostList(
+  Future<List<PostListModel>> searchPost(
       {required String search,
       required String tag,
       required String author}) async {
     final token = await SharedPrefs.getData(AppConstants.token);
     final response = await dio.get(
-      'post/',
+      'post',
       queryParameters: {
         'search': search,
         'tag': tag,
         'author': author,
       },
+      options: Options(headers: {'Authorization': 'Token $token'}),
+    );
+
+    try {
+      final posts = response.data;
+      return (posts as List)
+          .map((post) => PostListModel.fromJson(post))
+          .toList();
+    } on DioError {
+      throw ServerException();
+    }
+  }
+
+  @override
+  Future<List<PostListModel>> getAllPost() async {
+    final token = await SharedPrefs.getData(AppConstants.token);
+    final response = await dio.get(
+      'post/?search=&tag=&author=',
       options: Options(headers: {'Authorization': 'Token $token'}),
     );
 

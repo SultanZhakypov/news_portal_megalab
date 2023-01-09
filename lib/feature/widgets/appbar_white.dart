@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:news_portal_megalab/core/routes/routes.dart';
 import 'package:news_portal_megalab/feature/widgets/app_menu.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 import 'package:news_portal_megalab/resources/extension.dart';
@@ -23,7 +25,9 @@ class SliverAppbarWhite extends StatelessWidget {
       ),
       actions: [
         IconButton(
-            onPressed: () {},
+            onPressed: () {
+              context.router.push(const SearchScreenRoute());
+            },
             icon: SvgPicture.asset(
               Svgs.whiteSearch,
               height: 20,

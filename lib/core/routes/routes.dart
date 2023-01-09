@@ -3,6 +3,7 @@ import 'package:news_portal_megalab/feature/auth/presentation/pages/authorized_s
 import 'package:news_portal_megalab/feature/detail/presentation/pages/detail_screen.dart';
 import 'package:news_portal_megalab/feature/global/page/global.dart';
 import 'package:news_portal_megalab/feature/home/presentation/pages/home_screen.dart';
+import 'package:news_portal_megalab/feature/home/presentation/pages/search_screen.dart';
 import 'package:news_portal_megalab/feature/like/presentation/pages/liked_screen.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/pages/profile_screen.dart';
 import 'package:news_portal_megalab/feature/register/presentation/pages/unauthorized_screen.dart';
@@ -15,6 +16,11 @@ export 'routes.gr.dart';
       initial: true,
       page: GlobalWidget,
       path: '/',
+    ),
+    CustomRoute(
+      transitionsBuilder: TransitionsBuilders.slideBottom,
+      page: SearchScreen,
+      path: '/search',
     ),
     CustomRoute(
       transitionsBuilder: TransitionsBuilders.fadeIn,
