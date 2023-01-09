@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news_portal_megalab/feature/home/domain/entities/home_entity.dart';
 import 'package:news_portal_megalab/resources/app_colors.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 
+import '../../generated/locale_keys.g.dart';
 import '../../resources/resources.dart';
 import '../home/presentation/widgets/app_shows.dart';
 
@@ -19,18 +21,20 @@ class ItemsWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset(Images.justImage),
+        Image.asset(posts.image ?? Images.justImage),
         const SizedBox(height: 16),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              '29.11.2022',
+            Text(
+              DateTime.now().toString(),
               style: AppConstants.textLightGreyw400s16,
             ),
             IconButton(
               onPressed: () {},
-              icon: SvgPicture.asset(Svgs.unlike),
+              icon: posts.isLiked
+                  ? SvgPicture.asset(Svgs.liked)
+                  : SvgPicture.asset(Svgs.unlike),
             ),
           ],
         ),
@@ -48,8 +52,8 @@ class ItemsWidget extends StatelessWidget {
         const SizedBox(height: 8),
         TextButton(
           onPressed: () {},
-          child: const Text(
-            'Читать дальше>>',
+          child: Text(
+            LocaleKeys.read_next.tr(),
             style: AppConstants.textPurplew400s16,
           ),
         ),

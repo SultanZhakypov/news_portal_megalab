@@ -1,11 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:news_portal_megalab/feature/home/domain/entities/home_entity.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/widgets/app_edit.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/widgets/profile_edit_widget.dart';
 import 'package:news_portal_megalab/feature/widgets/custom_button.dart';
-import 'package:news_portal_megalab/feature/widgets/items_widget.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 
+import '../../../../generated/locale_keys.g.dart';
 import '../../../../resources/resources.dart';
 import '../../../widgets/appbar_purple.dart';
 import '../../../widgets/footer_widget.dart';
@@ -32,8 +32,8 @@ class ProfileScreen extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    'Мои публикации',
+                  Text(
+                    LocaleKeys.my_posts.tr(),
                     style: AppConstants.textBlackw500s24,
                   ),
                   CustomButtonSvg(
@@ -44,8 +44,6 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
 
-      
-         
             // SliverPadding(
             //   padding: const EdgeInsets.only(top: 17),
             //   sliver: SliverList(

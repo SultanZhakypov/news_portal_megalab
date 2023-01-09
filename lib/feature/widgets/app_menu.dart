@@ -1,6 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:news_portal_megalab/main.dart';
 import 'package:news_portal_megalab/resources/export_resources.dart';
+
+import '../../generated/locale_keys.g.dart';
 
 abstract class AppMenuShow {
   static Future showMenu(BuildContext context) {
@@ -17,7 +20,7 @@ abstract class AppMenuShow {
                   InkWell(
                     onTap: () {},
                     child: const Text(
-                      'Мой профиль',
+                      LocaleKeys.my_profile,
                       style: AppConstants.textBlackw400s16,
                     ),
                   ),
@@ -27,8 +30,8 @@ abstract class AppMenuShow {
                   ),
                   InkWell(
                     onTap: () {},
-                    child: const Text(
-                      'Избранные новости',
+                    child: Text(
+                      LocaleKeys.izbrannye_news.tr(),
                       style: AppConstants.textBlackw400s16,
                     ),
                   ),
@@ -38,8 +41,8 @@ abstract class AppMenuShow {
                   ),
                   InkWell(
                     onTap: () {},
-                    child: const Text(
-                      'Выйти',
+                    child: Text(
+                      LocaleKeys.logout.tr(),
                       style: AppConstants.textBlackw400s16,
                     ),
                   ),

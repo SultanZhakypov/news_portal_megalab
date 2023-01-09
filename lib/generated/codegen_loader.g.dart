@@ -24,6 +24,7 @@ class CodegenLoader extends AssetLoader{
   "yes_account": "Уже есть логин?",
   "register": "Регистрация",
   "login": "Войти",
+  "logout": "Выйти",
   "valid_pass": "Введите пароль",
   "valid_pass_confirm": "Пароли не совпадают",
   "valid_pass_length": "Пароль должен содержать 8 символов",
@@ -31,7 +32,18 @@ class CodegenLoader extends AssetLoader{
   "download": "Загрузить",
   "text_news": "Текст новости",
   "create": "Создать",
-  "zapolnite_pole": "Заполните поле"
+  "zapolnite_pole": "Заполните поле",
+  "is_empty": "По вашему запросу ничего не найдено",
+  "error_state": "Ошибка",
+  "search": "Поиск",
+  "searchTag": "Поиск по тэгу",
+  "searchAuthor": "Поиск по авторам",
+  "my_profile": "Мой профиль",
+  "news": "Новости",
+  "read_next": "Читать дальше>>",
+  "izbrannye_news": "Избранные новости",
+  "my_posts": "Мои публикации",
+  "izbrannye": "Избранные"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ru": ru};
 }

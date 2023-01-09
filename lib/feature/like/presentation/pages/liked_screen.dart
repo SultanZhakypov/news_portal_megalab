@@ -1,5 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:news_portal_megalab/feature/widgets/widgets.dart';
+
+import '../../../../generated/locale_keys.g.dart';
 
 class LikedScreen extends StatelessWidget {
   const LikedScreen({super.key});
@@ -11,8 +14,8 @@ class LikedScreen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: CustomScrollView(
           slivers: [
-            const SliverAppbarPurple(
-              title: 'Избранные',
+            SliverAppbarPurple(
+              title: LocaleKeys.izbrannye.tr(),
               flexibleSpaceParam: true,
             ),
             // SliverPadding(

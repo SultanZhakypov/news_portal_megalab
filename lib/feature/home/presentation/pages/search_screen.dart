@@ -1,8 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:news_portal_megalab/feature/home/presentation/bloc/search_bloc/search_bloc.dart';
 import 'package:news_portal_megalab/feature/home/presentation/widgets/search_appbar.dart';
 import 'package:news_portal_megalab/feature/widgets/items_widget.dart';
+import 'package:news_portal_megalab/generated/locale_keys.g.dart';
 import 'package:news_portal_megalab/resources/export_resources.dart';
 
 class SearchScreen extends StatefulWidget {
@@ -41,7 +44,7 @@ class _SearchScreenState extends State<SearchScreen> {
         slivers: [
           SearchAppBar(
             controller: _controller,
-            hintText: 'Поиск',
+            hintText: LocaleKeys.search.tr(),
             onChanged: (value) {
               bloc.add(SearchEvent.searchPost(
                 search: _controller.text,
@@ -60,7 +63,7 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
           SearchAppBar(
             controller: _controllerTag,
-            hintText: 'Поиск по тэгу',
+            hintText: LocaleKeys.searchTag.tr(),
             onChanged: (value) {
               bloc.add(
                 SearchEvent.searchPost(
@@ -81,7 +84,7 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
           SearchAppBar(
             controller: _controllerAuthor,
-            hintText: 'Поиск по авторам',
+            hintText: LocaleKeys.searchAuthor.tr(),
             onChanged: (value) {
               bloc.add(SearchEvent.searchPost(
                 search: '',
@@ -107,11 +110,9 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: SizedBox(
                       height: context.height,
                       width: context.width,
-                      child: const Center(
-                        child: Text(
-                          'Error',
-                          style: TextStyle(color: Colors.black),
-                        ),
+                      child: Center(
+                        child: Text(LocaleKeys.error_state.tr(),
+                            style: AppConstants.textBlackw400s16),
                       ),
                     ),
                   ),
@@ -119,11 +120,9 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: SizedBox(
                       height: context.height,
                       width: context.width,
-                      child: const Center(
-                        child: Text(
-                          'ERROR',
-                          style: TextStyle(color: Colors.black),
-                        ),
+                      child: Center(
+                        child: Text(LocaleKeys.error_state.tr(),
+                            style: AppConstants.textBlackw400s16),
                       ),
                     ),
                   ),
@@ -131,8 +130,11 @@ class _SearchScreenState extends State<SearchScreen> {
                     child: SizedBox(
                       height: context.height,
                       width: context.width,
-                      child: const Center(
-                        child: CircularProgressIndicator.adaptive(),
+                      child: Center(
+                        child: LoadingAnimationWidget.staggeredDotsWave(
+                          color: AppColors.colorBlack,
+                          size: 50,
+                        ),
                       ),
                     ),
                   ),
@@ -152,9 +154,9 @@ class _SearchScreenState extends State<SearchScreen> {
                             child: SizedBox(
                               height: context.height,
                               width: context.width,
-                              child: const Center(
+                              child: Center(
                                 child: Text(
-                                  'По вашему запросу ничего не найдено',
+                                  LocaleKeys.is_empty.tr(),
                                   style: AppConstants.textBlackw400s16,
                                 ),
                               ),

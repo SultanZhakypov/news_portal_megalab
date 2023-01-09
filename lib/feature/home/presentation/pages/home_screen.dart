@@ -1,9 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:news_portal_megalab/feature/home/presentation/bloc/get_all_post_bloc/get_post_list_bloc.dart';
 import 'package:news_portal_megalab/feature/home/presentation/widgets/app_shows.dart';
 import 'package:news_portal_megalab/feature/widgets/widgets.dart';
+import 'package:news_portal_megalab/generated/locale_keys.g.dart';
 import 'package:news_portal_megalab/resources/export_resources.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -34,31 +37,34 @@ class HomeScreen extends StatelessWidget {
                 return state.maybeWhen(
                   orElse: () => SliverToBoxAdapter(
                     child: SizedBox(
-                      height: context.height / 2,
-                      child: const Center(
+                      height: context.height,
+                      child:  Center(
                         child: Text(
-                          'Error',
-                          style: TextStyle(color: Colors.black),
+                          LocaleKeys.error_state..tr(),
+                          style: AppConstants.textBlackw400s16,
                         ),
                       ),
                     ),
                   ),
                   error: () => SliverToBoxAdapter(
                     child: SizedBox(
-                      height: context.height / 2,
-                      child: const Center(
+                      height: context.height,
+                      child:  Center(
                         child: Text(
-                          'ERROR',
-                          style: TextStyle(color: Colors.black),
+                          LocaleKeys.error_state.tr(),
+                          style: AppConstants.textBlackw400s16,
                         ),
                       ),
                     ),
                   ),
                   loading: () => SliverToBoxAdapter(
                     child: SizedBox(
-                      height: context.height / 2,
-                      child: const Center(
-                        child: CircularProgressIndicator.adaptive(),
+                      height: context.height / 1.5,
+                      child: Center(
+                        child: LoadingAnimationWidget.staggeredDotsWave(
+                          color: AppColors.colorBlack,
+                          size: 50,
+                        ),
                       ),
                     ),
                   ),
