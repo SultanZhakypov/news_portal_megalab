@@ -7,6 +7,11 @@ import 'package:news_portal_megalab/feature/auth/data/repositories/auth_repoimpl
 import 'package:news_portal_megalab/feature/auth/domain/repositories/auth_repo.dart';
 import 'package:news_portal_megalab/feature/auth/domain/usecases/post_auth.dart';
 import 'package:news_portal_megalab/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'package:news_portal_megalab/feature/detail/data/datasources/remote_detail.dart';
+import 'package:news_portal_megalab/feature/detail/data/repositories/detail_repoimpl.dart';
+import 'package:news_portal_megalab/feature/detail/domain/repositories/detail_repo.dart';
+import 'package:news_portal_megalab/feature/detail/domain/usecases/get_detail.dart';
+import 'package:news_portal_megalab/feature/detail/presentation/bloc/bloc/detail_bloc.dart';
 import 'package:news_portal_megalab/feature/home/data/datasources/remote_home.dart';
 import 'package:news_portal_megalab/feature/home/data/repositories/postlist_repoimpl.dart';
 import 'package:news_portal_megalab/feature/home/domain/repositories/postlist_repo.dart';
@@ -41,12 +46,14 @@ Future<void> init() async {
   sl.registerFactory(() => GlobalCubit());
   sl.registerFactory(() => GetAllPostBloc(getPostsUsecase: sl()));
   sl.registerFactory(() => SearchBloc(searchPostUseCase: sl()));
+  sl.registerFactory(() => DetailBloc(getDetailUsecase: sl()));
 
 //Usecases
   sl.registerLazySingleton(() => PostRegisterUseCase(sl()));
   sl.registerLazySingleton(() => PostAuthUsecase(sl()));
   sl.registerLazySingleton(() => GetAllPostUsecase(sl()));
   sl.registerLazySingleton(() => SearchPostUseCase(postListRepo: sl()));
+  sl.registerLazySingleton(() => GetDetailUsecase(detailRepo: sl()));
 
 //Repository
   sl.registerLazySingleton<RegisterRepo>(
@@ -55,6 +62,8 @@ Future<void> init() async {
       () => AuthRepoImpl(remoteAuthSource: sl(), networkInfo: sl()));
   sl.registerLazySingleton<PostListRepo>(
       () => PostListRepoImpl(remotePostList: sl(), networkInfo: sl()));
+  sl.registerLazySingleton<DetailRepo>(
+      () => DetailRepoImpl(remoteDetail: sl(), networkInfo: sl()));
 
 //DataSources
   sl.registerLazySingleton<RemoteRegisterSource>(
@@ -63,4 +72,6 @@ Future<void> init() async {
       () => RemoteAuthimpl(dio: DioSettings().dio));
   sl.registerLazySingleton<RemotePostList>(
       () => RemotePostListImpl(dio: DioSettings().dio));
+  sl.registerLazySingleton<RemoteDetail>(
+      () => RemoteDetailImpl(dio: DioSettings().dio));
 }

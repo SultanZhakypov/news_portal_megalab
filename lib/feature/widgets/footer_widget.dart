@@ -33,8 +33,8 @@ class FooterWidget extends StatelessWidget {
                   LocaleKeys.my_profile.tr(),
                   style: AppConstants.textWhitew400s16,
                 ),
-                const Text(
-                  LocaleKeys.izbrannye_news,
+                Text(
+                  LocaleKeys.izbrannye_news.tr(),
                   style: AppConstants.textWhitew400s16,
                 ),
               ],

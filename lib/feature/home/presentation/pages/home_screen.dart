@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:news_portal_megalab/core/routes/routes.dart';
 import 'package:news_portal_megalab/feature/home/presentation/bloc/get_all_post_bloc/get_post_list_bloc.dart';
 import 'package:news_portal_megalab/feature/home/presentation/widgets/app_shows.dart';
 import 'package:news_portal_megalab/feature/widgets/widgets.dart';
@@ -38,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                   orElse: () => SliverToBoxAdapter(
                     child: SizedBox(
                       height: context.height,
-                      child:  Center(
+                      child: Center(
                         child: Text(
                           LocaleKeys.error_state..tr(),
                           style: AppConstants.textBlackw400s16,
@@ -49,7 +51,7 @@ class HomeScreen extends StatelessWidget {
                   error: () => SliverToBoxAdapter(
                     child: SizedBox(
                       height: context.height,
-                      child:  Center(
+                      child: Center(
                         child: Text(
                           LocaleKeys.error_state.tr(),
                           style: AppConstants.textBlackw400s16,
@@ -73,8 +75,14 @@ class HomeScreen extends StatelessWidget {
                       delegate: SliverChildBuilderDelegate(
                         childCount: posts.length,
                         (context, index) {
-                          return ItemsWidget(
-                            posts: posts[index],
+                          return InkWell(
+                            onTap: () {
+                              context.router
+                                  .push(DetailScreenRoute(id: posts[index].id));
+                            },
+                            child: ItemsWidget(
+                              posts: posts[index],
+                            ),
                           );
                         },
                       ),

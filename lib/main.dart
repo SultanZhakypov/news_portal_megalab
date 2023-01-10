@@ -5,6 +5,7 @@ import 'package:news_portal_megalab/core/error/blocs_observer.dart';
 import 'package:news_portal_megalab/core/routes/routes.gr.dart';
 import 'package:news_portal_megalab/feature/register/presentation/bloc/register_bloc.dart';
 import 'feature/auth/presentation/bloc/bloc/auth_bloc.dart';
+import 'feature/detail/presentation/bloc/bloc/detail_bloc.dart';
 import 'feature/global/cubit/global_cubit.dart';
 import 'feature/home/presentation/bloc/get_all_post_bloc/get_post_list_bloc.dart';
 import 'feature/home/presentation/bloc/search_bloc/search_bloc.dart';
@@ -67,6 +68,9 @@ class InitWidget extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) => di.sl<SearchBloc>(),
+          ),
+          BlocProvider(
+            create: (context) => di.sl<DetailBloc>(),
           ),
         ],
         child: child,

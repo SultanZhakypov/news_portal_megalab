@@ -91,9 +91,13 @@ class AppRouter extends _i9.RootStackRouter {
       );
     },
     DetailScreenRoute.name: (routeData) {
+      final args = routeData.argsAs<DetailScreenRouteArgs>();
       return _i9.CustomPage<dynamic>(
         routeData: routeData,
-        child: const _i8.DetailScreen(),
+        child: _i8.DetailScreen(
+          key: args.key,
+          id: args.id,
+        ),
         transitionsBuilder: _i9.TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
@@ -224,12 +228,34 @@ class HomeScreenRoute extends _i9.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i8.DetailScreen]
-class DetailScreenRoute extends _i9.PageRouteInfo<void> {
-  const DetailScreenRoute()
-      : super(
+class DetailScreenRoute extends _i9.PageRouteInfo<DetailScreenRouteArgs> {
+  DetailScreenRoute({
+    _i10.Key? key,
+    required int id,
+  }) : super(
           DetailScreenRoute.name,
           path: '/detail',
+          args: DetailScreenRouteArgs(
+            key: key,
+            id: id,
+          ),
         );
 
   static const String name = 'DetailScreenRoute';
+}
+
+class DetailScreenRouteArgs {
+  const DetailScreenRouteArgs({
+    this.key,
+    required this.id,
+  });
+
+  final _i10.Key? key;
+
+  final int id;
+
+  @override
+  String toString() {
+    return 'DetailScreenRouteArgs{key: $key, id: $id}';
+  }
 }

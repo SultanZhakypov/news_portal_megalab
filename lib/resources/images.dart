@@ -8,4 +8,5 @@ class Images {
   static const String appbarBackgroundImage =
       'assets/images/appbar_background_image.png';
   static const String justImage = 'assets/images/just_image.png';
+  static const String something = 'assets/images/something.png';
 }
