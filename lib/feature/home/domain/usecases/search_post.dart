@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failure.dart';
-import '../entities/home_entity.dart';
+import '../entities/post_entity.dart';
 import '../repositories/postlist_repo.dart';
 
 class SearchPostUseCase {
@@ -9,7 +9,7 @@ class SearchPostUseCase {
 
   SearchPostUseCase({required this.postListRepo});
 
-  Future<Either<Failure, List<HomeEntity>>> call({
+  Future<Either<Failure, List<PostEntity>>> call({
     required String search,
     required String author,
     required String tag,

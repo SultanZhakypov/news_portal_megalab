@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:news_portal_megalab/feature/home/domain/entities/home_entity.dart';
+import 'package:news_portal_megalab/feature/home/domain/entities/post_entity.dart';
 import 'package:news_portal_megalab/feature/home/domain/usecases/get_all_post.dart';
 
 part 'get_post_list_event.dart';

@@ -20,6 +20,7 @@ class SliverAppbarPurple extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      elevation: 0,
       backgroundColor: AppColors.colorWhite,
       leadingWidth: context.width / 4,
       leading: SvgPicture.asset(

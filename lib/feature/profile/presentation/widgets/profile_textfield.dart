@@ -8,12 +8,13 @@ class ProfileTextFieldWidget extends StatelessWidget {
     this.maxLines = 1,
     this.height = 32,
     this.top = 0,
-    this.bottom = 0,
+    this.bottom = 0, required this.controller,
   }) : super(key: key);
 
   final String title;
   final int maxLines;
   final double height, top, bottom;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +29,7 @@ class ProfileTextFieldWidget extends StatelessWidget {
             height: height,
             child: Expanded(
               child: TextField(
+                controller: controller,
                 maxLines: maxLines,
                 style: AppConstants.textBlackw400s16,
                 cursorColor: AppColors.colorPurple,

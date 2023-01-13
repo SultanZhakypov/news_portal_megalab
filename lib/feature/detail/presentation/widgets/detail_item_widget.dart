@@ -18,8 +18,13 @@ class DetailItemWidget extends StatelessWidget {
             Text(DateTime.now().toString(),
                 style: AppConstants.textLightGreyw400s16),
             IconButton(
-              onPressed: () {},
-              icon: SvgPicture.asset(Svgs.unlike),
+              onPressed: () {
+               
+              },
+              
+              icon: post.isLiked
+                  ? SvgPicture.asset(Svgs.liked)
+                  : SvgPicture.asset(Svgs.unlike),
             ),
           ],
         ),

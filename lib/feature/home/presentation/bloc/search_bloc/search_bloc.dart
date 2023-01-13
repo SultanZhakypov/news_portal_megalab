@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:news_portal_megalab/feature/home/domain/entities/home_entity.dart';
+import 'package:news_portal_megalab/feature/home/domain/entities/post_entity.dart';
 import 'package:news_portal_megalab/feature/home/domain/usecases/search_Post.dart';
 
 part 'search_event.dart';
@@ -22,6 +22,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
       result.fold((error) => emit(const _$_Error()), (post) {
         emit(_$_Success(posts: post));
       });
+      
     });
   }
 }

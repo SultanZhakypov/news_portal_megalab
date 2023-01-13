@@ -43,7 +43,8 @@ class CodegenLoader extends AssetLoader{
   "read_next": "Читать дальше>>",
   "izbrannye_news": "Избранные новости",
   "my_posts": "Мои публикации",
-  "izbrannye": "Избранные"
+  "izbrannye": "Избранные",
+  "comments": "Коментарии"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"ru": ru};
 }

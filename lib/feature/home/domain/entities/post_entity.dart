@@ -1,6 +1,6 @@
 import '../../data/models/home_postlist_model.dart';
 
-class HomeEntity {
+class PostEntity {
   final int id;
   final String tag;
   final String title;
@@ -11,7 +11,7 @@ class HomeEntity {
   final bool isLiked;
   final List<Comment> comment;
 
-  const HomeEntity({
+  const PostEntity({
     required this.id,
     required this.tag,
     required this.title,

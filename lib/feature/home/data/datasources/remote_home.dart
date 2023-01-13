@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:news_portal_megalab/core/error/exception.dart';
 import 'package:news_portal_megalab/core/platform/prefs_settings.dart';
@@ -55,7 +56,7 @@ class RemotePostListImpl implements RemotePostList {
           .map((post) => PostListModel.fromJson(post))
           .toList();
     } on DioError {
-      throw ServerException();
+      throw const Left(ServerException);
     }
   }
 }

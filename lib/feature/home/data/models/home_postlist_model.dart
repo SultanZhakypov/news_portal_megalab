@@ -1,12 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:news_portal_megalab/feature/home/domain/entities/home_entity.dart';
+import 'package:news_portal_megalab/feature/home/domain/entities/post_entity.dart';
 
 part 'home_postlist_model.freezed.dart';
 part 'home_postlist_model.g.dart';
 
 @freezed
-class PostListModel with _$PostListModel implements HomeEntity {
+class PostListModel with _$PostListModel implements PostEntity{
   const factory PostListModel({
     @Default(1) int id,
     @Default('') String tag,

@@ -27,15 +27,13 @@ class SliverAppbarWhite extends StatelessWidget {
       ),
       actions: [
         IconButton(
-            onPressed: () {
-              context.router.push(const SearchScreenRoute());
-            },
+            onPressed: () => context.router.push(const SearchScreenRoute()),
             icon: SvgPicture.asset(
               Svgs.whiteSearch,
               height: 20,
             )),
         IconButton(
-            onPressed: () {},
+            onPressed: () => context.router.push(const ProfileScreenRoute()),
             icon: SvgPicture.asset(
               Svgs.whiteProfile,
               height: 20,
@@ -55,7 +53,7 @@ class SliverAppbarWhite extends StatelessWidget {
           Images.appbarBackgroundImage,
           fit: BoxFit.cover,
         ),
-        title:  Text(
+        title: Text(
           LocaleKeys.news.tr(),
           style: AppConstants.textWhitew500s30,
         ),

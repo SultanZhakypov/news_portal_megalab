@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:news_portal_megalab/feature/home/domain/entities/home_entity.dart';
+import 'package:news_portal_megalab/feature/home/domain/entities/post_entity.dart';
 import 'package:news_portal_megalab/resources/app_colors.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 
@@ -14,7 +14,7 @@ class ItemsWidget extends StatelessWidget {
     Key? key,
     required this.posts,
   }) : super(key: key);
-  final HomeEntity posts;
+  final PostEntity posts;
 
   @override
   Widget build(BuildContext context) {

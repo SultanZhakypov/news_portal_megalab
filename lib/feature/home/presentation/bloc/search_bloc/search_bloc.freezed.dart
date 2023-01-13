@@ -262,7 +262,7 @@ mixin _$SearchState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<HomeEntity> posts) success,
+    required TResult Function(List<PostEntity> posts) success,
     required TResult Function() error,
     required TResult Function() loading,
   }) =>
@@ -270,7 +270,7 @@ mixin _$SearchState {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<HomeEntity> posts)? success,
+    TResult? Function(List<PostEntity> posts)? success,
     TResult? Function()? error,
     TResult? Function()? loading,
   }) =>
@@ -278,7 +278,7 @@ mixin _$SearchState {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<HomeEntity> posts)? success,
+    TResult Function(List<PostEntity> posts)? success,
     TResult Function()? error,
     TResult Function()? loading,
     required TResult orElse(),
@@ -367,7 +367,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<HomeEntity> posts) success,
+    required TResult Function(List<PostEntity> posts) success,
     required TResult Function() error,
     required TResult Function() loading,
   }) {
@@ -378,7 +378,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<HomeEntity> posts)? success,
+    TResult? Function(List<PostEntity> posts)? success,
     TResult? Function()? error,
     TResult? Function()? loading,
   }) {
@@ -389,7 +389,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<HomeEntity> posts)? success,
+    TResult Function(List<PostEntity> posts)? success,
     TResult Function()? error,
     TResult Function()? loading,
     required TResult orElse(),
@@ -448,7 +448,7 @@ abstract class _$$_SuccessCopyWith<$Res> {
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<HomeEntity> posts});
+  $Res call({List<PostEntity> posts});
 }
 
 /// @nodoc
@@ -467,7 +467,7 @@ class __$$_SuccessCopyWithImpl<$Res>
       posts: null == posts
           ? _value._posts
           : posts // ignore: cast_nullable_to_non_nullable
-              as List<HomeEntity>,
+              as List<PostEntity>,
     ));
   }
 }
@@ -475,11 +475,11 @@ class __$$_SuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success({required final List<HomeEntity> posts}) : _posts = posts;
+  const _$_Success({required final List<PostEntity> posts}) : _posts = posts;
 
-  final List<HomeEntity> _posts;
+  final List<PostEntity> _posts;
   @override
-  List<HomeEntity> get posts {
+  List<PostEntity> get posts {
     if (_posts is EqualUnmodifiableListView) return _posts;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_posts);
@@ -512,7 +512,7 @@ class _$_Success implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<HomeEntity> posts) success,
+    required TResult Function(List<PostEntity> posts) success,
     required TResult Function() error,
     required TResult Function() loading,
   }) {
@@ -523,7 +523,7 @@ class _$_Success implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<HomeEntity> posts)? success,
+    TResult? Function(List<PostEntity> posts)? success,
     TResult? Function()? error,
     TResult? Function()? loading,
   }) {
@@ -534,7 +534,7 @@ class _$_Success implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<HomeEntity> posts)? success,
+    TResult Function(List<PostEntity> posts)? success,
     TResult Function()? error,
     TResult Function()? loading,
     required TResult orElse(),
@@ -584,9 +584,9 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements SearchState {
-  const factory _Success({required final List<HomeEntity> posts}) = _$_Success;
+  const factory _Success({required final List<PostEntity> posts}) = _$_Success;
 
-  List<HomeEntity> get posts;
+  List<PostEntity> get posts;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       throw _privateConstructorUsedError;
@@ -629,7 +629,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<HomeEntity> posts) success,
+    required TResult Function(List<PostEntity> posts) success,
     required TResult Function() error,
     required TResult Function() loading,
   }) {
@@ -640,7 +640,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<HomeEntity> posts)? success,
+    TResult? Function(List<PostEntity> posts)? success,
     TResult? Function()? error,
     TResult? Function()? loading,
   }) {
@@ -651,7 +651,7 @@ class _$_Error implements _Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<HomeEntity> posts)? success,
+    TResult Function(List<PostEntity> posts)? success,
     TResult Function()? error,
     TResult Function()? loading,
     required TResult orElse(),
@@ -742,7 +742,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<HomeEntity> posts) success,
+    required TResult Function(List<PostEntity> posts) success,
     required TResult Function() error,
     required TResult Function() loading,
   }) {
@@ -753,7 +753,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<HomeEntity> posts)? success,
+    TResult? Function(List<PostEntity> posts)? success,
     TResult? Function()? error,
     TResult? Function()? loading,
   }) {
@@ -764,7 +764,7 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<HomeEntity> posts)? success,
+    TResult Function(List<PostEntity> posts)? success,
     TResult Function()? error,
     TResult Function()? loading,
     required TResult orElse(),

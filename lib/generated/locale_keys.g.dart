@@ -30,5 +30,6 @@ abstract class  LocaleKeys {
   static const izbrannye_news = 'izbrannye_news';
   static const my_posts = 'my_posts';
   static const izbrannye = 'izbrannye';
+  static const comments = 'comments';
 
 }

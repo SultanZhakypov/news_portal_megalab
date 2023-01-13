@@ -4,12 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:news_portal_megalab/feature/detail/domain/entities/comment_entity.dart';
+import 'package:news_portal_megalab/feature/detail/presentation/bloc/comment/comment_bloc.dart';
 import 'package:news_portal_megalab/feature/detail/presentation/widgets/detail_widgets.dart';
 import 'package:news_portal_megalab/feature/widgets/footer_widget.dart';
 import 'package:news_portal_megalab/resources/export_resources.dart';
 import '../../../../generated/locale_keys.g.dart';
 import '../../../widgets/appbar_white.dart';
-import '../bloc/bloc/detail_bloc.dart';
+import '../bloc/detail/detail_bloc.dart';
 
 class DetailScreen extends StatelessWidget {
   const DetailScreen({super.key, required this.id});
@@ -29,9 +31,7 @@ class DetailScreen extends StatelessWidget {
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: IconButton(
-                  onPressed: () {
-                    context.router.pop();
-                  },
+                  onPressed: () => context.router.pop(),
                   icon: SvgPicture.asset(Svgs.arrowLeft),
                 ),
               ),
@@ -90,13 +90,26 @@ class DetailScreen extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(height: 32),
-                        const Text('Коментарии',
+                        Text(LocaleKeys.comments.tr(),
                             style: AppConstants.textBlackw500s24),
                         const SizedBox(height: 25),
-                        const CommentWidget(),
-                        const CommentAnswerWidget(),
-                        const CommentWidget(),
-                        const CommentTextField(),
+                        BlocBuilder<CommentBloc, CommentState>(
+                          builder: (context, state) {
+                            return state.when(
+                              initial: () => const SizedBox.shrink(),
+                              error: () => const Text('error'),
+                              loading: () =>
+                                  const CircularProgressIndicator.adaptive(),
+                              success: (comment) => CommentWidget(
+                                comment: comment,
+                              ),
+                            );
+                          },
+                        ),
+                        CommentTextField(
+                          id: detailPost.id,
+                        ),
+                        // const CommentAnswerWidget(),
                       ],
                     ),
                   ),
