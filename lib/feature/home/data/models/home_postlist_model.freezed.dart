@@ -24,7 +24,7 @@ mixin _$PostListModel {
   String get tag => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
-  String get image => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
   @JsonKey(name: 'short_desc')
   String get shortDesc => throw _privateConstructorUsedError;
   String get author => throw _privateConstructorUsedError;
@@ -49,7 +49,7 @@ abstract class $PostListModelCopyWith<$Res> {
       String tag,
       String title,
       String text,
-      String image,
+      String? image,
       @JsonKey(name: 'short_desc') String shortDesc,
       String author,
       @JsonKey(name: 'is_liked') bool isLiked,
@@ -73,7 +73,7 @@ class _$PostListModelCopyWithImpl<$Res, $Val extends PostListModel>
     Object? tag = null,
     Object? title = null,
     Object? text = null,
-    Object? image = null,
+    Object? image = freezed,
     Object? shortDesc = null,
     Object? author = null,
     Object? isLiked = null,
@@ -96,10 +96,10 @@ class _$PostListModelCopyWithImpl<$Res, $Val extends PostListModel>
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       shortDesc: null == shortDesc
           ? _value.shortDesc
           : shortDesc // ignore: cast_nullable_to_non_nullable
@@ -133,7 +133,7 @@ abstract class _$$_PostListModelCopyWith<$Res>
       String tag,
       String title,
       String text,
-      String image,
+      String? image,
       @JsonKey(name: 'short_desc') String shortDesc,
       String author,
       @JsonKey(name: 'is_liked') bool isLiked,
@@ -155,7 +155,7 @@ class __$$_PostListModelCopyWithImpl<$Res>
     Object? tag = null,
     Object? title = null,
     Object? text = null,
-    Object? image = null,
+    Object? image = freezed,
     Object? shortDesc = null,
     Object? author = null,
     Object? isLiked = null,
@@ -178,10 +178,10 @@ class __$$_PostListModelCopyWithImpl<$Res>
           ? _value.text
           : text // ignore: cast_nullable_to_non_nullable
               as String,
-      image: null == image
+      image: freezed == image
           ? _value.image
           : image // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       shortDesc: null == shortDesc
           ? _value.shortDesc
           : shortDesc // ignore: cast_nullable_to_non_nullable
@@ -234,7 +234,7 @@ class _$_PostListModel implements _PostListModel {
   final String text;
   @override
   @JsonKey()
-  final String image;
+  final String? image;
   @override
   @JsonKey(name: 'short_desc')
   final String shortDesc;
@@ -309,7 +309,7 @@ abstract class _PostListModel implements PostListModel {
       final String tag,
       final String title,
       final String text,
-      final String image,
+      final String? image,
       @JsonKey(name: 'short_desc') final String shortDesc,
       final String author,
       @JsonKey(name: 'is_liked') final bool isLiked,
@@ -327,7 +327,7 @@ abstract class _PostListModel implements PostListModel {
   @override
   String get text;
   @override
-  String get image;
+  String? get image;
   @override
   @JsonKey(name: 'short_desc')
   String get shortDesc;

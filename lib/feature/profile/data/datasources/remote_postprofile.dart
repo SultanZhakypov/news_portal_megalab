@@ -30,10 +30,11 @@ class RemotePostProfileImpl implements RemotePostProfile {
     required String shortDesc,
   }) async {
     final token = await SharedPrefs.getData(AppConstants.token);
+
     final formData = FormData.fromMap({
       'title': title,
       'text': text,
-      'image': await MultipartFile.fromFile(image!.path),
+      'image': image == null ? null : await MultipartFile.fromFile(image.path),
       'tag': tag,
       'short_desc': shortDesc,
     });

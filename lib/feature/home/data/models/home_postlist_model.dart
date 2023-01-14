@@ -12,7 +12,7 @@ class PostListModel with _$PostListModel implements PostEntity{
     @Default('') String tag,
     @Default('') String title,
     @Default('') String text,
-    @Default('') String image,
+    @Default('') String? image,
     @JsonKey(name: 'short_desc') @Default('') String shortDesc,
     @Default('') String author,
     @JsonKey(name: 'is_liked') @Default(false) bool isLiked,

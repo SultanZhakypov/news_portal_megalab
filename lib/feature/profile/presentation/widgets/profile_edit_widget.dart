@@ -42,10 +42,9 @@ class _SliverProfileEditWidgetState extends State<SliverProfileEditWidget> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  CircleAvatar(
+                  const CircleAvatar(
                     radius: 60,
                     backgroundColor: AppColors.colorLightGrey,
-                    backgroundImage: AssetImage(widget.user.image.toString()),
                   ),
                   const SizedBox(height: 14),
                   Row(

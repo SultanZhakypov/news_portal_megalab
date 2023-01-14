@@ -1,11 +1,8 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:news_portal_megalab/core/routes/routes.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/bloc/get_user/getuser_bloc.dart';
-import 'package:news_portal_megalab/feature/profile/presentation/bloc/post_profile/postprofile_bloc.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/widgets/app_edit.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/widgets/loading_widget.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/widgets/profile_edit_widget.dart';
@@ -15,6 +12,7 @@ import 'package:news_portal_megalab/resources/export_resources.dart';
 
 import '../../../../generated/locale_keys.g.dart';
 import '../bloc/get_post/getposts_bloc.dart';
+import '../bloc/post_profile/postprofile_bloc.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -39,15 +37,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<GetpostsBloc>(context).add(const GetpostsEvent.getPosts());
     return Scaffold(
       body: BlocListener<PostprofileBloc, PostprofileState>(
         listener: (context, state) {
           state.maybeWhen(
             orElse: () {},
-            success: (message) =>
-                AppMenuShow.showSnackBarGlobal(context, message),
             error: (message) =>
                 AppMenuShow.showSnackBarGlobal(context, message),
+            success: (message) {
+              AppMenuShow.showSnackBarGlobal(context, message);
+              BlocProvider.of<GetpostsBloc>(context)
+                  .add(const GetpostsEvent.getPosts());
+            },
           );
         },
         child: CustomScrollView(
@@ -111,20 +113,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       orElse: () => SliverToBoxAdapter(
                         child: SizedBox(height: context.height / 2),
                       ),
-                      error: () => const SliverToBoxAdapter(
-                        child: Text('error'),
+                      error: () => SliverToBoxAdapter(
+                        child: SizedBox(
+                          height: context.height / 2,
+                          width: context.width,
+                          child: const Center(child: Text('error')),
+                        ),
                       ),
-                      loading: () => const SliverToBoxAdapter(
-                        child: CircularProgressIndicator.adaptive(),
+                      loading: () => SliverToBoxAdapter(
+                        child: SizedBox(
+                            width: context.width,
+                            height: context.height / 2,
+                            child: const Center(
+                                child: CircularProgressIndicator.adaptive())),
                       ),
                       success: (post) => SliverList(
                         delegate: SliverChildBuilderDelegate(
                           childCount: post.length,
                           (context, index) {
-                            return InkWell(
-                                onTap: () => context.router.push(
-                                    DetailScreenRoute(id: post[index].id)),
-                                child: ItemsWidget(posts: post[index]));
+                            return ItemsWidget(posts: post[index]);
                           },
                         ),
                       ),

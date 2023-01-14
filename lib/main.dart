@@ -89,7 +89,7 @@ class InitWidget extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) =>
-                di.sl<GetpostsBloc>()..add(const GetpostsEvent.getPosts()),
+                di.sl<GetpostsBloc>(),
           ),
         ],
         child: child,

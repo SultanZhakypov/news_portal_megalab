@@ -17,7 +17,7 @@ abstract class AppEdit {
     required TextEditingController title,
     required TextEditingController shortDesc,
     required TextEditingController text,
-    required XFile? image,
+    XFile? image,
   }) {
     final List<String> items = [
       'Спорт',
@@ -117,7 +117,7 @@ abstract class AppEdit {
                                 .toList(),
                             value: tag,
                             onChanged: (String? value) {
-                              tag = value!;
+                              tag = value;
                               setState(
                                 () {},
                               );
@@ -136,13 +136,14 @@ abstract class AppEdit {
                     child: CustomButtonText(
                       title: LocaleKeys.create.tr(),
                       onPress: () {
-                        BlocProvider.of<PostprofileBloc>(context).add(
-                            PostprofileEvent.postProfile(
-                                title: title.text,
-                                text: text.text,
-                                image: image,
-                                tag: tag ?? 'Item1',
-                                shortDesc: shortDesc.text));
+                        BlocProvider.of<PostprofileBloc>(context)
+                            .add(PostprofileEvent.postProfile(
+                          title: title.text,
+                          text: text.text,
+                          image: image,
+                          tag: tag ?? '',
+                          shortDesc: shortDesc.text,
+                        ));
                         context.router.pop();
                       },
                     ),

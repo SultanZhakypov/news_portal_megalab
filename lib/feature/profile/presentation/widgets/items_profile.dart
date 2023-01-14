@@ -20,7 +20,7 @@ class ItemsProfileWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset(post.image ?? ''),
+        Image.asset(post.image ?? Images.something),
         const SizedBox(height: 16),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
