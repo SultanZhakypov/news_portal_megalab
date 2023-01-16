@@ -3,13 +3,14 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:news_portal_megalab/core/routes/routes.gr.dart';
-import 'package:news_portal_megalab/feature/register/domain/entities/register_entity.dart';
 
 import 'package:news_portal_megalab/feature/widgets/app_menu.dart';
 import 'package:news_portal_megalab/generated/locale_keys.g.dart';
 import 'package:news_portal_megalab/main.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
+import '../../../../resources/app_colors.dart';
 import '../../../../resources/resources.dart';
 import '../../../widgets/widgets.dart';
 import '../bloc/register_bloc.dart';
@@ -67,8 +68,11 @@ class _UnAuthorizedScreenState extends State<UnAuthorizedScreen> {
             builder: (context, state) {
               state.maybeWhen(
                 orElse: () {},
-                loading: () => const Center(
-                  child: CircularProgressIndicator.adaptive(),
+                loading: () => Center(
+                  child: LoadingAnimationWidget.staggeredDotsWave(
+                    color: AppColors.colorBlack,
+                    size: 50,
+                  ),
                 ),
               );
               return Form(
@@ -115,20 +119,14 @@ class _UnAuthorizedScreenState extends State<UnAuthorizedScreen> {
                     const SizedBox(height: 30),
                     CustomButtonText(
                         title: LocaleKeys.register.tr(),
-                        onPress: () {
-                          BlocProvider.of<RegisterBloc>(context).add(
-                            RegisterEvent.postRegister(
-                              registerEntity: RegisterEntity(
-                                imageProfile: null,
-                                lastName: _surNameController.text,
-                                name: _nameController.text,
-                                nickname: _nicknameController.text,
-                                password: _passwordController.text,
-                                password2: _password2Controller.text,
-                              ),
-                            ),
-                          );
-                        }),
+                        onPress: () => BlocProvider.of<RegisterBloc>(context)
+                                .add(RegisterEvent.postRegister(
+                              name: _nameController.text,
+                              lastname: _surNameController.text,
+                              nickname: _nicknameController.text,
+                              password: _passwordController.text,
+                              password2: _password2Controller.text,
+                            ))),
                     const SizedBox(height: 22),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

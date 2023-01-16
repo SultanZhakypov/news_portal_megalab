@@ -20,14 +20,13 @@ RegisterModel _$RegisterModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$RegisterModel {
+  int get id => throw _privateConstructorUsedError;
   String get nickname => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_name')
   String get lastName => throw _privateConstructorUsedError;
   @JsonKey(name: 'profile_image')
   String? get imageProfile => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
-  String get password2 => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,12 +41,11 @@ abstract class $RegisterModelCopyWith<$Res> {
       _$RegisterModelCopyWithImpl<$Res, RegisterModel>;
   @useResult
   $Res call(
-      {String nickname,
+      {int id,
+      String nickname,
       String name,
       @JsonKey(name: 'last_name') String lastName,
-      @JsonKey(name: 'profile_image') String? imageProfile,
-      String password,
-      String password2});
+      @JsonKey(name: 'profile_image') String? imageProfile});
 }
 
 /// @nodoc
@@ -63,14 +61,17 @@ class _$RegisterModelCopyWithImpl<$Res, $Val extends RegisterModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? nickname = null,
     Object? name = null,
     Object? lastName = null,
     Object? imageProfile = freezed,
-    Object? password = null,
-    Object? password2 = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       nickname: null == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
@@ -87,14 +88,6 @@ class _$RegisterModelCopyWithImpl<$Res, $Val extends RegisterModel>
           ? _value.imageProfile
           : imageProfile // ignore: cast_nullable_to_non_nullable
               as String?,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      password2: null == password2
-          ? _value.password2
-          : password2 // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -108,12 +101,11 @@ abstract class _$$_RegisterModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String nickname,
+      {int id,
+      String nickname,
       String name,
       @JsonKey(name: 'last_name') String lastName,
-      @JsonKey(name: 'profile_image') String? imageProfile,
-      String password,
-      String password2});
+      @JsonKey(name: 'profile_image') String? imageProfile});
 }
 
 /// @nodoc
@@ -127,14 +119,17 @@ class __$$_RegisterModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? nickname = null,
     Object? name = null,
     Object? lastName = null,
     Object? imageProfile = freezed,
-    Object? password = null,
-    Object? password2 = null,
   }) {
     return _then(_$_RegisterModel(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       nickname: null == nickname
           ? _value.nickname
           : nickname // ignore: cast_nullable_to_non_nullable
@@ -151,14 +146,6 @@ class __$$_RegisterModelCopyWithImpl<$Res>
           ? _value.imageProfile
           : imageProfile // ignore: cast_nullable_to_non_nullable
               as String?,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String,
-      password2: null == password2
-          ? _value.password2
-          : password2 // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -167,16 +154,17 @@ class __$$_RegisterModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_RegisterModel implements _RegisterModel {
   const _$_RegisterModel(
-      {required this.nickname,
+      {required this.id,
+      required this.nickname,
       required this.name,
       @JsonKey(name: 'last_name') required this.lastName,
-      @JsonKey(name: 'profile_image') this.imageProfile,
-      required this.password,
-      required this.password2});
+      @JsonKey(name: 'profile_image') this.imageProfile});
 
   factory _$_RegisterModel.fromJson(Map<String, dynamic> json) =>
       _$$_RegisterModelFromJson(json);
 
+  @override
+  final int id;
   @override
   final String nickname;
   @override
@@ -187,14 +175,10 @@ class _$_RegisterModel implements _RegisterModel {
   @override
   @JsonKey(name: 'profile_image')
   final String? imageProfile;
-  @override
-  final String password;
-  @override
-  final String password2;
 
   @override
   String toString() {
-    return 'RegisterModel(nickname: $nickname, name: $name, lastName: $lastName, imageProfile: $imageProfile, password: $password, password2: $password2)';
+    return 'RegisterModel(id: $id, nickname: $nickname, name: $name, lastName: $lastName, imageProfile: $imageProfile)';
   }
 
   @override
@@ -202,23 +186,20 @@ class _$_RegisterModel implements _RegisterModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_RegisterModel &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.nickname, nickname) ||
                 other.nickname == nickname) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
             (identical(other.imageProfile, imageProfile) ||
-                other.imageProfile == imageProfile) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.password2, password2) ||
-                other.password2 == password2));
+                other.imageProfile == imageProfile));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, nickname, name, lastName, imageProfile, password, password2);
+  int get hashCode =>
+      Object.hash(runtimeType, id, nickname, name, lastName, imageProfile);
 
   @JsonKey(ignore: true)
   @override
@@ -236,16 +217,18 @@ class _$_RegisterModel implements _RegisterModel {
 
 abstract class _RegisterModel implements RegisterModel {
   const factory _RegisterModel(
-      {required final String nickname,
-      required final String name,
-      @JsonKey(name: 'last_name') required final String lastName,
-      @JsonKey(name: 'profile_image') final String? imageProfile,
-      required final String password,
-      required final String password2}) = _$_RegisterModel;
+          {required final int id,
+          required final String nickname,
+          required final String name,
+          @JsonKey(name: 'last_name') required final String lastName,
+          @JsonKey(name: 'profile_image') final String? imageProfile}) =
+      _$_RegisterModel;
 
   factory _RegisterModel.fromJson(Map<String, dynamic> json) =
       _$_RegisterModel.fromJson;
 
+  @override
+  int get id;
   @override
   String get nickname;
   @override
@@ -256,10 +239,6 @@ abstract class _RegisterModel implements RegisterModel {
   @override
   @JsonKey(name: 'profile_image')
   String? get imageProfile;
-  @override
-  String get password;
-  @override
-  String get password2;
   @override
   @JsonKey(ignore: true)
   _$$_RegisterModelCopyWith<_$_RegisterModel> get copyWith =>

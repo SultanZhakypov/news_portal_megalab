@@ -19,8 +19,8 @@ abstract class AppMenuShow {
                 children: [
                   InkWell(
                     onTap: () {},
-                    child: const Text(
-                      LocaleKeys.my_profile,
+                    child: Text(
+                      LocaleKeys.my_profile.tr(),
                       style: AppConstants.textBlackw400s16,
                     ),
                   ),

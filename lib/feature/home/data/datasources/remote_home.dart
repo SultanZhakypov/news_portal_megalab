@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:news_portal_megalab/core/error/exception.dart';
 import 'package:news_portal_megalab/core/platform/prefs_settings.dart';
@@ -21,18 +20,17 @@ class RemotePostListImpl implements RemotePostList {
       {required String search,
       required String tag,
       required String author}) async {
-    final token = await SharedPrefs.getData(AppConstants.token);
-    final response = await dio.get(
-      'post',
-      queryParameters: {
-        'search': search,
-        'tag': tag,
-        'author': author,
-      },
-      options: Options(headers: {'Authorization': 'Token $token'}),
-    );
-
     try {
+      final token = await SharedPrefs.getData(AppConstants.token);
+      final response = await dio.get(
+        'post',
+        queryParameters: {
+          'search': search,
+          'tag': tag,
+          'author': author,
+        },
+        options: Options(headers: {'Authorization': 'Token $token'}),
+      );
       final posts = response.data;
       return (posts as List)
           .map((post) => PostListModel.fromJson(post))
@@ -44,19 +42,18 @@ class RemotePostListImpl implements RemotePostList {
 
   @override
   Future<List<PostListModel>> getAllPost() async {
-    final token = await SharedPrefs.getData(AppConstants.token);
-    final response = await dio.get(
-      'post/?search=&tag=&author=',
-      options: Options(headers: {'Authorization': 'Token $token'}),
-    );
-
     try {
+      final token = await SharedPrefs.getData(AppConstants.token);
+      final response = await dio.get(
+        'post/?search=&tag=&author=',
+        options: Options(headers: {'Authorization': 'Token $token'}),
+      );
       final posts = response.data;
       return (posts as List)
           .map((post) => PostListModel.fromJson(post))
           .toList();
     } on DioError {
-      throw const Left(ServerException);
+      throw ServerException();
     }
   }
 }

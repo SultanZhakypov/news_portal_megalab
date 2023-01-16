@@ -1,16 +1,27 @@
 import 'package:dartz/dartz.dart';
+import 'package:news_portal_megalab/core/error/dio_exception.dart';
 import 'package:news_portal_megalab/feature/register/domain/entities/register_entity.dart';
 import 'package:news_portal_megalab/feature/register/domain/repositories/register_repo.dart';
-
-import '../../../../core/error/failure.dart';
 
 class PostRegisterUseCase {
   final RegisterRepo registerRepo;
 
   PostRegisterUseCase(this.registerRepo);
 
-  Future<Either<Failure, Unit>> call(RegisterEntity registerEntity) async {
-    return await registerRepo.postRegister(registerEntity);
+  Future<Either<DioException, RegisterEntity>> call({
+    required String name,
+    required String lastname,
+    required String nickname,
+    required String password,
+    required String password2,
+    String? profileImage,
+  }) async {
+    return await registerRepo.postRegister(
+      name: name,
+      lastname: lastname,
+      nickname: nickname,
+      password: password,
+      password2: password2,
+    );
   }
 }
-

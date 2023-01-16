@@ -14,13 +14,13 @@ class RemoteDetailImpl implements RemoteDetail {
   RemoteDetailImpl({required this.dio});
 
   @override
-  Future<DetailModel> getDetail( int id) async {
+  Future<DetailModel> getDetail(int id) async {
+    try {
     final token = await SharedPrefs.getData(AppConstants.token);
     final response = await dio.get(
       'post/$id',
       options: Options(headers: {'Authorization': 'Token $token'}),
     );
-    try {
       return DetailModel.fromJson(response.data);
     } on DioError {
       throw ServerException();

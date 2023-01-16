@@ -40,7 +40,7 @@ class AppRouter extends _i9.RootStackRouter {
       return _i9.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i2.SearchScreen(),
-        transitionsBuilder: _i9.TransitionsBuilders.slideBottom,
+        transitionsBuilder: _i9.TransitionsBuilders.slideTop,
         opaque: true,
         barrierDismissible: false,
       );
@@ -67,7 +67,7 @@ class AppRouter extends _i9.RootStackRouter {
       return _i9.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i5.ProfileScreen(),
-        transitionsBuilder: _i9.TransitionsBuilders.zoomIn,
+        transitionsBuilder: _i9.TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
       );
@@ -85,7 +85,7 @@ class AppRouter extends _i9.RootStackRouter {
       return _i9.CustomPage<dynamic>(
         routeData: routeData,
         child: const _i7.HomeScreen(),
-        transitionsBuilder: _i9.TransitionsBuilders.zoomIn,
+        transitionsBuilder: _i9.TransitionsBuilders.fadeIn,
         opaque: true,
         barrierDismissible: false,
       );

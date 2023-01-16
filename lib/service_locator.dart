@@ -1,7 +1,5 @@
 import 'package:get_it/get_it.dart';
-import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:news_portal_megalab/core/platform/dio_settings.dart';
-import 'package:news_portal_megalab/core/platform/network_info.dart';
 import 'package:news_portal_megalab/feature/auth/data/datasources/remote_auth.dart';
 import 'package:news_portal_megalab/feature/auth/data/repositories/auth_repoimpl.dart';
 import 'package:news_portal_megalab/feature/auth/domain/repositories/auth_repo.dart';
@@ -24,6 +22,7 @@ import 'package:news_portal_megalab/feature/home/domain/usecases/search_Post.dar
 import 'package:news_portal_megalab/feature/home/presentation/bloc/search_bloc/search_bloc.dart';
 import 'package:news_portal_megalab/feature/profile/data/datasources/remote_getpost.dart';
 import 'package:news_portal_megalab/feature/profile/data/datasources/remote_postprofile.dart';
+import 'package:news_portal_megalab/feature/profile/data/datasources/remote_put_user.dart';
 import 'package:news_portal_megalab/feature/profile/data/datasources/remote_user.dart';
 import 'package:news_portal_megalab/feature/profile/data/repositories/postprofile_repoimpl.dart';
 import 'package:news_portal_megalab/feature/profile/data/repositories/user_repoimpl.dart';
@@ -32,10 +31,12 @@ import 'package:news_portal_megalab/feature/profile/domain/repositories/postprof
 import 'package:news_portal_megalab/feature/profile/domain/repositories/user_repo.dart';
 import 'package:news_portal_megalab/feature/profile/domain/usecases/get_posts_usecase.dart';
 import 'package:news_portal_megalab/feature/profile/domain/usecases/postprofile_usecase.dart';
+import 'package:news_portal_megalab/feature/profile/domain/usecases/user_put_usecase.dart';
 import 'package:news_portal_megalab/feature/profile/domain/usecases/user_usecase.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/bloc/get_post/getposts_bloc.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/bloc/get_user/getuser_bloc.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/bloc/post_profile/postprofile_bloc.dart';
+import 'package:news_portal_megalab/feature/profile/presentation/bloc/put_user/put_user_bloc.dart';
 import 'package:news_portal_megalab/feature/register/data/datasources/remote_register.dart';
 import 'package:news_portal_megalab/feature/register/data/repositories/register_repoimpl.dart';
 import 'package:news_portal_megalab/feature/register/domain/repositories/register_repo.dart';
@@ -50,12 +51,6 @@ import 'feature/register/presentation/bloc/register_bloc.dart';
 final sl = GetIt.instance;
 
 Future<void> init() async {
-  //Core
-  sl.registerLazySingleton<NetworkInfo>(
-      () => NetworkInfoImpl(connectionChecker: sl()));
-
-  sl.registerLazySingleton(() => InternetConnectionCheckerPlus());
-
   //External
   final prefs = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => prefs);
@@ -71,6 +66,7 @@ Future<void> init() async {
   sl.registerFactory(() => PostprofileBloc(postProfileUsecase: sl()));
   sl.registerFactory(() => GetuserBloc(userUsecase: sl()));
   sl.registerFactory(() => GetpostsBloc(getPostsUsecase: sl()));
+  sl.registerFactory(() => PutUserBloc(userPutUsecase: sl()));
 
 //Usecases
   sl.registerLazySingleton(() => PostRegisterUseCase(sl()));
@@ -82,24 +78,25 @@ Future<void> init() async {
   sl.registerLazySingleton(() => PostProfileUsecase(postProfileRepo: sl()));
   sl.registerLazySingleton(() => UserUsecase(userRepo: sl()));
   sl.registerLazySingleton(() => GetPostsUsecase(getPostsRepo: sl()));
+  sl.registerLazySingleton(() => UserPutUsecase(userRepo: sl()));
 
 //Repository
   sl.registerLazySingleton<RegisterRepo>(
-      () => RegisterRepoImpl(remoteRegisterSource: sl(), networkInfo: sl()));
+      () => RegisterRepoImpl(remoteRegisterSource: sl()));
   sl.registerLazySingleton<AuthRepo>(
-      () => AuthRepoImpl(remoteAuthSource: sl(), networkInfo: sl()));
+      () => AuthRepoImpl(remoteAuthSource: sl()));
   sl.registerLazySingleton<PostListRepo>(
-      () => PostListRepoImpl(remotePostList: sl(), networkInfo: sl()));
+      () => PostListRepoImpl(remotePostList: sl()));
   sl.registerLazySingleton<DetailRepo>(
-      () => DetailRepoImpl(remoteDetail: sl(), networkInfo: sl()));
+      () => DetailRepoImpl(remoteDetail: sl()));
   sl.registerLazySingleton<CommentRepo>(
-      () => CommentRepoImpl(remoteComment: sl(), networkInfo: sl()));
+      () => CommentRepoImpl(remoteComment: sl()));
   sl.registerLazySingleton<PostProfileRepo>(
-      () => PostProfileRepoImpl(remotePostProfile: sl(), networkInfo: sl()));
+      () => PostProfileRepoImpl(remotePostProfile: sl()));
   sl.registerLazySingleton<UserRepo>(
-      () => UserRepoImpl(remoteUser: sl(), networkInfo: sl()));
+      () => UserRepoImpl(remoteUser: sl(), remotePutUser: sl()));
   sl.registerLazySingleton<GetPostsRepo>(
-      () => GetpostsRepoImpl(remoteGetPost: sl(), networkInfo: sl()));
+      () => GetpostsRepoImpl(remoteGetPost: sl()));
 
 //DataSources
   sl.registerLazySingleton<RemoteRegisterSource>(
@@ -118,4 +115,6 @@ Future<void> init() async {
       () => RemoteUserImpl(dio: DioSettings().dio));
   sl.registerLazySingleton<RemoteGetPost>(
       () => RemoteGetPostImpl(dio: DioSettings().dio));
+  sl.registerLazySingleton<RemotePutUser>(
+      () => RemotePutUserImpl(dio: DioSettings().dio));
 }

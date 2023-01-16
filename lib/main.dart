@@ -13,6 +13,7 @@ import 'feature/home/presentation/bloc/search_bloc/search_bloc.dart';
 import 'feature/profile/presentation/bloc/get_post/getposts_bloc.dart';
 import 'feature/profile/presentation/bloc/get_user/getuser_bloc.dart';
 import 'feature/profile/presentation/bloc/post_profile/postprofile_bloc.dart';
+import 'feature/profile/presentation/bloc/put_user/put_user_bloc.dart';
 import 'feature/widgets/app_unfocuser.dart';
 import 'generated/codegen_loader.g.dart';
 import 'service_locator.dart' as di;
@@ -89,7 +90,10 @@ class InitWidget extends StatelessWidget {
           ),
           BlocProvider(
             create: (context) =>
-                di.sl<GetpostsBloc>(),
+                di.sl<GetpostsBloc>()..add(const GetpostsEvent.getPosts()),
+          ),
+          BlocProvider(
+            create: (context) => di.sl<PutUserBloc>(),
           ),
         ],
         child: child,

@@ -15,11 +15,11 @@ class PostprofileBloc extends Bloc<PostprofileEvent, PostprofileState> {
       final result = await postProfileUsecase.postProfileRepo.postProfile(
         title: event.title,
         text: event.text,
-        image: event.image ,
+        image: event.image,
         tag: event.tag,
         shortDesc: event.shortDesc,
       );
-      result.fold((l) => emit(const _$_Error(message: 'Error')),
+      result.fold((l) => emit(_$_Error(message: l.errorMessage)),
           (post) => emit(const _$_Success(message: 'Success')));
     });
   }

@@ -17,8 +17,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
       if (isValid) {
         final result = await postAuth(event.authEntity);
-        result.fold((l) => emit(const _$_Error(message: 'ERROR')),
-            (r) => emit(const _$_Success()));
+        result.fold((failure) => emit( _$_Error(message: failure.errorMessage)),
+            (token) => emit(const _$_Success()));
       }
     });
   }

@@ -7,12 +7,12 @@ part 'register_model.freezed.dart';
 @freezed
 class RegisterModel with _$RegisterModel implements RegisterEntity {
   const factory RegisterModel({
+    required int id,
     required String nickname,
     required String name,
     @JsonKey(name: 'last_name') required String lastName,
     @JsonKey(name: 'profile_image') String? imageProfile,
-    required String password,
-    required String password2,
+  
   }) = _RegisterModel;
 
   factory RegisterModel.fromJson(Map<String, dynamic> json) =>

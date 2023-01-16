@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:news_portal_megalab/core/error/dio_exception.dart';
 import 'package:news_portal_megalab/core/error/exception.dart';
 import 'package:news_portal_megalab/core/platform/prefs_settings.dart';
 import 'package:news_portal_megalab/feature/detail/data/models/comment_model.dart';
@@ -21,15 +22,15 @@ class RemoteCommentImpl implements RemoteComment {
       'text': text,
     });
 
+    try {
     final token = await SharedPrefs.getData(AppConstants.token);
     final response = await dio.post(
       'comment/',
       data: formData,
       options: Options(headers: {'Authorization': 'Token $token'}),
     );
-    try {
       return CommentModel.fromJson(response.data);
-    } on DioError {
+    } on DioError  {
       throw ServerException();
     }
   }

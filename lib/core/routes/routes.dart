@@ -18,7 +18,7 @@ export 'routes.gr.dart';
       path: '/',
     ),
     CustomRoute(
-      transitionsBuilder: TransitionsBuilders.slideBottom,
+      transitionsBuilder: TransitionsBuilders.slideTop,
       page: SearchScreen,
       path: '/search',
     ),
@@ -33,7 +33,7 @@ export 'routes.gr.dart';
       path: '/auth',
     ),
     CustomRoute(
-      transitionsBuilder: TransitionsBuilders.zoomIn,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
       page: ProfileScreen,
       path: '/profile',
     ),
@@ -43,7 +43,7 @@ export 'routes.gr.dart';
       path: '/liked',
     ),
     CustomRoute(
-      transitionsBuilder: TransitionsBuilders.zoomIn,
+      transitionsBuilder: TransitionsBuilders.fadeIn,
       page: HomeScreen,
       path: '/home',
     ),

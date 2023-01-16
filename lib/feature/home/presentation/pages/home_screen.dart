@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
                 return state.maybeWhen(
                   orElse: () => SliverToBoxAdapter(
                     child: SizedBox(
-                      height: context.height,
+                      height: context.height / 2,
                       child: Center(
                         child: Text(
                           LocaleKeys.error_state..tr(),
@@ -46,12 +46,12 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  error: () => SliverToBoxAdapter(
+                  error: (message) => SliverToBoxAdapter(
                     child: SizedBox(
-                      height: context.height,
+                      height: context.height / 2,
                       child: Center(
                         child: Text(
-                          LocaleKeys.error_state.tr(),
+                          message,
                           style: AppConstants.textBlackw400s16,
                         ),
                       ),
@@ -59,7 +59,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   loading: () => SliverToBoxAdapter(
                     child: SizedBox(
-                      height: context.height / 1.5,
+                      height: context.height / 2,
                       child: Center(
                         child: LoadingAnimationWidget.staggeredDotsWave(
                           color: AppColors.colorBlack,

@@ -1,13 +1,14 @@
 class RegisterEntity {
-  final String nickname, name, lastName, password, password2;
+  final int id;
+  final String nickname, name, lastName;
   final String? imageProfile;
 
   const RegisterEntity({
+    required this.id,
     required this.nickname,
     required this.name,
     required this.lastName,
-    required this.imageProfile,
-    required this.password,
-    required this.password2,
+     this.imageProfile,
+    
   });
 }

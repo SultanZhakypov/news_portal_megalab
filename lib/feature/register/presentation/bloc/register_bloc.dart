@@ -1,6 +1,5 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:news_portal_megalab/feature/register/domain/entities/register_entity.dart';
 import 'package:news_portal_megalab/feature/register/domain/usecases/post_register.dart';
 import 'package:news_portal_megalab/main.dart';
 
@@ -14,8 +13,14 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     on<_PostRegisterEvent>((event, emit) async {
       final isValid = formKey.currentState!.validate();
       if (isValid) {
-        final result = await postRegister(event.registerEntity);
-        result.fold((l) => emit(const _$_Error(message: 'Error')),
+        final result = await postRegister.registerRepo.postRegister(
+          name: event.name,
+          lastname: event.lastname,
+          nickname: event.nickname,
+          password: event.password,
+          password2: event.password2,
+        );
+        result.fold((failure) => emit(_$_Error(message: failure.errorMessage)),
             (r) => emit(const _$_Success()));
       }
     });

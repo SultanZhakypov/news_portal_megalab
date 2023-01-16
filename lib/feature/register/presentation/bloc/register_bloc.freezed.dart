@@ -16,20 +16,31 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$RegisterEvent {
-  RegisterEntity get registerEntity => throw _privateConstructorUsedError;
+  String get name => throw _privateConstructorUsedError;
+  String get lastname => throw _privateConstructorUsedError;
+  String get nickname => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  String get password2 => throw _privateConstructorUsedError;
+  String? get profileImage => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(RegisterEntity registerEntity) postRegister,
+    required TResult Function(String name, String lastname, String nickname,
+            String password, String password2, String? profileImage)
+        postRegister,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(RegisterEntity registerEntity)? postRegister,
+    TResult? Function(String name, String lastname, String nickname,
+            String password, String password2, String? profileImage)?
+        postRegister,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(RegisterEntity registerEntity)? postRegister,
+    TResult Function(String name, String lastname, String nickname,
+            String password, String password2, String? profileImage)?
+        postRegister,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -61,7 +72,13 @@ abstract class $RegisterEventCopyWith<$Res> {
           RegisterEvent value, $Res Function(RegisterEvent) then) =
       _$RegisterEventCopyWithImpl<$Res, RegisterEvent>;
   @useResult
-  $Res call({RegisterEntity registerEntity});
+  $Res call(
+      {String name,
+      String lastname,
+      String nickname,
+      String password,
+      String password2,
+      String? profileImage});
 }
 
 /// @nodoc
@@ -77,13 +94,38 @@ class _$RegisterEventCopyWithImpl<$Res, $Val extends RegisterEvent>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? registerEntity = null,
+    Object? name = null,
+    Object? lastname = null,
+    Object? nickname = null,
+    Object? password = null,
+    Object? password2 = null,
+    Object? profileImage = freezed,
   }) {
     return _then(_value.copyWith(
-      registerEntity: null == registerEntity
-          ? _value.registerEntity
-          : registerEntity // ignore: cast_nullable_to_non_nullable
-              as RegisterEntity,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastname: null == lastname
+          ? _value.lastname
+          : lastname // ignore: cast_nullable_to_non_nullable
+              as String,
+      nickname: null == nickname
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      password2: null == password2
+          ? _value.password2
+          : password2 // ignore: cast_nullable_to_non_nullable
+              as String,
+      profileImage: freezed == profileImage
+          ? _value.profileImage
+          : profileImage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -96,7 +138,13 @@ abstract class _$$_PostRegisterEventCopyWith<$Res>
       __$$_PostRegisterEventCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({RegisterEntity registerEntity});
+  $Res call(
+      {String name,
+      String lastname,
+      String nickname,
+      String password,
+      String password2,
+      String? profileImage});
 }
 
 /// @nodoc
@@ -110,13 +158,38 @@ class __$$_PostRegisterEventCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? registerEntity = null,
+    Object? name = null,
+    Object? lastname = null,
+    Object? nickname = null,
+    Object? password = null,
+    Object? password2 = null,
+    Object? profileImage = freezed,
   }) {
     return _then(_$_PostRegisterEvent(
-      registerEntity: null == registerEntity
-          ? _value.registerEntity
-          : registerEntity // ignore: cast_nullable_to_non_nullable
-              as RegisterEntity,
+      name: null == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastname: null == lastname
+          ? _value.lastname
+          : lastname // ignore: cast_nullable_to_non_nullable
+              as String,
+      nickname: null == nickname
+          ? _value.nickname
+          : nickname // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+      password2: null == password2
+          ? _value.password2
+          : password2 // ignore: cast_nullable_to_non_nullable
+              as String,
+      profileImage: freezed == profileImage
+          ? _value.profileImage
+          : profileImage // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -124,14 +197,30 @@ class __$$_PostRegisterEventCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_PostRegisterEvent implements _PostRegisterEvent {
-  const _$_PostRegisterEvent({required this.registerEntity});
+  const _$_PostRegisterEvent(
+      {required this.name,
+      required this.lastname,
+      required this.nickname,
+      required this.password,
+      required this.password2,
+      this.profileImage});
 
   @override
-  final RegisterEntity registerEntity;
+  final String name;
+  @override
+  final String lastname;
+  @override
+  final String nickname;
+  @override
+  final String password;
+  @override
+  final String password2;
+  @override
+  final String? profileImage;
 
   @override
   String toString() {
-    return 'RegisterEvent.postRegister(registerEntity: $registerEntity)';
+    return 'RegisterEvent.postRegister(name: $name, lastname: $lastname, nickname: $nickname, password: $password, password2: $password2, profileImage: $profileImage)';
   }
 
   @override
@@ -139,12 +228,22 @@ class _$_PostRegisterEvent implements _PostRegisterEvent {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PostRegisterEvent &&
-            (identical(other.registerEntity, registerEntity) ||
-                other.registerEntity == registerEntity));
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.lastname, lastname) ||
+                other.lastname == lastname) &&
+            (identical(other.nickname, nickname) ||
+                other.nickname == nickname) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
+            (identical(other.password2, password2) ||
+                other.password2 == password2) &&
+            (identical(other.profileImage, profileImage) ||
+                other.profileImage == profileImage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, registerEntity);
+  int get hashCode => Object.hash(
+      runtimeType, name, lastname, nickname, password, password2, profileImage);
 
   @JsonKey(ignore: true)
   @override
@@ -156,27 +255,36 @@ class _$_PostRegisterEvent implements _PostRegisterEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(RegisterEntity registerEntity) postRegister,
+    required TResult Function(String name, String lastname, String nickname,
+            String password, String password2, String? profileImage)
+        postRegister,
   }) {
-    return postRegister(registerEntity);
+    return postRegister(
+        name, lastname, nickname, password, password2, profileImage);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(RegisterEntity registerEntity)? postRegister,
+    TResult? Function(String name, String lastname, String nickname,
+            String password, String password2, String? profileImage)?
+        postRegister,
   }) {
-    return postRegister?.call(registerEntity);
+    return postRegister?.call(
+        name, lastname, nickname, password, password2, profileImage);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(RegisterEntity registerEntity)? postRegister,
+    TResult Function(String name, String lastname, String nickname,
+            String password, String password2, String? profileImage)?
+        postRegister,
     required TResult orElse(),
   }) {
     if (postRegister != null) {
-      return postRegister(registerEntity);
+      return postRegister(
+          name, lastname, nickname, password, password2, profileImage);
     }
     return orElse();
   }
@@ -212,10 +320,25 @@ class _$_PostRegisterEvent implements _PostRegisterEvent {
 
 abstract class _PostRegisterEvent implements RegisterEvent {
   const factory _PostRegisterEvent(
-      {required final RegisterEntity registerEntity}) = _$_PostRegisterEvent;
+      {required final String name,
+      required final String lastname,
+      required final String nickname,
+      required final String password,
+      required final String password2,
+      final String? profileImage}) = _$_PostRegisterEvent;
 
   @override
-  RegisterEntity get registerEntity;
+  String get name;
+  @override
+  String get lastname;
+  @override
+  String get nickname;
+  @override
+  String get password;
+  @override
+  String get password2;
+  @override
+  String? get profileImage;
   @override
   @JsonKey(ignore: true)
   _$$_PostRegisterEventCopyWith<_$_PostRegisterEvent> get copyWith =>

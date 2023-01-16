@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:news_portal_megalab/core/error/exception.dart';
@@ -46,7 +45,7 @@ class RemotePostProfileImpl implements RemotePostProfile {
     try {
       return PostProfileModel.fromJson(response.data);
     } on DioError {
-      throw const Left(ServerException);
+      throw ServerException();
     }
   }
 }

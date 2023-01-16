@@ -1,5 +1,5 @@
-import 'package:news_portal_megalab/core/error/exception.dart';
-import 'package:news_portal_megalab/core/platform/network_info.dart';
+import 'package:dio/dio.dart';
+import 'package:news_portal_megalab/core/error/dio_exception.dart';
 import 'package:news_portal_megalab/feature/home/data/datasources/remote_home.dart';
 import 'package:news_portal_megalab/feature/home/data/models/home_postlist_model.dart';
 import 'package:news_portal_megalab/feature/home/domain/entities/post_entity.dart';
@@ -9,11 +9,10 @@ import 'package:news_portal_megalab/feature/home/domain/repositories/postlist_re
 
 class PostListRepoImpl implements PostListRepo {
   final RemotePostList remotePostList;
-  final NetworkInfo networkInfo;
 
-  PostListRepoImpl({required this.remotePostList, required this.networkInfo});
+  PostListRepoImpl({required this.remotePostList});
   @override
-  Future<Either<Failure, List<PostEntity>>> searchPost({
+  Future<Either<DioException, List<PostEntity>>> searchPost({
     required String search,
     required String tag,
     required String author,
@@ -25,24 +24,20 @@ class PostListRepoImpl implements PostListRepo {
   }
 
   @override
-  Future<Either<Failure, List<PostEntity>>> getAllPost() {
+  Future<Either<DioException, List<PostEntity>>> getAllPost() {
     return _getPosts(() {
       return remotePostList.getAllPost();
     });
   }
 
-  Future<Either<Failure, List<PostListModel>>> _getPosts(
+  Future<Either<DioException, List<PostListModel>>> _getPosts(
       Future<List<PostListModel>> Function() getPosts) async {
-    if (await networkInfo.isConnected) {
-      try {
-        final remotePost = await getPosts();
+    try {
+      final remotePost = await getPosts();
 
-        return Right(remotePost);
-      } on ServerException {
-        return Left(ServerFailure());
-      }
-    } else {
-      return Left(CacheFailure());
+      return Right(remotePost);
+    } on DioError catch (e) {
+      return Left( DioException.fromDioError(e));
     }
   }
 }

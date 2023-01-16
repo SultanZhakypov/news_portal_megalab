@@ -1,10 +1,17 @@
-import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:news_portal_megalab/core/error/exception.dart';
 import 'package:news_portal_megalab/feature/register/data/models/register_model.dart';
 
+import '../../../../core/error/exception.dart';
+
 abstract class RemoteRegisterSource {
-  Future<Unit> addPost(RegisterModel registerModel);
+  Future<RegisterModel> addPost({
+    required String name,
+    required String lastname,
+    required String nickname,
+    required String password,
+    required String password2,
+    String? profileImage,
+  });
 }
 
 class RemoteRegisterSourceImpl implements RemoteRegisterSource {
@@ -13,23 +20,29 @@ class RemoteRegisterSourceImpl implements RemoteRegisterSource {
   RemoteRegisterSourceImpl({required this.dio});
 
   @override
-  Future<Unit> addPost(RegisterModel model) async {
+  Future<RegisterModel> addPost({
+    required String name,
+    required String lastname,
+    required String nickname,
+    required String password,
+    required String password2,
+    String? profileImage,
+  }) async {
     final formData = FormData.fromMap({
-      'nickname': model.nickname,
-      'name': model.name,
-      'last_name': model.lastName,
-      'profile_image': model.imageProfile,
-      'password': model.password,
-      'password2': model.password2,
+      'nickname': nickname,
+      'name': name,
+      'last_name': lastname,
+      'profile_image': null,
+      'password': password,
+      'password2': password2,
     });
 
+    final response = await dio.post(
+      'registration/',
+      data: formData,
+    );
     try {
-      final response = await dio.post(
-        'registration/',
-        data: formData,
-      );
-
-      return Future.value(unit);
+      return RegisterModel.fromJson(response.data);
     } on DioError {
       throw ServerException();
     }

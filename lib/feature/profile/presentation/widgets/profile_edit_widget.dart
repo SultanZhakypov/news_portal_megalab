@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'package:news_portal_megalab/feature/profile/domain/entities/user_entity.dart';
+import 'package:news_portal_megalab/feature/profile/presentation/bloc/put_user/put_user_bloc.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/widgets/profile_textfield.dart';
 import 'package:news_portal_megalab/resources/export_resources.dart';
 
@@ -23,6 +26,8 @@ class _SliverProfileEditWidgetState extends State<SliverProfileEditWidget> {
   late TextEditingController _lastName;
   late TextEditingController _name;
   late TextEditingController _nickName;
+  XFile? image;
+  final _picker = ImagePicker();
   @override
   void initState() {
     _lastName = TextEditingController(text: widget.user.lastName);
@@ -52,7 +57,10 @@ class _SliverProfileEditWidgetState extends State<SliverProfileEditWidget> {
                       const Text('Добавить фото',
                           style: AppConstants.textBlackw400s14),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () async {
+                          image = await _picker.pickImage(
+                              source: ImageSource.gallery);
+                        },
                         icon: SvgPicture.asset(Svgs.download),
                       ),
                     ],
@@ -62,7 +70,9 @@ class _SliverProfileEditWidgetState extends State<SliverProfileEditWidget> {
                       const Text('Удалить',
                           style: AppConstants.textBlackw400s14),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          
+                        },
                         icon: SvgPicture.asset(Svgs.trash),
                       ),
                     ],
@@ -88,7 +98,16 @@ class _SliverProfileEditWidgetState extends State<SliverProfileEditWidget> {
                     ),
                     CustomButtonText(
                       title: 'Сохранить',
-                      onPress: () {},
+                      onPress: () {
+                        BlocProvider.of<PutUserBloc>(context).add(
+                          PutUserEvent.putUser(
+                            nickName: _nickName.text,
+                            name: _name.text,
+                            lastName: _lastName.text,
+                            image: image,
+                          ),
+                        );
+                      },
                     ),
                   ],
                 ),

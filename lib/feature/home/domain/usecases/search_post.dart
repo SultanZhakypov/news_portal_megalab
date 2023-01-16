@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:news_portal_megalab/core/error/dio_exception.dart';
 
-import '../../../../core/error/failure.dart';
 import '../entities/post_entity.dart';
 import '../repositories/postlist_repo.dart';
 
@@ -9,7 +9,7 @@ class SearchPostUseCase {
 
   SearchPostUseCase({required this.postListRepo});
 
-  Future<Either<Failure, List<PostEntity>>> call({
+  Future<Either<DioException, List<PostEntity>>> call({
     required String search,
     required String author,
     required String tag,
