@@ -30,7 +30,7 @@ mixin _$DetailModel {
   String get author => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_liked')
   bool get isLiked => throw _privateConstructorUsedError;
-  List<Comment> get comment => throw _privateConstructorUsedError;
+  List<CommentModel> get comment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +53,7 @@ abstract class $DetailModelCopyWith<$Res> {
       @JsonKey(name: 'short_desc') String shortDesc,
       String author,
       @JsonKey(name: 'is_liked') bool isLiked,
-      List<Comment> comment});
+      List<CommentModel> comment});
 }
 
 /// @nodoc
@@ -115,7 +115,7 @@ class _$DetailModelCopyWithImpl<$Res, $Val extends DetailModel>
       comment: null == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
-              as List<Comment>,
+              as List<CommentModel>,
     ) as $Val);
   }
 }
@@ -137,7 +137,7 @@ abstract class _$$_DetailModelCopyWith<$Res>
       @JsonKey(name: 'short_desc') String shortDesc,
       String author,
       @JsonKey(name: 'is_liked') bool isLiked,
-      List<Comment> comment});
+      List<CommentModel> comment});
 }
 
 /// @nodoc
@@ -197,7 +197,7 @@ class __$$_DetailModelCopyWithImpl<$Res>
       comment: null == comment
           ? _value._comment
           : comment // ignore: cast_nullable_to_non_nullable
-              as List<Comment>,
+              as List<CommentModel>,
     ));
   }
 }
@@ -214,7 +214,7 @@ class _$_DetailModel implements _DetailModel {
       @JsonKey(name: 'short_desc') this.shortDesc = '',
       this.author = '',
       @JsonKey(name: 'is_liked') this.isLiked = false,
-      final List<Comment> comment = const []})
+      final List<CommentModel> comment = const []})
       : _comment = comment;
 
   factory _$_DetailModel.fromJson(Map<String, dynamic> json) =>
@@ -244,10 +244,10 @@ class _$_DetailModel implements _DetailModel {
   @override
   @JsonKey(name: 'is_liked')
   final bool isLiked;
-  final List<Comment> _comment;
+  final List<CommentModel> _comment;
   @override
   @JsonKey()
-  List<Comment> get comment {
+  List<CommentModel> get comment {
     if (_comment is EqualUnmodifiableListView) return _comment;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_comment);
@@ -313,7 +313,7 @@ abstract class _DetailModel implements DetailModel {
       @JsonKey(name: 'short_desc') final String shortDesc,
       final String author,
       @JsonKey(name: 'is_liked') final bool isLiked,
-      final List<Comment> comment}) = _$_DetailModel;
+      final List<CommentModel> comment}) = _$_DetailModel;
 
   factory _DetailModel.fromJson(Map<String, dynamic> json) =
       _$_DetailModel.fromJson;
@@ -337,7 +337,7 @@ abstract class _DetailModel implements DetailModel {
   @JsonKey(name: 'is_liked')
   bool get isLiked;
   @override
-  List<Comment> get comment;
+  List<CommentModel> get comment;
   @override
   @JsonKey(ignore: true)
   _$$_DetailModelCopyWith<_$_DetailModel> get copyWith =>

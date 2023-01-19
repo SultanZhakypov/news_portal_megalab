@@ -16,43 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$CommentEvent {
-  int get id => throw _privateConstructorUsedError;
-  String get text => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int id, String text) postComment,
+    required TResult Function(List<Comment> comments) getComment,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int id, String text)? postComment,
+    TResult? Function(List<Comment> comments)? getComment,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int id, String text)? postComment,
+    TResult Function(List<Comment> comments)? getComment,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PostCommentEvent value) postComment,
+    required TResult Function(_GetCommentEvent value) getComment,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PostCommentEvent value)? postComment,
+    TResult? Function(_GetCommentEvent value)? getComment,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PostCommentEvent value)? postComment,
+    TResult Function(_GetCommentEvent value)? getComment,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $CommentEventCopyWith<CommentEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,8 +61,6 @@ abstract class $CommentEventCopyWith<$Res> {
   factory $CommentEventCopyWith(
           CommentEvent value, $Res Function(CommentEvent) then) =
       _$CommentEventCopyWithImpl<$Res, CommentEvent>;
-  @useResult
-  $Res call({int id, String text});
 }
 
 /// @nodoc
@@ -74,33 +72,13 @@ class _$CommentEventCopyWithImpl<$Res, $Val extends CommentEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? text = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$_PostCommentEventCopyWith<$Res>
-    implements $CommentEventCopyWith<$Res> {
+abstract class _$$_PostCommentEventCopyWith<$Res> {
   factory _$$_PostCommentEventCopyWith(
           _$_PostCommentEvent value, $Res Function(_$_PostCommentEvent) then) =
       __$$_PostCommentEventCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int id, String text});
 }
@@ -169,6 +147,7 @@ class _$_PostCommentEvent implements _PostCommentEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int id, String text) postComment,
+    required TResult Function(List<Comment> comments) getComment,
   }) {
     return postComment(id, text);
   }
@@ -177,6 +156,7 @@ class _$_PostCommentEvent implements _PostCommentEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int id, String text)? postComment,
+    TResult? Function(List<Comment> comments)? getComment,
   }) {
     return postComment?.call(id, text);
   }
@@ -185,6 +165,7 @@ class _$_PostCommentEvent implements _PostCommentEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int id, String text)? postComment,
+    TResult Function(List<Comment> comments)? getComment,
     required TResult orElse(),
   }) {
     if (postComment != null) {
@@ -197,6 +178,7 @@ class _$_PostCommentEvent implements _PostCommentEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_PostCommentEvent value) postComment,
+    required TResult Function(_GetCommentEvent value) getComment,
   }) {
     return postComment(this);
   }
@@ -205,6 +187,7 @@ class _$_PostCommentEvent implements _PostCommentEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_PostCommentEvent value)? postComment,
+    TResult? Function(_GetCommentEvent value)? getComment,
   }) {
     return postComment?.call(this);
   }
@@ -213,6 +196,7 @@ class _$_PostCommentEvent implements _PostCommentEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_PostCommentEvent value)? postComment,
+    TResult Function(_GetCommentEvent value)? getComment,
     required TResult orElse(),
   }) {
     if (postComment != null) {
@@ -227,13 +211,151 @@ abstract class _PostCommentEvent implements CommentEvent {
       {required final int id,
       required final String text}) = _$_PostCommentEvent;
 
-  @override
   int get id;
-  @override
   String get text;
-  @override
   @JsonKey(ignore: true)
   _$$_PostCommentEventCopyWith<_$_PostCommentEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_GetCommentEventCopyWith<$Res> {
+  factory _$$_GetCommentEventCopyWith(
+          _$_GetCommentEvent value, $Res Function(_$_GetCommentEvent) then) =
+      __$$_GetCommentEventCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Comment> comments});
+}
+
+/// @nodoc
+class __$$_GetCommentEventCopyWithImpl<$Res>
+    extends _$CommentEventCopyWithImpl<$Res, _$_GetCommentEvent>
+    implements _$$_GetCommentEventCopyWith<$Res> {
+  __$$_GetCommentEventCopyWithImpl(
+      _$_GetCommentEvent _value, $Res Function(_$_GetCommentEvent) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? comments = null,
+  }) {
+    return _then(_$_GetCommentEvent(
+      comments: null == comments
+          ? _value._comments
+          : comments // ignore: cast_nullable_to_non_nullable
+              as List<Comment>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_GetCommentEvent implements _GetCommentEvent {
+  const _$_GetCommentEvent({required final List<Comment> comments})
+      : _comments = comments;
+
+  final List<Comment> _comments;
+  @override
+  List<Comment> get comments {
+    if (_comments is EqualUnmodifiableListView) return _comments;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_comments);
+  }
+
+  @override
+  String toString() {
+    return 'CommentEvent.getComment(comments: $comments)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_GetCommentEvent &&
+            const DeepCollectionEquality().equals(other._comments, _comments));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_comments));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_GetCommentEventCopyWith<_$_GetCommentEvent> get copyWith =>
+      __$$_GetCommentEventCopyWithImpl<_$_GetCommentEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int id, String text) postComment,
+    required TResult Function(List<Comment> comments) getComment,
+  }) {
+    return getComment(comments);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int id, String text)? postComment,
+    TResult? Function(List<Comment> comments)? getComment,
+  }) {
+    return getComment?.call(comments);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int id, String text)? postComment,
+    TResult Function(List<Comment> comments)? getComment,
+    required TResult orElse(),
+  }) {
+    if (getComment != null) {
+      return getComment(comments);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_PostCommentEvent value) postComment,
+    required TResult Function(_GetCommentEvent value) getComment,
+  }) {
+    return getComment(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_PostCommentEvent value)? postComment,
+    TResult? Function(_GetCommentEvent value)? getComment,
+  }) {
+    return getComment?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_PostCommentEvent value)? postComment,
+    TResult Function(_GetCommentEvent value)? getComment,
+    required TResult orElse(),
+  }) {
+    if (getComment != null) {
+      return getComment(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _GetCommentEvent implements CommentEvent {
+  const factory _GetCommentEvent({required final List<Comment> comments}) =
+      _$_GetCommentEvent;
+
+  List<Comment> get comments;
+  @JsonKey(ignore: true)
+  _$$_GetCommentEventCopyWith<_$_GetCommentEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -242,24 +364,24 @@ mixin _$CommentState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(CommentEntity comment) success,
-    required TResult Function() error,
+    required TResult Function(List<Comment> comment) success,
+    required TResult Function(String message) error,
     required TResult Function() loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(CommentEntity comment)? success,
-    TResult? Function()? error,
+    TResult? Function(List<Comment> comment)? success,
+    TResult? Function(String message)? error,
     TResult? Function()? loading,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(CommentEntity comment)? success,
-    TResult Function()? error,
+    TResult Function(List<Comment> comment)? success,
+    TResult Function(String message)? error,
     TResult Function()? loading,
     required TResult orElse(),
   }) =>
@@ -347,8 +469,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(CommentEntity comment) success,
-    required TResult Function() error,
+    required TResult Function(List<Comment> comment) success,
+    required TResult Function(String message) error,
     required TResult Function() loading,
   }) {
     return initial();
@@ -358,8 +480,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(CommentEntity comment)? success,
-    TResult? Function()? error,
+    TResult? Function(List<Comment> comment)? success,
+    TResult? Function(String message)? error,
     TResult? Function()? loading,
   }) {
     return initial?.call();
@@ -369,8 +491,8 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(CommentEntity comment)? success,
-    TResult Function()? error,
+    TResult Function(List<Comment> comment)? success,
+    TResult Function(String message)? error,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
@@ -428,7 +550,7 @@ abstract class _$$_SuccessCopyWith<$Res> {
           _$_Success value, $Res Function(_$_Success) then) =
       __$$_SuccessCopyWithImpl<$Res>;
   @useResult
-  $Res call({CommentEntity comment});
+  $Res call({List<Comment> comment});
 }
 
 /// @nodoc
@@ -445,9 +567,9 @@ class __$$_SuccessCopyWithImpl<$Res>
   }) {
     return _then(_$_Success(
       comment: null == comment
-          ? _value.comment
+          ? _value._comment
           : comment // ignore: cast_nullable_to_non_nullable
-              as CommentEntity,
+              as List<Comment>,
     ));
   }
 }
@@ -455,10 +577,15 @@ class __$$_SuccessCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Success implements _Success {
-  const _$_Success({required this.comment});
+  const _$_Success({required final List<Comment> comment}) : _comment = comment;
 
+  final List<Comment> _comment;
   @override
-  final CommentEntity comment;
+  List<Comment> get comment {
+    if (_comment is EqualUnmodifiableListView) return _comment;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_comment);
+  }
 
   @override
   String toString() {
@@ -470,11 +597,12 @@ class _$_Success implements _Success {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Success &&
-            (identical(other.comment, comment) || other.comment == comment));
+            const DeepCollectionEquality().equals(other._comment, _comment));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, comment);
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_comment));
 
   @JsonKey(ignore: true)
   @override
@@ -486,8 +614,8 @@ class _$_Success implements _Success {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(CommentEntity comment) success,
-    required TResult Function() error,
+    required TResult Function(List<Comment> comment) success,
+    required TResult Function(String message) error,
     required TResult Function() loading,
   }) {
     return success(comment);
@@ -497,8 +625,8 @@ class _$_Success implements _Success {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(CommentEntity comment)? success,
-    TResult? Function()? error,
+    TResult? Function(List<Comment> comment)? success,
+    TResult? Function(String message)? error,
     TResult? Function()? loading,
   }) {
     return success?.call(comment);
@@ -508,8 +636,8 @@ class _$_Success implements _Success {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(CommentEntity comment)? success,
-    TResult Function()? error,
+    TResult Function(List<Comment> comment)? success,
+    TResult Function(String message)? error,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
@@ -558,9 +686,9 @@ class _$_Success implements _Success {
 }
 
 abstract class _Success implements CommentState {
-  const factory _Success({required final CommentEntity comment}) = _$_Success;
+  const factory _Success({required final List<Comment> comment}) = _$_Success;
 
-  CommentEntity get comment;
+  List<Comment> get comment;
   @JsonKey(ignore: true)
   _$$_SuccessCopyWith<_$_Success> get copyWith =>
       throw _privateConstructorUsedError;
@@ -570,6 +698,8 @@ abstract class _Success implements CommentState {
 abstract class _$$_ErrorCopyWith<$Res> {
   factory _$$_ErrorCopyWith(_$_Error value, $Res Function(_$_Error) then) =
       __$$_ErrorCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String message});
 }
 
 /// @nodoc
@@ -578,60 +708,84 @@ class __$$_ErrorCopyWithImpl<$Res>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$_Error(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_Error implements _Error {
-  const _$_Error();
+  const _$_Error({required this.message});
+
+  @override
+  final String message;
 
   @override
   String toString() {
-    return 'CommentState.error()';
+    return 'CommentState.error(message: $message)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Error);
+        (other.runtimeType == runtimeType &&
+            other is _$_Error &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, message);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      __$$_ErrorCopyWithImpl<_$_Error>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(CommentEntity comment) success,
-    required TResult Function() error,
+    required TResult Function(List<Comment> comment) success,
+    required TResult Function(String message) error,
     required TResult Function() loading,
   }) {
-    return error();
+    return error(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(CommentEntity comment)? success,
-    TResult? Function()? error,
+    TResult? Function(List<Comment> comment)? success,
+    TResult? Function(String message)? error,
     TResult? Function()? loading,
   }) {
-    return error?.call();
+    return error?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(CommentEntity comment)? success,
-    TResult Function()? error,
+    TResult Function(List<Comment> comment)? success,
+    TResult Function(String message)? error,
     TResult Function()? loading,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error();
+      return error(message);
     }
     return orElse();
   }
@@ -675,7 +829,12 @@ class _$_Error implements _Error {
 }
 
 abstract class _Error implements CommentState {
-  const factory _Error() = _$_Error;
+  const factory _Error({required final String message}) = _$_Error;
+
+  String get message;
+  @JsonKey(ignore: true)
+  _$$_ErrorCopyWith<_$_Error> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -716,8 +875,8 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(CommentEntity comment) success,
-    required TResult Function() error,
+    required TResult Function(List<Comment> comment) success,
+    required TResult Function(String message) error,
     required TResult Function() loading,
   }) {
     return loading();
@@ -727,8 +886,8 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(CommentEntity comment)? success,
-    TResult? Function()? error,
+    TResult? Function(List<Comment> comment)? success,
+    TResult? Function(String message)? error,
     TResult? Function()? loading,
   }) {
     return loading?.call();
@@ -738,8 +897,8 @@ class _$_Loading implements _Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(CommentEntity comment)? success,
-    TResult Function()? error,
+    TResult Function(List<Comment> comment)? success,
+    TResult Function(String message)? error,
     TResult Function()? loading,
     required TResult orElse(),
   }) {

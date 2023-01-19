@@ -47,9 +47,11 @@ class _SliverProfileEditWidgetState extends State<SliverProfileEditWidget> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 60,
                     backgroundColor: AppColors.colorLightGrey,
+                    backgroundImage:
+                        NetworkImage('${AppKeys.baseUrl}${widget.user.image}'),
                   ),
                   const SizedBox(height: 14),
                   Row(
@@ -70,9 +72,7 @@ class _SliverProfileEditWidgetState extends State<SliverProfileEditWidget> {
                       const Text('Удалить',
                           style: AppConstants.textBlackw400s14),
                       IconButton(
-                        onPressed: () {
-                          
-                        },
+                        onPressed: () {},
                         icon: SvgPicture.asset(Svgs.trash),
                       ),
                     ],

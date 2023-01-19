@@ -1,4 +1,5 @@
-import '../../data/models/home_postlist_model.dart';
+import '../../../detail/data/models/comment_model.dart';
+import '../../../detail/domain/entities/comment_entity.dart';
 
 class PostEntity {
   final int id;
@@ -9,7 +10,7 @@ class PostEntity {
   final String shortDesc;
   final String author;
   final bool isLiked;
-  final List<Comment> comment;
+  final List<CommentModel> comment;
 
   const PostEntity({
     required this.id,

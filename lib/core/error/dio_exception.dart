@@ -59,5 +59,5 @@ class DioException implements Exception {
   }
 
   @override
-  String toString() => 'SERVER FAILURE --> $errorMessage';
+  String toString() => errorMessage;
 }

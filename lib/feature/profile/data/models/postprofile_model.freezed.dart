@@ -27,7 +27,7 @@ mixin _$PostProfileModel {
   String? get image => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_liked')
   bool get isLiked => throw _privateConstructorUsedError;
-  List<Comment> get comment => throw _privateConstructorUsedError;
+  List<CommentModel> get comment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +48,7 @@ abstract class $PostProfileModelCopyWith<$Res> {
       String text,
       String? image,
       @JsonKey(name: 'is_liked') bool isLiked,
-      List<Comment> comment});
+      List<CommentModel> comment});
 }
 
 /// @nodoc
@@ -100,7 +100,7 @@ class _$PostProfileModelCopyWithImpl<$Res, $Val extends PostProfileModel>
       comment: null == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
-              as List<Comment>,
+              as List<CommentModel>,
     ) as $Val);
   }
 }
@@ -120,7 +120,7 @@ abstract class _$$_PostProfileModelCopyWith<$Res>
       String text,
       String? image,
       @JsonKey(name: 'is_liked') bool isLiked,
-      List<Comment> comment});
+      List<CommentModel> comment});
 }
 
 /// @nodoc
@@ -170,7 +170,7 @@ class __$$_PostProfileModelCopyWithImpl<$Res>
       comment: null == comment
           ? _value._comment
           : comment // ignore: cast_nullable_to_non_nullable
-              as List<Comment>,
+              as List<CommentModel>,
     ));
   }
 }
@@ -185,7 +185,7 @@ class _$_PostProfileModel implements _PostProfileModel {
       this.text = '',
       this.image = '',
       @JsonKey(name: 'is_liked') this.isLiked = false,
-      final List<Comment> comment = const []})
+      final List<CommentModel> comment = const []})
       : _comment = comment;
 
   factory _$_PostProfileModel.fromJson(Map<String, dynamic> json) =>
@@ -209,10 +209,10 @@ class _$_PostProfileModel implements _PostProfileModel {
   @override
   @JsonKey(name: 'is_liked')
   final bool isLiked;
-  final List<Comment> _comment;
+  final List<CommentModel> _comment;
   @override
   @JsonKey()
-  List<Comment> get comment {
+  List<CommentModel> get comment {
     if (_comment is EqualUnmodifiableListView) return _comment;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_comment);
@@ -264,7 +264,7 @@ abstract class _PostProfileModel implements PostProfileModel {
       final String text,
       final String? image,
       @JsonKey(name: 'is_liked') final bool isLiked,
-      final List<Comment> comment}) = _$_PostProfileModel;
+      final List<CommentModel> comment}) = _$_PostProfileModel;
 
   factory _PostProfileModel.fromJson(Map<String, dynamic> json) =
       _$_PostProfileModel.fromJson;
@@ -283,7 +283,7 @@ abstract class _PostProfileModel implements PostProfileModel {
   @JsonKey(name: 'is_liked')
   bool get isLiked;
   @override
-  List<Comment> get comment;
+  List<CommentModel> get comment;
   @override
   @JsonKey(ignore: true)
   _$$_PostProfileModelCopyWith<_$_PostProfileModel> get copyWith =>

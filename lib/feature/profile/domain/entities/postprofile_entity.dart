@@ -1,6 +1,4 @@
-import 'package:image_picker/image_picker.dart';
-
-import '../../../home/data/models/home_postlist_model.dart';
+import '../../../detail/domain/entities/comment_entity.dart';
 
 class PostProfileEntity {
   final int id;

@@ -13,7 +13,7 @@ class GetpostsBloc extends Bloc<GetpostsEvent, GetpostsState> {
   GetpostsBloc({required this.getPostsUsecase}) : super(const _Initial()) {
     on<_GetPostsEvent>((event, emit) async {
       final result = await getPostsUsecase.getPostsRepo.getPosts();
-      result.fold((l) => emit(const _$_Error()),
+      result.fold((l) => emit(_$_Error(message: l.message)),
           (post) => emit(_$_Success(post: post)));
     });
   }

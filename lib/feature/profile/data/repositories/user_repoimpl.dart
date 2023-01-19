@@ -18,12 +18,12 @@ class UserRepoImpl implements UserRepo {
     required this.remoteUser,
   });
   @override
-  Future<Either<DioException, UserEntity>> getUser() async {
+  Future<Either<Failure, UserEntity>> getUser() async {
     try {
       final result = await remoteUser.getUser();
       return Right(result);
-    } on DioError catch (e) {
-      return Left( DioException.fromDioError(e));
+    } on DioException catch (e) {
+      return Left(Failure(message: e.toString()));
     }
   }
 
@@ -43,7 +43,7 @@ class UserRepoImpl implements UserRepo {
       );
       return Right(result);
     } on DioError catch (e) {
-      return Left( DioException.fromDioError(e));
+      return Left(DioException.fromDioError(e));
     }
   }
 }

@@ -23,6 +23,7 @@ class SearchAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
+      elevation: 0,
       pinned: true,
       automaticallyImplyLeading: false,
       backgroundColor: AppColors.colorWhite,

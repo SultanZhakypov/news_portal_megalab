@@ -12,7 +12,7 @@ class ShimmerLoadingList extends StatelessWidget {
       baseColor: AppColors.colorWhite,
       highlightColor: AppColors.colorPurple,
       child: SizedBox(
-        width: context.width /1.5,
+        width: context.width / 1.6,
         height: context.height / 4,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -43,17 +43,17 @@ class ShimmerLoadingList extends StatelessWidget {
                 Container(
                   color: Colors.white,
                   height: context.height / 25,
-                  width: context.width / 1.6,
+                  width: context.width / 2,
                 ),
                 Container(
                   color: Colors.white,
                   height: context.height / 25,
-                  width: context.width / 1.6,
+                  width: context.width / 2,
                 ),
                 Container(
                   color: Colors.white,
                   height: context.height / 25,
-                  width: context.width / 1.6,
+                  width: context.width / 2,
                 ),
               ],
             ),

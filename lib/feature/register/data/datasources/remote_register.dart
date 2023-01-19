@@ -1,8 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:news_portal_megalab/feature/register/data/models/register_model.dart';
 
-import '../../../../core/error/exception.dart';
-
 abstract class RemoteRegisterSource {
   Future<RegisterModel> addPost({
     required String name,
@@ -38,13 +36,10 @@ class RemoteRegisterSourceImpl implements RemoteRegisterSource {
     });
 
     final response = await dio.post(
-      'registration/',
+      '/registration/',
       data: formData,
     );
-    try {
-      return RegisterModel.fromJson(response.data);
-    } on DioError {
-      throw ServerException();
-    }
+
+    return RegisterModel.fromJson(response.data);
   }
 }

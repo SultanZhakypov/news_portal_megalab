@@ -1,7 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:news_portal_megalab/feature/detail/data/models/comment_model.dart';
 import 'package:news_portal_megalab/feature/detail/domain/entities/detail_entity.dart';
-
-import '../../../home/data/models/home_postlist_model.dart';
 
 part 'detail_model.freezed.dart';
 part 'detail_model.g.dart';
@@ -17,7 +16,7 @@ class DetailModel with _$DetailModel implements DetailEntity {
     @JsonKey(name: 'short_desc') @Default('') String shortDesc,
     @Default('') String author,
     @JsonKey(name: 'is_liked') @Default(false) bool isLiked,
-    @Default([]) List<Comment> comment,
+    @Default([]) List<CommentModel> comment,
   }) = _DetailModel;
   factory DetailModel.fromJson(Map<String, dynamic> json) =>
       _$DetailModelFromJson(json);

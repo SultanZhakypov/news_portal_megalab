@@ -13,7 +13,7 @@ class GetuserBloc extends Bloc<GetuserEvent, GetuserState> {
   GetuserBloc({required this.userUsecase}) : super(const _Initial()) {
     on<_GetUserEvent>((event, emit) async {
       final result = await userUsecase.userRepo.getUser();
-      result.fold((l) => emit(const _$_Error()),
+      result.fold((l) => emit( _$_Error(message: l.message)),
           (user) => emit(_$_Success(user: user)));
     });
   }

@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:news_portal_megalab/core/error/dio_exception.dart';
 import 'package:news_portal_megalab/feature/home/data/datasources/remote_home.dart';
 import 'package:news_portal_megalab/feature/home/data/models/home_postlist_model.dart';
@@ -12,7 +11,7 @@ class PostListRepoImpl implements PostListRepo {
 
   PostListRepoImpl({required this.remotePostList});
   @override
-  Future<Either<DioException, List<PostEntity>>> searchPost({
+  Future<Either<Failure, List<PostEntity>>> searchPost({
     required String search,
     required String tag,
     required String author,
@@ -24,20 +23,20 @@ class PostListRepoImpl implements PostListRepo {
   }
 
   @override
-  Future<Either<DioException, List<PostEntity>>> getAllPost() {
+  Future<Either<Failure, List<PostEntity>>> getAllPost() {
     return _getPosts(() {
       return remotePostList.getAllPost();
     });
   }
 
-  Future<Either<DioException, List<PostListModel>>> _getPosts(
+  Future<Either<Failure, List<PostListModel>>> _getPosts(
       Future<List<PostListModel>> Function() getPosts) async {
     try {
       final remotePost = await getPosts();
 
       return Right(remotePost);
-    } on DioError catch (e) {
-      return Left( DioException.fromDioError(e));
+    } on DioException catch (e) {
+      return Left(Failure(message: e.toString()));
     }
   }
 }

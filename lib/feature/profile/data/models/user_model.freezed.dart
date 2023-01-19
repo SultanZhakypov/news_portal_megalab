@@ -25,6 +25,7 @@ mixin _$UserModel {
   String get nickname => throw _privateConstructorUsedError;
   @JsonKey(name: 'last_name')
   String get lastName => throw _privateConstructorUsedError;
+  @JsonKey(name: 'profile_image')
   String? get image => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -43,7 +44,7 @@ abstract class $UserModelCopyWith<$Res> {
       String name,
       String nickname,
       @JsonKey(name: 'last_name') String lastName,
-      String? image});
+      @JsonKey(name: 'profile_image') String? image});
 }
 
 /// @nodoc
@@ -102,7 +103,7 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String name,
       String nickname,
       @JsonKey(name: 'last_name') String lastName,
-      String? image});
+      @JsonKey(name: 'profile_image') String? image});
 }
 
 /// @nodoc
@@ -155,7 +156,7 @@ class _$_UserModel implements _UserModel {
       this.name = '',
       this.nickname = '',
       @JsonKey(name: 'last_name') this.lastName = '',
-      this.image = ''});
+      @JsonKey(name: 'profile_image') this.image = null});
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
@@ -173,7 +174,7 @@ class _$_UserModel implements _UserModel {
   @JsonKey(name: 'last_name')
   final String lastName;
   @override
-  @JsonKey()
+  @JsonKey(name: 'profile_image')
   final String? image;
 
   @override
@@ -220,7 +221,7 @@ abstract class _UserModel implements UserModel {
       final String name,
       final String nickname,
       @JsonKey(name: 'last_name') final String lastName,
-      final String? image}) = _$_UserModel;
+      @JsonKey(name: 'profile_image') final String? image}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
       _$_UserModel.fromJson;
@@ -235,6 +236,7 @@ abstract class _UserModel implements UserModel {
   @JsonKey(name: 'last_name')
   String get lastName;
   @override
+  @JsonKey(name: 'profile_image')
   String? get image;
   @override
   @JsonKey(ignore: true)

@@ -5,9 +5,7 @@ import 'package:news_portal_megalab/resources/export_resources.dart';
 class CommentWidget extends StatelessWidget {
   const CommentWidget({super.key, required this.comment});
 
-  final CommentEntity comment;
-  
- 
+  final Comment comment;
 
   @override
   Widget build(BuildContext context) {

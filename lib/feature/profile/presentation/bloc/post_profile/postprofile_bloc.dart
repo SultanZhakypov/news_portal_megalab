@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:news_portal_megalab/feature/profile/domain/usecases/postprofile_usecase.dart';
@@ -19,7 +19,7 @@ class PostprofileBloc extends Bloc<PostprofileEvent, PostprofileState> {
         tag: event.tag,
         shortDesc: event.shortDesc,
       );
-      result.fold((l) => emit(_$_Error(message: l.errorMessage)),
+      result.fold((failure) => emit(_$_Error(message: failure.errorMessage)),
           (post) => emit(const _$_Success(message: 'Success')));
     });
   }

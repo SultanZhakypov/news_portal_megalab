@@ -1,6 +1,4 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:news_portal_megalab/core/error/exception.dart';
 import 'package:news_portal_megalab/feature/auth/data/models/auth_model.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 
@@ -23,23 +21,15 @@ class RemoteAuthimpl implements RemoteAuthSource {
     });
 
     final response = await dio.post(
-      'login/',
+      '/login/',
       data: formData,
     );
     final author = authModel.nickname;
-    final token = response.data[AppConstants.token];
-   
+    final token = response.data[AppKeys.token];
 
-    SharedPrefs.saveData(AppConstants.author, author);
-    SharedPrefs.saveData(AppConstants.token, token);
-    try {
-      if (response.statusCode == 201) {
-        return response.data[AppConstants.token];
-      }
-    } on DioError {
-      throw ServerException();
-    }
+    SharedPrefs.saveData(AppKeys.author, author);
+    SharedPrefs.saveData(AppKeys.token, token);
 
-    return response.data[AppConstants.token];
+    return response.data[AppKeys.token];
   }
 }

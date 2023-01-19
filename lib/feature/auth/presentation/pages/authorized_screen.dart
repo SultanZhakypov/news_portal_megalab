@@ -8,9 +8,9 @@ import 'package:news_portal_megalab/feature/auth/domain/entities/auth_entity.dar
 import 'package:news_portal_megalab/feature/auth/presentation/bloc/bloc/auth_bloc.dart';
 import 'package:news_portal_megalab/feature/widgets/app_menu.dart';
 import 'package:news_portal_megalab/generated/locale_keys.g.dart';
-import 'package:news_portal_megalab/main.dart';
 import '../../../../resources/export_resources.dart';
 import '../../../widgets/widgets.dart';
+import '../../../../service_locator.dart' as di;
 
 class AuthorizedScreen extends StatefulWidget {
   const AuthorizedScreen({super.key});
@@ -39,11 +39,12 @@ class _AuthorizedScreenState extends State<AuthorizedScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 45),
-        child: BlocConsumer<AuthBloc, AuthState>(
-          listener: (context, state) {
+    return BlocProvider(
+      create: (context) => di.sl<AuthBloc>(),
+      child: Scaffold(
+        body: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 45),
+          child: BlocConsumer<AuthBloc, AuthState>(listener: (context, state) {
             state.maybeWhen(
               orElse: () {},
               error: (message) =>
@@ -53,68 +54,62 @@ class _AuthorizedScreenState extends State<AuthorizedScreen> {
                 predicate: (route) => false,
               ),
             );
-          },
-          builder: (context, state) {
-            state.maybeWhen(
+          }, builder: (context, state) {
+            return state.maybeWhen(
               loading: () => const Center(
                 child: CircularProgressIndicator.adaptive(),
               ),
-              orElse: () {},
-            );
-
-            return Form(
-              key: formKey,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(Svgs.megalabIconPurple),
-                  const SizedBox(height: 15),
-                  CustomTextField(
-                    title: LocaleKeys.nickname,
-                    controller: _nicknameController,
-                  ),
-                  CustomTextFieldPassword(
-                    title: LocaleKeys.password,
-                    controller: _passwordController,
-                  ),
-                  const SizedBox(height: 30),
-                  CustomButtonText(
-                    title: (LocaleKeys.login.tr()),
-                    onPress: () {
-                      BlocProvider.of<AuthBloc>(context).add(
+              orElse: () => Form(
+                key: AppKeys.formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SvgPicture.asset(Svgs.megalabIconPurple),
+                    const SizedBox(height: 15),
+                    CustomTextField(
+                      title: LocaleKeys.nickname,
+                      controller: _nicknameController,
+                    ),
+                    CustomTextFieldPassword(
+                      title: LocaleKeys.password,
+                      controller: _passwordController,
+                    ),
+                    const SizedBox(height: 30),
+                    CustomButtonText(
+                      title: (LocaleKeys.login.tr()),
+                      onPress: () => BlocProvider.of<AuthBloc>(context).add(
                         AuthEvent.postAuthEvent(
                           authEntity: AuthEntity(
                             nickname: _nicknameController.text,
                             password: _passwordController.text,
                           ),
                         ),
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 32),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        LocaleKeys.no_account.tr(),
-                        style: AppConstants.textGreyw400s12,
                       ),
-                      const SizedBox(width: 5),
-                      InkWell(
-                        onTap: () {
-                          context.router.push(const UnAuthorizedScreenRoute());
-                        },
-                        child: Text(
-                          LocaleKeys.register.tr(),
-                          style: AppConstants.textBluew400s12,
+                    ),
+                    const SizedBox(height: 32),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          LocaleKeys.no_account.tr(),
+                          style: AppConstants.textGreyw400s12,
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        const SizedBox(width: 5),
+                        InkWell(
+                          onTap: () => context.router
+                              .push(const UnAuthorizedScreenRoute()),
+                          child: Text(
+                            LocaleKeys.register.tr(),
+                            style: AppConstants.textBluew400s12,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             );
-          },
+          }),
         ),
       ),
     );

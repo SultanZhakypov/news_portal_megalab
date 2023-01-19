@@ -31,7 +31,7 @@ class RegisterRepoImpl implements RegisterRepo {
       );
       return Right(result);
     } on DioError catch (e) {
-      return Left(DioException.fromDioError(e));
+      throw DioException.fromDioError(e);
     }
   }
 }

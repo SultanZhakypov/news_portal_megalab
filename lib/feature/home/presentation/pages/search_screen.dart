@@ -7,6 +7,7 @@ import 'package:news_portal_megalab/feature/home/presentation/widgets/search_app
 import 'package:news_portal_megalab/feature/widgets/items_widget.dart';
 import 'package:news_portal_megalab/generated/locale_keys.g.dart';
 import 'package:news_portal_megalab/resources/export_resources.dart';
+import '../../../../service_locator.dart' as di;
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -37,137 +38,139 @@ class _SearchScreenState extends State<SearchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = BlocProvider.of<SearchBloc>(context);
-    bloc.add(const SearchEvent.searchPost(search: '', tag: '', author: ''));
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          SearchAppBar(
-            controller: _controller,
-            hintText: LocaleKeys.search.tr(),
-            onChanged: (value) {
-              bloc.add(SearchEvent.searchPost(
-                search: _controller.text,
-                tag: '',
-                author: '',
-              ));
-            },
-            prefixIcon: true,
-            onPressed: () {
-              _controller.clear();
-              bloc.add(SearchEvent.searchPost(
-                  search: '',
-                  tag: _controllerTag.text,
-                  author: _controllerAuthor.text));
-            },
-          ),
-          SearchAppBar(
-            controller: _controllerTag,
-            hintText: LocaleKeys.searchTag.tr(),
-            onChanged: (value) {
-              bloc.add(
-                SearchEvent.searchPost(
-                  search: '',
-                  tag: _controllerTag.text,
-                  author: '',
-                ),
-              );
-            },
-            prefixIcon: false,
-            onPressed: () {
-              _controllerTag.clear();
-              bloc.add(SearchEvent.searchPost(
+    return BlocProvider(
+      create: (context) => di.sl<SearchBloc>()
+        ..add(const SearchEvent.searchPost(search: '', tag: '', author: '')),
+      child: Scaffold(
+        body: CustomScrollView(
+          slivers: [
+            SearchAppBar(
+              controller: _controller,
+              hintText: LocaleKeys.search.tr(),
+              onChanged: (value) {
+                BlocProvider.of<SearchBloc>(context).add(SearchEvent.searchPost(
                   search: _controller.text,
                   tag: '',
-                  author: _controllerAuthor.text));
-            },
-          ),
-          SearchAppBar(
-            controller: _controllerAuthor,
-            hintText: LocaleKeys.searchAuthor.tr(),
-            onChanged: (value) {
-              bloc.add(SearchEvent.searchPost(
-                search: '',
-                tag: '',
-                author: _controllerAuthor.text,
-              ));
-            },
-            prefixIcon: false,
-            onPressed: () {
-              _controllerAuthor.clear();
-              bloc.add(SearchEvent.searchPost(
-                  search: _controller.text,
-                  tag: _controllerTag.text,
-                  author: ''));
-            },
-          ),
-          SliverPadding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            sliver: BlocBuilder<SearchBloc, SearchState>(
-              builder: (context, state) {
-                return state.maybeWhen(
-                  orElse: () => SliverToBoxAdapter(
-                    child: SizedBox(
-                      height: context.height,
-                      width: context.width,
-                      child: Center(
-                        child: Text(LocaleKeys.error_state.tr(),
-                            style: AppConstants.textBlackw400s16),
-                      ),
-                    ),
+                  author: '',
+                ));
+              },
+              prefixIcon: true,
+              onPressed: () {
+                _controller.clear();
+                BlocProvider.of<SearchBloc>(context).add(SearchEvent.searchPost(
+                    search: '',
+                    tag: _controllerTag.text,
+                    author: _controllerAuthor.text));
+              },
+            ),
+            SearchAppBar(
+              controller: _controllerTag,
+              hintText: LocaleKeys.searchTag.tr(),
+              onChanged: (value) {
+                BlocProvider.of<SearchBloc>(context).add(
+                  SearchEvent.searchPost(
+                    search: '',
+                    tag: _controllerTag.text,
+                    author: '',
                   ),
-                  error: () => SliverToBoxAdapter(
-                    child: SizedBox(
-                      height: context.height,
-                      width: context.width,
-                      child: Center(
-                        child: Text(LocaleKeys.error_state.tr(),
-                            style: AppConstants.textBlackw400s16),
-                      ),
-                    ),
-                  ),
-                  loading: () => SliverToBoxAdapter(
-                    child: SizedBox(
-                      height: context.height,
-                      width: context.width,
-                      child: Center(
-                        child: LoadingAnimationWidget.staggeredDotsWave(
-                          color: AppColors.colorBlack,
-                          size: 50,
+                );
+              },
+              prefixIcon: false,
+              onPressed: () {
+                _controllerTag.clear();
+                BlocProvider.of<SearchBloc>(context).add(SearchEvent.searchPost(
+                    search: _controller.text,
+                    tag: '',
+                    author: _controllerAuthor.text));
+              },
+            ),
+            SearchAppBar(
+              controller: _controllerAuthor,
+              hintText: LocaleKeys.searchAuthor.tr(),
+              onChanged: (value) {
+                BlocProvider.of<SearchBloc>(context).add(SearchEvent.searchPost(
+                  search: '',
+                  tag: '',
+                  author: _controllerAuthor.text,
+                ));
+              },
+              prefixIcon: false,
+              onPressed: () {
+                _controllerAuthor.clear();
+                BlocProvider.of<SearchBloc>(context).add(SearchEvent.searchPost(
+                    search: _controller.text,
+                    tag: _controllerTag.text,
+                    author: ''));
+              },
+            ),
+            SliverPadding(
+              padding: const EdgeInsets.only(right: 20, left: 20, top: 20),
+              sliver: BlocBuilder<SearchBloc, SearchState>(
+                builder: (context, state) {
+                  return state.maybeWhen(
+                    orElse: () => SliverToBoxAdapter(
+                      child: SizedBox(
+                        height: context.height,
+                        width: context.width,
+                        child: Center(
+                          child: Text(LocaleKeys.error_state.tr(),
+                              style: AppConstants.textBlackw400s16),
                         ),
                       ),
                     ),
-                  ),
-                  success: (posts) {
-                    return posts.isNotEmpty
-                        ? SliverList(
-                            delegate: SliverChildBuilderDelegate(
-                              childCount: posts.length,
-                              (context, index) {
-                                return ItemsWidget(
-                                  posts: posts[index],
-                                );
-                              },
-                            ),
-                          )
-                        : SliverToBoxAdapter(
-                            child: SizedBox(
-                              height: context.height,
-                              width: context.width,
-                              child: Center(
-                                child: Text(
-                                  LocaleKeys.is_empty.tr(),
-                                  style: AppConstants.textBlackw400s16,
+                    error: (message) => SliverToBoxAdapter(
+                      child: SizedBox(
+                        height: context.height,
+                        width: context.width,
+                        child: Center(
+                          child: Text(message,
+                              style: AppConstants.textBlackw400s16),
+                        ),
+                      ),
+                    ),
+                    loading: () => SliverToBoxAdapter(
+                      child: SizedBox(
+                        height: context.height,
+                        width: context.width,
+                        child: Center(
+                          child: LoadingAnimationWidget.staggeredDotsWave(
+                            color: AppColors.colorBlack,
+                            size: 50,
+                          ),
+                        ),
+                      ),
+                    ),
+                    success: (posts) {
+                      return posts.isNotEmpty
+                          ? SliverList(
+                              delegate: SliverChildBuilderDelegate(
+                                childCount: posts.length,
+                                (context, index) {
+                                  return ItemsWidget(
+                                    posts: posts[index],
+                                  );
+                                },
+                              ),
+                            )
+                          : SliverToBoxAdapter(
+                              child: SizedBox(
+                                height: context.height,
+                                width: context.width,
+                                child: Center(
+                                  child: Text(
+                                    LocaleKeys.is_empty.tr(),
+                                    style: AppConstants.textBlackw400s16,
+                                  ),
                                 ),
                               ),
-                            ),
-                          );
-                  },
-                );
-              },
+                            );
+                    },
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

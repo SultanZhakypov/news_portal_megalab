@@ -3,7 +3,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:news_portal_megalab/core/routes/routes.dart';
-import 'package:news_portal_megalab/feature/widgets/app_menu.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 import 'package:news_portal_megalab/resources/extension.dart';
 import 'package:news_portal_megalab/resources/resources.dart';
@@ -39,7 +38,7 @@ class SliverAppbarWhite extends StatelessWidget {
               height: 20,
             )),
         IconButton(
-            onPressed: () => AppMenuShow.showMenu(context),
+            onPressed: () => AppKeys.drawerKey.currentState!.openEndDrawer(),
             icon: SvgPicture.asset(
               Svgs.whiteMenu,
               height: 20,

@@ -61,16 +61,13 @@ class _CommentTextFieldState extends State<CommentTextField> {
             const SizedBox(width: 11),
             CustomButtonSvg(
               svg: Svgs.arrowUp,
-              onPress: () {
-                final value = BlocProvider.of<CommentBloc>(context).add(
-                  CommentEvent.postComment(
-                    id: widget.id,
-                    text: _controller.text,
-                  ),
-                  
-                );
-              },
-            )
+              onPress: () => BlocProvider.of<CommentBloc>(context).add(
+                CommentEvent.postComment(
+                  id: widget.id,
+                  text: _controller.text,
+                ),
+              ),
+            ),
           ],
         ),
       ),

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:news_portal_megalab/resources/app_constants.dart';
 
 class DioSettings {
   DioSettings() {
@@ -8,7 +9,7 @@ class DioSettings {
 
   final _dio = Dio(
     BaseOptions(
-      baseUrl: 'https://megalab.pythonanywhere.com/',
+      baseUrl: AppKeys.baseUrl,
       contentType: 'application/json',
       headers: {
         'Accept': 'application/json',

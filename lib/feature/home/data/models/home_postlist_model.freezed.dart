@@ -30,7 +30,7 @@ mixin _$PostListModel {
   String get author => throw _privateConstructorUsedError;
   @JsonKey(name: 'is_liked')
   bool get isLiked => throw _privateConstructorUsedError;
-  List<Comment> get comment => throw _privateConstructorUsedError;
+  List<CommentModel> get comment => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -53,7 +53,7 @@ abstract class $PostListModelCopyWith<$Res> {
       @JsonKey(name: 'short_desc') String shortDesc,
       String author,
       @JsonKey(name: 'is_liked') bool isLiked,
-      List<Comment> comment});
+      List<CommentModel> comment});
 }
 
 /// @nodoc
@@ -115,7 +115,7 @@ class _$PostListModelCopyWithImpl<$Res, $Val extends PostListModel>
       comment: null == comment
           ? _value.comment
           : comment // ignore: cast_nullable_to_non_nullable
-              as List<Comment>,
+              as List<CommentModel>,
     ) as $Val);
   }
 }
@@ -137,7 +137,7 @@ abstract class _$$_PostListModelCopyWith<$Res>
       @JsonKey(name: 'short_desc') String shortDesc,
       String author,
       @JsonKey(name: 'is_liked') bool isLiked,
-      List<Comment> comment});
+      List<CommentModel> comment});
 }
 
 /// @nodoc
@@ -197,7 +197,7 @@ class __$$_PostListModelCopyWithImpl<$Res>
       comment: null == comment
           ? _value._comment
           : comment // ignore: cast_nullable_to_non_nullable
-              as List<Comment>,
+              as List<CommentModel>,
     ));
   }
 }
@@ -214,7 +214,7 @@ class _$_PostListModel implements _PostListModel {
       @JsonKey(name: 'short_desc') this.shortDesc = '',
       this.author = '',
       @JsonKey(name: 'is_liked') this.isLiked = false,
-      final List<Comment> comment = const []})
+      final List<CommentModel> comment = const []})
       : _comment = comment;
 
   factory _$_PostListModel.fromJson(Map<String, dynamic> json) =>
@@ -244,10 +244,10 @@ class _$_PostListModel implements _PostListModel {
   @override
   @JsonKey(name: 'is_liked')
   final bool isLiked;
-  final List<Comment> _comment;
+  final List<CommentModel> _comment;
   @override
   @JsonKey()
-  List<Comment> get comment {
+  List<CommentModel> get comment {
     if (_comment is EqualUnmodifiableListView) return _comment;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_comment);
@@ -313,7 +313,7 @@ abstract class _PostListModel implements PostListModel {
       @JsonKey(name: 'short_desc') final String shortDesc,
       final String author,
       @JsonKey(name: 'is_liked') final bool isLiked,
-      final List<Comment> comment}) = _$_PostListModel;
+      final List<CommentModel> comment}) = _$_PostListModel;
 
   factory _PostListModel.fromJson(Map<String, dynamic> json) =
       _$_PostListModel.fromJson;
@@ -337,222 +337,10 @@ abstract class _PostListModel implements PostListModel {
   @JsonKey(name: 'is_liked')
   bool get isLiked;
   @override
-  List<Comment> get comment;
+  List<CommentModel> get comment;
   @override
   @JsonKey(ignore: true)
   _$$_PostListModelCopyWith<_$_PostListModel> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Comment _$CommentFromJson(Map<String, dynamic> json) {
-  return _Comment.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Comment {
-  int get id => throw _privateConstructorUsedError;
-  User get user => throw _privateConstructorUsedError;
-  List<dynamic> get child => throw _privateConstructorUsedError;
-  String get text => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $CommentCopyWith<Comment> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $CommentCopyWith<$Res> {
-  factory $CommentCopyWith(Comment value, $Res Function(Comment) then) =
-      _$CommentCopyWithImpl<$Res, Comment>;
-  @useResult
-  $Res call({int id, User user, List<dynamic> child, String text});
-
-  $UserCopyWith<$Res> get user;
-}
-
-/// @nodoc
-class _$CommentCopyWithImpl<$Res, $Val extends Comment>
-    implements $CommentCopyWith<$Res> {
-  _$CommentCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? user = null,
-    Object? child = null,
-    Object? text = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User,
-      child: null == child
-          ? _value.child
-          : child // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $UserCopyWith<$Res> get user {
-    return $UserCopyWith<$Res>(_value.user, (value) {
-      return _then(_value.copyWith(user: value) as $Val);
-    });
-  }
-}
-
-/// @nodoc
-abstract class _$$_CommentCopyWith<$Res> implements $CommentCopyWith<$Res> {
-  factory _$$_CommentCopyWith(
-          _$_Comment value, $Res Function(_$_Comment) then) =
-      __$$_CommentCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int id, User user, List<dynamic> child, String text});
-
-  @override
-  $UserCopyWith<$Res> get user;
-}
-
-/// @nodoc
-class __$$_CommentCopyWithImpl<$Res>
-    extends _$CommentCopyWithImpl<$Res, _$_Comment>
-    implements _$$_CommentCopyWith<$Res> {
-  __$$_CommentCopyWithImpl(_$_Comment _value, $Res Function(_$_Comment) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? user = null,
-    Object? child = null,
-    Object? text = null,
-  }) {
-    return _then(_$_Comment(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      user: null == user
-          ? _value.user
-          : user // ignore: cast_nullable_to_non_nullable
-              as User,
-      child: null == child
-          ? _value._child
-          : child // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
-      text: null == text
-          ? _value.text
-          : text // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$_Comment implements _Comment {
-  const _$_Comment(
-      {this.id = 1,
-      this.user = const User(),
-      final List<dynamic> child = const [],
-      this.text = ''})
-      : _child = child;
-
-  factory _$_Comment.fromJson(Map<String, dynamic> json) =>
-      _$$_CommentFromJson(json);
-
-  @override
-  @JsonKey()
-  final int id;
-  @override
-  @JsonKey()
-  final User user;
-  final List<dynamic> _child;
-  @override
-  @JsonKey()
-  List<dynamic> get child {
-    if (_child is EqualUnmodifiableListView) return _child;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_child);
-  }
-
-  @override
-  @JsonKey()
-  final String text;
-
-  @override
-  String toString() {
-    return 'Comment(id: $id, user: $user, child: $child, text: $text)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Comment &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.user, user) || other.user == user) &&
-            const DeepCollectionEquality().equals(other._child, _child) &&
-            (identical(other.text, text) || other.text == text));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, id, user, const DeepCollectionEquality().hash(_child), text);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_CommentCopyWith<_$_Comment> get copyWith =>
-      __$$_CommentCopyWithImpl<_$_Comment>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$_CommentToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Comment implements Comment {
-  const factory _Comment(
-      {final int id,
-      final User user,
-      final List<dynamic> child,
-      final String text}) = _$_Comment;
-
-  factory _Comment.fromJson(Map<String, dynamic> json) = _$_Comment.fromJson;
-
-  @override
-  int get id;
-  @override
-  User get user;
-  @override
-  List<dynamic> get child;
-  @override
-  String get text;
-  @override
-  @JsonKey(ignore: true)
-  _$$_CommentCopyWith<_$_Comment> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

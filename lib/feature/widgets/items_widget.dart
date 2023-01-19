@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:news_portal_megalab/core/routes/routes.gr.dart';
 import 'package:news_portal_megalab/feature/home/domain/entities/post_entity.dart';
+import 'package:news_portal_megalab/feature/widgets/cached_image.dart';
 import 'package:news_portal_megalab/resources/app_colors.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 
@@ -23,7 +24,7 @@ class ItemsWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.asset(Images.something),
+        CachedImage(imageUrl: posts.image ?? ''),
         const SizedBox(height: 16),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -54,7 +55,8 @@ class ItemsWidget extends StatelessWidget {
         const SizedBox(height: 8),
         TextButton(
           onPressed: () {
-            context.router.push(DetailScreenRoute(id: posts.id));
+            context.router
+                .push(DetailScreenRoute(id: posts.id, comment: posts.comment));
           },
           child: Text(
             LocaleKeys.read_next.tr(),

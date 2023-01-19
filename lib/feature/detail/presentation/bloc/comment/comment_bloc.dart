@@ -10,12 +10,14 @@ part 'comment_bloc.freezed.dart';
 class CommentBloc extends Bloc<CommentEvent, CommentState> {
   final PostCommentUsecase postCommentUsecase;
   CommentBloc({required this.postCommentUsecase}) : super(const _Initial()) {
-    on<_PostCommentEvent>((event, emit) async {
-      final result = await postCommentUsecase.commentRepo
-          .postComment(id: event.id, text: event.text);
+    on<_PostCommentEvent>(
+      (event, emit) async {
+        final result = await postCommentUsecase.commentRepo
+            .postComment(id: event.id, text: event.text);
 
-      result.fold((failure) => emit(const _$_Error()),
-          (comment) => emit(_$_Success(comment: comment)));
-    });
+        result.fold((failure) => emit(_$_Error(message: failure.message)),
+            (comment) => emit(_$_Success(comment: comment)));
+      },
+    );
   }
 }

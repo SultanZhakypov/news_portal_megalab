@@ -11,7 +11,7 @@ class UserModel with _$UserModel implements UserEntity {
     @Default('') String name,
     @Default('') String nickname,
     @JsonKey(name: 'last_name') @Default('') String lastName,
-    @Default('') String? image,
+   @JsonKey(name: 'profile_image') @Default(null) String? image,
   }) = _UserModel;
   factory UserModel.fromJson(Map<String, dynamic> json) =>
       _$UserModelFromJson(json);

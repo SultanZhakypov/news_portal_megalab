@@ -16,7 +16,8 @@ class GetAllPostBloc extends Bloc<GetPostListEvent, GetPostListState> {
 
       final result = await getPostsUsecase();
 
-      result.fold((error) => emit( _$_Error(message:error.errorMessage)), (post) {
+      result.fold((failure) => emit(_$_Error(message: failure.message)),
+          (post) {
         emit(_$_Success(posts: post));
       });
     });

@@ -6,7 +6,7 @@ part 'comment_model.freezed.dart';
 part 'comment_model.g.dart';
 
 @freezed
-class CommentModel with _$CommentModel implements CommentEntity {
+class CommentModel with _$CommentModel implements Comment {
   const factory CommentModel({
     @Default(User()) User user,
     @Default('') String text,

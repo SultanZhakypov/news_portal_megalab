@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:news_portal_megalab/core/error/dio_exception.dart';
 import 'package:news_portal_megalab/feature/register/domain/entities/register_entity.dart';
+
+import '../../../../core/error/dio_exception.dart';
 
 abstract class RegisterRepo {
   Future<Either<DioException, RegisterEntity>> postRegister({

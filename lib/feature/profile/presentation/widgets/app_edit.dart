@@ -15,7 +15,7 @@ abstract class AppPostDialog {
   static Future showPost(BuildContext context) {
     return showDialog(
       context: context,
-      builder: (BuildContext context) {
+      builder: (context) {
         return const AlertDialog(
           content: SingleChildScrollView(
             child: PostDialog(),

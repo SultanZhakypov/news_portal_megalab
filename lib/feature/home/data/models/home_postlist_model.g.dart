@@ -17,7 +17,7 @@ _$_PostListModel _$$_PostListModelFromJson(Map<String, dynamic> json) =>
       author: json['author'] as String? ?? '',
       isLiked: json['is_liked'] as bool? ?? false,
       comment: (json['comment'] as List<dynamic>?)
-              ?.map((e) => Comment.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => CommentModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
     );
@@ -33,23 +33,6 @@ Map<String, dynamic> _$$_PostListModelToJson(_$_PostListModel instance) =>
       'author': instance.author,
       'is_liked': instance.isLiked,
       'comment': instance.comment,
-    };
-
-_$_Comment _$$_CommentFromJson(Map<String, dynamic> json) => _$_Comment(
-      id: json['id'] as int? ?? 1,
-      user: json['user'] == null
-          ? const User()
-          : User.fromJson(json['user'] as Map<String, dynamic>),
-      child: json['child'] as List<dynamic>? ?? const [],
-      text: json['text'] as String? ?? '',
-    );
-
-Map<String, dynamic> _$$_CommentToJson(_$_Comment instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'user': instance.user,
-      'child': instance.child,
-      'text': instance.text,
     };
 
 _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(

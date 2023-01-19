@@ -1,4 +1,4 @@
-import 'package:news_portal_megalab/feature/home/data/models/home_postlist_model.dart';
+import 'package:news_portal_megalab/feature/detail/domain/entities/comment_entity.dart';
 
 class DetailEntity {
   final int id;

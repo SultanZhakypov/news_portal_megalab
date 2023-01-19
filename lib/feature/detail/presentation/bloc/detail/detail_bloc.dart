@@ -14,7 +14,7 @@ class DetailBloc extends Bloc<DetailEvent, DetailState> {
       emit(const _$_Loading());
       final result = await getDetailUsecase(event.id);
 
-      result.fold((e) => emit(const _$_Error()),
+      result.fold((failure) => emit(_$_Error(message: failure.message)),
           ((post) => emit(_$_Success(detailPost: post))));
     });
   }

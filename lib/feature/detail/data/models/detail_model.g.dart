@@ -17,7 +17,7 @@ _$_DetailModel _$$_DetailModelFromJson(Map<String, dynamic> json) =>
       author: json['author'] as String? ?? '',
       isLiked: json['is_liked'] as bool? ?? false,
       comment: (json['comment'] as List<dynamic>?)
-              ?.map((e) => Comment.fromJson(e as Map<String, dynamic>))
+              ?.map((e) => CommentModel.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
     );

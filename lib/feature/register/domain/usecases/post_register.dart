@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:news_portal_megalab/core/error/dio_exception.dart';
 import 'package:news_portal_megalab/feature/register/domain/entities/register_entity.dart';
 import 'package:news_portal_megalab/feature/register/domain/repositories/register_repo.dart';
+
+import '../../../../core/error/dio_exception.dart';
 
 class PostRegisterUseCase {
   final RegisterRepo registerRepo;

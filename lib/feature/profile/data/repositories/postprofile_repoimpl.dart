@@ -3,7 +3,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:news_portal_megalab/core/error/dio_exception.dart';
 import 'package:news_portal_megalab/feature/profile/data/datasources/remote_postprofile.dart';
 import 'package:news_portal_megalab/feature/profile/domain/entities/postprofile_entity.dart';
-import 'package:news_portal_megalab/core/error/failure.dart';
 import 'package:dartz/dartz.dart';
 import 'package:news_portal_megalab/feature/profile/domain/repositories/postprofile_repo.dart';
 
@@ -29,7 +28,7 @@ class PostProfileRepoImpl implements PostProfileRepo {
       );
       return Right(result);
     } on DioError catch (e) {
-      return Left( DioException.fromDioError(e));
+      return Left(DioException.fromDioError(e));
     }
   }
 }

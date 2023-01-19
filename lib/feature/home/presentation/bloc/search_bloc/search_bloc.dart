@@ -19,10 +19,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         tag: event.tag,
       );
 
-      result.fold((error) => emit(const _$_Error()), (post) {
+      result.fold((failure) => emit(_$_Error(message: failure.message)),
+          (post) {
         emit(_$_Success(posts: post));
       });
-      
     });
   }
 }

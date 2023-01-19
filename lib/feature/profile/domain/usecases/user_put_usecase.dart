@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:news_portal_megalab/core/error/dio_exception.dart';
 import 'package:news_portal_megalab/feature/profile/domain/entities/user_entity.dart';
 import 'package:news_portal_megalab/feature/profile/domain/repositories/user_repo.dart';
+
+import '../../../../core/error/dio_exception.dart';
 
 class UserPutUsecase {
   final UserRepo userRepo;
