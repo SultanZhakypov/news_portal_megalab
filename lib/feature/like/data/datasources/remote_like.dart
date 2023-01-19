@@ -8,6 +8,7 @@ import '../../../../core/platform/prefs_settings.dart';
 
 abstract class RemoteLike {
   Future<List<PostListModel>> getLike();
+  Future<int> postLike({required int id});
 }
 
 class RemoteLikeImpl implements RemoteLike {
@@ -24,9 +25,25 @@ class RemoteLikeImpl implements RemoteLike {
         options: Options(headers: {'Authorization': 'Token $token'}),
       );
       final posts = response.data;
-      return (posts as List).map((post) => PostListModel.fromJson(post)).toList();
+      return (posts as List)
+          .map((post) => PostListModel.fromJson(post))
+          .toList();
     } on DioError catch (e) {
       throw DioException.fromDioError(e);
     }
+  }
+
+  @override
+  Future<int> postLike({required int id}) async {
+    final token = await SharedPrefs.getData(AppKeys.token);
+    final response = await dio.post(
+      '/like/',
+      data: {
+        'post':id
+      },
+      options: Options(headers: {'Authorization': 'Token $token'}),
+    );
+
+    return response.data['post'];
   }
 }

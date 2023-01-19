@@ -17,8 +17,7 @@ class PostListRepoImpl implements PostListRepo {
     required String author,
   }) async {
     return _getPosts(() {
-      return remotePostList.searchPost(
-          search: search, tag: tag, author: author);
+      return remotePostList.search(search: search, tag: tag, author: author);
     });
   }
 

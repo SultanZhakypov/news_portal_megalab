@@ -206,7 +206,7 @@ class __$$_PostListModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_PostListModel implements _PostListModel {
   const _$_PostListModel(
-      {this.id = 1,
+      {this.id = 0,
       this.tag = '',
       this.title = '',
       this.text = '',
@@ -464,7 +464,7 @@ class __$$_UserCopyWithImpl<$Res> extends _$UserCopyWithImpl<$Res, _$_User>
 @JsonSerializable()
 class _$_User implements _User {
   const _$_User(
-      {this.id = 1,
+      {this.id = 0,
       this.name = '',
       @JsonKey(name: 'last_name') this.lastName = '',
       this.nickname = ''});

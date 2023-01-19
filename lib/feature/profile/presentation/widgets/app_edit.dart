@@ -15,10 +15,13 @@ abstract class AppPostDialog {
   static Future showPost(BuildContext context) {
     return showDialog(
       context: context,
-      builder: (context) {
-        return const AlertDialog(
-          content: SingleChildScrollView(
-            child: PostDialog(),
+      builder: (_) {
+        return BlocProvider.value(
+          value: BlocProvider.of<PostprofileBloc>(context),
+          child: const AlertDialog(
+            content: SingleChildScrollView(
+              child: PostDialog(),
+            ),
           ),
         );
       },

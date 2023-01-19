@@ -48,18 +48,29 @@ class LikedScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  success: (post) => SliverPadding(
-                    padding:
-                        const EdgeInsets.only(top: 17, left: 20, right: 20),
-                    sliver: SliverList(
-                      delegate: SliverChildBuilderDelegate(
-                        childCount: post.length,
-                        (context, index) {
-                          return ItemsWidget(posts: post[index]);
-                        },
-                      ),
-                    ),
-                  ),
+                  success: (post) => post.isEmpty
+                      ? SliverToBoxAdapter(
+                          child: SizedBox(
+                            height: context.height / 1.8,
+                            child: const Center(
+                                child: Text(
+                              'Пусто',
+                              style: AppConstants.textBlackw400s16,
+                            )),
+                          ),
+                        )
+                      : SliverPadding(
+                          padding: const EdgeInsets.only(
+                              top: 17, left: 20, right: 20),
+                          sliver: SliverList(
+                            delegate: SliverChildBuilderDelegate(
+                              childCount: post.length,
+                              (context, index) {
+                                return ItemsWidget(posts: post[index]);
+                              },
+                            ),
+                          ),
+                        ),
                 );
               },
             ),

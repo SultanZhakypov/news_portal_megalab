@@ -60,7 +60,7 @@ class ItemsProfileWidget extends StatelessWidget {
         ),
         const SizedBox(height: 18),
         IconButton(
-          onPressed: () => AppShows.showSnackBarUrl(context),
+          onPressed: () => AppShows.showShare(context),
           icon: SvgPicture.asset(Svgs.share),
         ),
         const Padding(

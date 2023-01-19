@@ -23,28 +23,28 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(builder: (context) {
-      return MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => di.sl<PostprofileBloc>(),
-          ),
-          BlocProvider(
-            create: (context) =>
-                di.sl<GetuserBloc>()..add(const GetuserEvent.getUser()),
-          ),
-          BlocProvider(
-            create: (context) =>
-                di.sl<GetpostsBloc>()..add(const GetpostsEvent.getPosts()),
-          ),
-          BlocProvider(
-            create: (context) => di.sl<PutUserBloc>(),
-          ),
-          BlocProvider(
-            create: (context) => di.sl<DeletePostBloc>(),
-          ),
-        ],
-        child: Scaffold(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => di.sl<PostprofileBloc>(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              di.sl<GetuserBloc>()..add(const GetuserEvent.getUser()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              di.sl<GetpostsBloc>()..add(const GetpostsEvent.getPosts()),
+        ),
+        BlocProvider(
+          create: (context) => di.sl<PutUserBloc>(),
+        ),
+        BlocProvider(
+          create: (context) => di.sl<DeletePostBloc>(),
+        ),
+      ],
+      child: Builder(builder: (context) {
+        return Scaffold(
           key: AppKeys.drawerKey,
           endDrawer: const AppDrawer(),
           backgroundColor: AppColors.colorWhite,
@@ -179,14 +179,27 @@ class ProfileScreen extends StatelessWidget {
                                     ),
                                   )),
                             ),
-                            success: (post) => SliverList(
-                              delegate: SliverChildBuilderDelegate(
-                                childCount: post.length,
-                                (context, index) {
-                                  return ItemsProfileWidget(post: post[index]);
-                                },
-                              ),
-                            ),
+                            success: (post) => post.isEmpty
+                                ? SliverToBoxAdapter(
+                                    child: SizedBox(
+                                      height: context.height / 4,
+                                      child: const Center(
+                                        child: Text(
+                                          'Пусто',
+                                          style: AppConstants.textBlackw400s16,
+                                        ),
+                                      ),
+                                    ),
+                                  )
+                                : SliverList(
+                                    delegate: SliverChildBuilderDelegate(
+                                      childCount: post.length,
+                                      (context, index) {
+                                        return ItemsProfileWidget(
+                                            post: post[index]);
+                                      },
+                                    ),
+                                  ),
                           );
                         },
                       ),
@@ -201,8 +214,8 @@ class ProfileScreen extends StatelessWidget {
               ),
             ),
           ),
-        ),
-      );
-    });
+        );
+      }),
+    );
   }
 }

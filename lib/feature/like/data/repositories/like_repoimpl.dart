@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 import 'package:news_portal_megalab/core/error/dio_exception.dart';
 import 'package:news_portal_megalab/core/error/failure.dart';
@@ -19,5 +20,19 @@ class LikeRepoImpl implements LikeRepo {
     } on DioException catch (e) {
       return Left(Failure(message: e.toString()));
     }
+  }
+  
+  @override
+  Future<Either<DioException, int>> postLike({required int id})async  {
+ try {
+   final result = await remoteLike.postLike(id: id);
+   return Right(result);
+ }on  DioError catch (e) {
+
+ return Left(DioException.fromDioError(e));
+
+ }
+
+   
   }
 }

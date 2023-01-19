@@ -8,6 +8,7 @@ part 'comment_model.g.dart';
 @freezed
 class CommentModel with _$CommentModel implements Comment {
   const factory CommentModel({
+    @Default(0) int id,
     @Default(User()) User user,
     @Default('') String text,
     @Default([]) List child,

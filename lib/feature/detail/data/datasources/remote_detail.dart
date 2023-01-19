@@ -18,7 +18,7 @@ class RemoteDetailImpl implements RemoteDetail {
     try {
       final token = await SharedPrefs.getData(AppKeys.token);
       final response = await dio.get(
-        'post/$id',
+        '/post/$id',
         options: Options(headers: {'Authorization': 'Token $token'}),
       );
       return DetailModel.fromJson(response.data);

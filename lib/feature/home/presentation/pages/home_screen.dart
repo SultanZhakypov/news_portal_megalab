@@ -73,23 +73,33 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    success: (posts) {
-                      return SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          childCount: posts.length,
-                          (context, index) {
-                            return ItemsWidget(
-                              posts: posts[index],
-                            );
-                          },
-                        ),
-                      );
-                    },
+                    success: (posts) => posts.isEmpty
+                        ? SliverToBoxAdapter(
+                            child: SizedBox(
+                              height: context.height / 2,
+                              child: const Center(
+                                  child: Text(
+                                'Пусто',
+                                style: AppConstants.textBlackw400s16,
+                              )),
+                            ),
+                          )
+                        : SliverList(
+                            delegate: SliverChildBuilderDelegate(
+                              childCount: posts.length,
+                              (context, index) {
+                                return ItemsWidget(
+                                  posts: posts[index],
+                                );
+                              },
+                            ),
+                          ),
                   );
                 },
               ),
             ),
             const SliverFillRemaining(
+              fillOverscroll: true,
               hasScrollBody: false,
               child: FooterWidget(),
             )

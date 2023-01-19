@@ -8,7 +8,7 @@ part of 'home_postlist_model.dart';
 
 _$_PostListModel _$$_PostListModelFromJson(Map<String, dynamic> json) =>
     _$_PostListModel(
-      id: json['id'] as int? ?? 1,
+      id: json['id'] as int? ?? 0,
       tag: json['tag'] as String? ?? '',
       title: json['title'] as String? ?? '',
       text: json['text'] as String? ?? '',
@@ -36,7 +36,7 @@ Map<String, dynamic> _$$_PostListModelToJson(_$_PostListModel instance) =>
     };
 
 _$_User _$$_UserFromJson(Map<String, dynamic> json) => _$_User(
-      id: json['id'] as int? ?? 1,
+      id: json['id'] as int? ?? 0,
       name: json['name'] as String? ?? '',
       lastName: json['last_name'] as String? ?? '',
       nickname: json['nickname'] as String? ?? '',

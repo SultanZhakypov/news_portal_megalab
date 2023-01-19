@@ -6,7 +6,7 @@ import 'package:news_portal_megalab/resources/app_constants.dart';
 
 abstract class RemotePostList {
   Future<List<PostListModel>> getAllPost();
-  Future<List<PostListModel>> searchPost(
+  Future<List<PostListModel>> search(
       {required String search, required String tag, required String author});
 }
 
@@ -16,7 +16,7 @@ class RemotePostListImpl implements RemotePostList {
   RemotePostListImpl({required this.dio});
 
   @override
-  Future<List<PostListModel>> searchPost(
+  Future<List<PostListModel>> search(
       {required String search,
       required String tag,
       required String author}) async {

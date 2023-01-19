@@ -15,8 +15,8 @@ class CommentBloc extends Bloc<CommentEvent, CommentState> {
         final result = await postCommentUsecase.commentRepo
             .postComment(id: event.id, text: event.text);
 
-        result.fold((failure) => emit(_$_Error(message: failure.message)),
-            (comment) => emit(_$_Success(comment: comment)));
+        result.fold((failure) => emit(_$_Error(message: failure.errorMessage)),
+            (comment) => emit(const _$_Success()));
       },
     );
   }

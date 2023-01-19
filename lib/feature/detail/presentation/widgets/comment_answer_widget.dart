@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import 'package:news_portal_megalab/feature/detail/domain/entities/comment_entity.dart';
 import 'package:news_portal_megalab/resources/export_resources.dart';
 
 class CommentAnswerWidget extends StatelessWidget {
-  const CommentAnswerWidget({super.key});
+  const CommentAnswerWidget({
+    Key? key,
+    required this.comment,
+  }) : super(key: key);
+
+  final Comment comment;
 
   @override
   Widget build(BuildContext context) {

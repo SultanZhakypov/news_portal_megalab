@@ -24,6 +24,8 @@ import 'package:news_portal_megalab/feature/like/data/datasources/remote_like.da
 import 'package:news_portal_megalab/feature/like/data/repositories/like_repoimpl.dart';
 import 'package:news_portal_megalab/feature/like/domain/repositories/like_repo.dart';
 import 'package:news_portal_megalab/feature/like/domain/usecases/get_like_usecase.dart';
+import 'package:news_portal_megalab/feature/like/domain/usecases/post_like_usecase.dart';
+import 'package:news_portal_megalab/feature/like/presentation/bloc/cubit/post_like_cubit.dart';
 import 'package:news_portal_megalab/feature/like/presentation/bloc/like_bloc.dart';
 import 'package:news_portal_megalab/feature/profile/data/datasources/remote_deletepost.dart';
 import 'package:news_portal_megalab/feature/profile/data/datasources/remote_getpost.dart';
@@ -78,6 +80,7 @@ Future<void> init() async {
   sl.registerFactory(() => PutUserBloc(userPutUsecase: sl()));
   sl.registerFactory(() => LikeBloc(getLikePostUsecase: sl()));
   sl.registerFactory(() => DeletePostBloc(deletePostUsecase: sl()));
+  sl.registerFactory(() => PostLikeCubit(postLikeusecase: sl()));
 
 //Usecases
   sl.registerLazySingleton(() => PostRegisterUseCase(sl()));
@@ -92,6 +95,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => UserPutUsecase(userRepo: sl()));
   sl.registerLazySingleton(() => GetLikePostUsecase(likeRepo: sl()));
   sl.registerLazySingleton(() => DeletePostUsecase(deleteRepo: sl()));
+  sl.registerLazySingleton(() => PostLikeusecase(likeRepo: sl()));
 
 //Repository
   sl.registerLazySingleton<RegisterRepo>(

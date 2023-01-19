@@ -72,7 +72,9 @@ class _SliverProfileEditWidgetState extends State<SliverProfileEditWidget> {
                       const Text('Удалить',
                           style: AppConstants.textBlackw400s14),
                       IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          image == null;
+                        },
                         icon: SvgPicture.asset(Svgs.trash),
                       ),
                     ],

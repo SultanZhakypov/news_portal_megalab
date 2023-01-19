@@ -20,6 +20,7 @@ CommentModel _$CommentModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$CommentModel {
+  int get id => throw _privateConstructorUsedError;
   User get user => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
   List<dynamic> get child => throw _privateConstructorUsedError;
@@ -36,7 +37,7 @@ abstract class $CommentModelCopyWith<$Res> {
           CommentModel value, $Res Function(CommentModel) then) =
       _$CommentModelCopyWithImpl<$Res, CommentModel>;
   @useResult
-  $Res call({User user, String text, List<dynamic> child});
+  $Res call({int id, User user, String text, List<dynamic> child});
 
   $UserCopyWith<$Res> get user;
 }
@@ -54,11 +55,16 @@ class _$CommentModelCopyWithImpl<$Res, $Val extends CommentModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? user = null,
     Object? text = null,
     Object? child = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -91,7 +97,7 @@ abstract class _$$_CommentModelCopyWith<$Res>
       __$$_CommentModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({User user, String text, List<dynamic> child});
+  $Res call({int id, User user, String text, List<dynamic> child});
 
   @override
   $UserCopyWith<$Res> get user;
@@ -108,11 +114,16 @@ class __$$_CommentModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? user = null,
     Object? text = null,
     Object? child = null,
   }) {
     return _then(_$_CommentModel(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
       user: null == user
           ? _value.user
           : user // ignore: cast_nullable_to_non_nullable
@@ -133,7 +144,8 @@ class __$$_CommentModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_CommentModel implements _CommentModel {
   const _$_CommentModel(
-      {this.user = const User(),
+      {this.id = 0,
+      this.user = const User(),
       this.text = '',
       final List<dynamic> child = const []})
       : _child = child;
@@ -141,6 +153,9 @@ class _$_CommentModel implements _CommentModel {
   factory _$_CommentModel.fromJson(Map<String, dynamic> json) =>
       _$$_CommentModelFromJson(json);
 
+  @override
+  @JsonKey()
+  final int id;
   @override
   @JsonKey()
   final User user;
@@ -158,7 +173,7 @@ class _$_CommentModel implements _CommentModel {
 
   @override
   String toString() {
-    return 'CommentModel(user: $user, text: $text, child: $child)';
+    return 'CommentModel(id: $id, user: $user, text: $text, child: $child)';
   }
 
   @override
@@ -166,6 +181,7 @@ class _$_CommentModel implements _CommentModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CommentModel &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.user, user) || other.user == user) &&
             (identical(other.text, text) || other.text == text) &&
             const DeepCollectionEquality().equals(other._child, _child));
@@ -174,7 +190,7 @@ class _$_CommentModel implements _CommentModel {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, user, text, const DeepCollectionEquality().hash(_child));
+      runtimeType, id, user, text, const DeepCollectionEquality().hash(_child));
 
   @JsonKey(ignore: true)
   @override
@@ -192,13 +208,16 @@ class _$_CommentModel implements _CommentModel {
 
 abstract class _CommentModel implements CommentModel {
   const factory _CommentModel(
-      {final User user,
+      {final int id,
+      final User user,
       final String text,
       final List<dynamic> child}) = _$_CommentModel;
 
   factory _CommentModel.fromJson(Map<String, dynamic> json) =
       _$_CommentModel.fromJson;
 
+  @override
+  int get id;
   @override
   User get user;
   @override

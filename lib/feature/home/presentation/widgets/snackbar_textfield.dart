@@ -3,12 +3,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../resources/export_resources.dart';
 
-class SnackBarTextField extends StatelessWidget {
-  const SnackBarTextField({super.key});
+class ShareTextField extends StatelessWidget {
+  const ShareTextField({
+    Key? key,
+    required this.controller,
+  }) : super(key: key);
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       cursorColor: AppColors.colorBlack,
       style: AppConstants.textBlackw400s16,
       decoration: InputDecoration(

@@ -15,7 +15,6 @@ import 'package:auto_route/auto_route.dart' as _i8;
 import 'package:flutter/material.dart' as _i9;
 
 import '../../feature/auth/presentation/pages/authorized_screen.dart' as _i3;
-import '../../feature/detail/domain/entities/comment_entity.dart' as _i11;
 import '../../feature/detail/presentation/pages/detail_screen.dart' as _i7;
 import '../../feature/home/presentation/pages/home_screen.dart' as _i6;
 import '../../feature/home/presentation/pages/search_screen.dart' as _i1;
@@ -96,7 +95,6 @@ class AppRouter extends _i8.RootStackRouter {
         child: _i7.DetailScreen(
           key: args.key,
           id: args.id,
-          comment: args.comment,
         ),
         transitionsBuilder: _i8.TransitionsBuilders.fadeIn,
         opaque: true,
@@ -217,14 +215,12 @@ class DetailScreenRoute extends _i8.PageRouteInfo<DetailScreenRouteArgs> {
   DetailScreenRoute({
     _i9.Key? key,
     required int id,
-    required List<_i11.Comment> comment,
   }) : super(
           DetailScreenRoute.name,
           path: '/detail',
           args: DetailScreenRouteArgs(
             key: key,
             id: id,
-            comment: comment,
           ),
         );
 
@@ -235,17 +231,14 @@ class DetailScreenRouteArgs {
   const DetailScreenRouteArgs({
     this.key,
     required this.id,
-    required this.comment,
   });
 
   final _i9.Key? key;
 
   final int id;
 
-  final List<_i11.Comment> comment;
-
   @override
   String toString() {
-    return 'DetailScreenRouteArgs{key: $key, id: $id, comment: $comment}';
+    return 'DetailScreenRouteArgs{key: $key, id: $id}';
   }
 }
