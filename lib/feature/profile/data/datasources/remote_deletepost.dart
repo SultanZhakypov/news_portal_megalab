@@ -1,11 +1,11 @@
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:news_portal_megalab/core/platform/prefs_settings.dart';
 
-import 'package:news_portal_megalab/feature/home/data/models/home_postlist_model.dart';
 import 'package:news_portal_megalab/resources/app_constants.dart';
 
 abstract class RemoteDeletePost {
-  Future<PostListModel> deletePost({required int id});
+  Future<Unit> deletePost({required int id});
 }
 
 class RemoteDeletePostImpl implements RemoteDeletePost {
@@ -14,11 +14,11 @@ class RemoteDeletePostImpl implements RemoteDeletePost {
     required this.dio,
   });
   @override
-  Future<PostListModel> deletePost({required int id}) async {
+  Future<Unit> deletePost({required int id}) async {
     final token = await SharedPrefs.getData(AppKeys.token);
-    final response = await dio.delete('/post/$id',
+    await dio.delete('/post/$id',
         options: Options(headers: {'Authorization': 'Token $token'}));
 
-    return PostListModel.fromJson(response.data);
+    return Future.value(unit);
   }
 }

@@ -13,7 +13,10 @@ _$_CommentModel _$$_CommentModelFromJson(Map<String, dynamic> json) =>
           ? const User()
           : User.fromJson(json['user'] as Map<String, dynamic>),
       text: json['text'] as String? ?? '',
-      child: json['child'] as List<dynamic>? ?? const [],
+      child: (json['child'] as List<dynamic>?)
+              ?.map((e) => CommentModel.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          const [],
     );
 
 Map<String, dynamic> _$$_CommentModelToJson(_$_CommentModel instance) =>

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:news_portal_megalab/core/routes/routes.dart';
 import 'package:news_portal_megalab/feature/detail/presentation/bloc/comment/comment_bloc.dart';
 import 'package:news_portal_megalab/feature/detail/presentation/widgets/detail_widgets.dart';
 import 'package:news_portal_megalab/feature/widgets/footer_widget.dart';
@@ -35,6 +36,7 @@ class DetailScreen extends StatelessWidget {
         key: AppKeys.drawerKey,
         endDrawer: const AppDrawer(),
         body: CustomScrollView(
+          physics: const ClampingScrollPhysics(),
           slivers: [
             const SliverAppbarWhite(),
             SliverPadding(
@@ -43,7 +45,10 @@ class DetailScreen extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: IconButton(
-                    onPressed: () => context.router.pop(),
+                    onPressed: () => context.router.pushAndPopUntil(
+                      const HomeScreenRoute(),
+                      predicate: (route) => false,
+                    ),
                     icon: SvgPicture.asset(Svgs.arrowLeft),
                   ),
                 ),
@@ -66,7 +71,7 @@ class DetailScreen extends StatelessWidget {
                     return state.maybeWhen(
                       orElse: () => SliverToBoxAdapter(
                         child: SizedBox(
-                          height: context.height,
+                          height: context.height / 1.5,
                           child: Center(
                             child: Text(
                               LocaleKeys.error_state..tr(),
@@ -77,7 +82,7 @@ class DetailScreen extends StatelessWidget {
                       ),
                       error: (message) => SliverToBoxAdapter(
                         child: SizedBox(
-                          height: context.height,
+                          height: context.height / 1.5,
                           child: Center(
                             child: Text(
                               message,
@@ -113,9 +118,12 @@ class DetailScreen extends StatelessWidget {
                             Text(LocaleKeys.comments.tr(),
                                 style: AppConstants.textBlackw500s24),
                             const SizedBox(height: 25),
-                            ListView.builder(
+                            ListView.separated(
                               shrinkWrap: true,
-                              itemCount: 1,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: detailPost.comment.length,
+                              separatorBuilder: (context, index) =>
+                                  const SizedBox(height: 15),
                               itemBuilder: (context, index) => CommentWidget(
                                   comment: detailPost.comment[index]),
                             ),
@@ -131,7 +139,6 @@ class DetailScreen extends StatelessWidget {
               ),
             ),
             const SliverFillRemaining(
-              fillOverscroll: true,
               hasScrollBody: false,
               child: FooterWidget(),
             )

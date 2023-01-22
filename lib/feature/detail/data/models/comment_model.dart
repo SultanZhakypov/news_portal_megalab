@@ -11,7 +11,7 @@ class CommentModel with _$CommentModel implements Comment {
     @Default(0) int id,
     @Default(User()) User user,
     @Default('') String text,
-    @Default([]) List child,
+    @Default([]) List<CommentModel> child,
   }) = _CommentModel;
   factory CommentModel.fromJson(Map<String, dynamic> json) =>
       _$CommentModelFromJson(json);

@@ -4,7 +4,7 @@ class Comment {
   final int id;
   final User user;
   final String text;
-  final List<dynamic> child;
+  final List<Comment>child;
 
   Comment({
     required this.id,

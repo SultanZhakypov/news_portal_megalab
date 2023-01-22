@@ -12,7 +12,7 @@ class DeletePostBloc extends Bloc<DeletePostEvent, DeletePostState> {
     on<_DeletePostEvent>((event, emit) async {
       final result = await deletePostUsecase.deletePost(id: event.id);
       result.fold((l) => emit(_$_Error(message: l.errorMessage)),
-          (r) => emit(const _$_Success(message: 'Deleted')));
+          (u) => emit(const _$_Success(message: 'Deleted')));
     });
   }
 }

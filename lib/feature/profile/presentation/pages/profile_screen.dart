@@ -88,6 +88,7 @@ class ProfileScreen extends StatelessWidget {
                   );
                 },
                 child: CustomScrollView(
+                  physics: const ClampingScrollPhysics(),
                   slivers: [
                     const SliverPadding(
                       padding: EdgeInsets.symmetric(

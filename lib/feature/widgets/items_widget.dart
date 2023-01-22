@@ -67,8 +67,7 @@ class ItemsWidget extends StatelessWidget {
             const SizedBox(height: 8),
             TextButton(
               onPressed: () {
-                context.router.push(
-                    DetailScreenRoute(id: posts.id));
+                context.router.push(DetailScreenRoute(id: posts.id));
               },
               child: Text(
                 LocaleKeys.read_next.tr(),

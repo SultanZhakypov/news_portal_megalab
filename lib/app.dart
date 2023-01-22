@@ -12,6 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppUnfocuser(
       child: MaterialApp.router(
+        
         routeInformationParser: AppKeys.appRouter.defaultRouteParser(),
         routerDelegate: AppKeys.appRouter.delegate(),
         localizationsDelegates: context.localizationDelegates,

@@ -26,6 +26,7 @@ class LikedScreen extends StatelessWidget {
         endDrawer: const AppDrawer(),
         backgroundColor: AppColors.colorWhite,
         body: CustomScrollView(
+          physics: const ClampingScrollPhysics(),
           slivers: [
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -53,10 +54,11 @@ class LikedScreen extends StatelessWidget {
                           child: SizedBox(
                             height: context.height / 1.8,
                             child: const Center(
-                                child: Text(
-                              'Пусто',
-                              style: AppConstants.textBlackw400s16,
-                            )),
+                              child: Text(
+                                'Пусто',
+                                style: AppConstants.textBlackw400s16,
+                              ),
+                            ),
                           ),
                         )
                       : SliverPadding(

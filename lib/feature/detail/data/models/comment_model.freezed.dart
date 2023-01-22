@@ -23,7 +23,7 @@ mixin _$CommentModel {
   int get id => throw _privateConstructorUsedError;
   User get user => throw _privateConstructorUsedError;
   String get text => throw _privateConstructorUsedError;
-  List<dynamic> get child => throw _privateConstructorUsedError;
+  List<CommentModel> get child => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +37,7 @@ abstract class $CommentModelCopyWith<$Res> {
           CommentModel value, $Res Function(CommentModel) then) =
       _$CommentModelCopyWithImpl<$Res, CommentModel>;
   @useResult
-  $Res call({int id, User user, String text, List<dynamic> child});
+  $Res call({int id, User user, String text, List<CommentModel> child});
 
   $UserCopyWith<$Res> get user;
 }
@@ -76,7 +76,7 @@ class _$CommentModelCopyWithImpl<$Res, $Val extends CommentModel>
       child: null == child
           ? _value.child
           : child // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<CommentModel>,
     ) as $Val);
   }
 
@@ -97,7 +97,7 @@ abstract class _$$_CommentModelCopyWith<$Res>
       __$$_CommentModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int id, User user, String text, List<dynamic> child});
+  $Res call({int id, User user, String text, List<CommentModel> child});
 
   @override
   $UserCopyWith<$Res> get user;
@@ -135,7 +135,7 @@ class __$$_CommentModelCopyWithImpl<$Res>
       child: null == child
           ? _value._child
           : child // ignore: cast_nullable_to_non_nullable
-              as List<dynamic>,
+              as List<CommentModel>,
     ));
   }
 }
@@ -147,7 +147,7 @@ class _$_CommentModel implements _CommentModel {
       {this.id = 0,
       this.user = const User(),
       this.text = '',
-      final List<dynamic> child = const []})
+      final List<CommentModel> child = const []})
       : _child = child;
 
   factory _$_CommentModel.fromJson(Map<String, dynamic> json) =>
@@ -162,10 +162,10 @@ class _$_CommentModel implements _CommentModel {
   @override
   @JsonKey()
   final String text;
-  final List<dynamic> _child;
+  final List<CommentModel> _child;
   @override
   @JsonKey()
-  List<dynamic> get child {
+  List<CommentModel> get child {
     if (_child is EqualUnmodifiableListView) return _child;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_child);
@@ -211,7 +211,7 @@ abstract class _CommentModel implements CommentModel {
       {final int id,
       final User user,
       final String text,
-      final List<dynamic> child}) = _$_CommentModel;
+      final List<CommentModel> child}) = _$_CommentModel;
 
   factory _CommentModel.fromJson(Map<String, dynamic> json) =
       _$_CommentModel.fromJson;
@@ -223,7 +223,7 @@ abstract class _CommentModel implements CommentModel {
   @override
   String get text;
   @override
-  List<dynamic> get child;
+  List<CommentModel> get child;
   @override
   @JsonKey(ignore: true)
   _$$_CommentModelCopyWith<_$_CommentModel> get copyWith =>

@@ -43,6 +43,7 @@ class _SearchScreenState extends State<SearchScreen> {
         ..add(const SearchEvent.searchPost(search: '', tag: '', author: '')),
       child: Scaffold(
         body: CustomScrollView(
+          physics: const ClampingScrollPhysics(),
           slivers: [
             SearchAppBar(
               controller: _controller,

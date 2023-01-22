@@ -21,6 +21,7 @@ class HomeScreen extends StatelessWidget {
         key: AppKeys.drawerKey,
         endDrawer: const AppDrawer(),
         body: CustomScrollView(
+          physics: const ClampingScrollPhysics(),
           slivers: [
             const SliverAppbarWhite(),
             SliverPadding(

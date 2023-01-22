@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:news_portal_megalab/core/routes/routes.dart';
 import 'package:news_portal_megalab/feature/home/domain/entities/post_entity.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/bloc/delete_post/delete_post_bloc.dart';
 import 'package:news_portal_megalab/generated/locale_keys.g.dart';
@@ -52,7 +54,7 @@ class ItemsProfileWidget extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         TextButton(
-          onPressed: () {},
+          onPressed: () => context.router.push(DetailScreenRoute(id: post.id)),
           child: Text(
             LocaleKeys.read_next.tr(),
             style: AppConstants.textPurplew400s16,
