@@ -1,8 +1,8 @@
+import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:news_portal_megalab/feature/register/data/models/register_model.dart';
 
 abstract class RemoteRegisterSource {
-  Future<RegisterModel> addPost({
+  Future<Unit> addPost({
     required String name,
     required String lastname,
     required String nickname,
@@ -18,7 +18,7 @@ class RemoteRegisterSourceImpl implements RemoteRegisterSource {
   RemoteRegisterSourceImpl({required this.dio});
 
   @override
-  Future<RegisterModel> addPost({
+  Future<Unit> addPost({
     required String name,
     required String lastname,
     required String nickname,
@@ -35,11 +35,11 @@ class RemoteRegisterSourceImpl implements RemoteRegisterSource {
       'password2': password2,
     });
 
-    final response = await dio.post(
+    await dio.post(
       '/registration/',
       data: formData,
     );
 
-    return RegisterModel.fromJson(response.data);
+    return Future.value(unit);
   }
 }

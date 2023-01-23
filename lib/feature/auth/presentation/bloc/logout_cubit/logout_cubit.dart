@@ -11,8 +11,8 @@ class LogoutCubit extends Cubit<LogoutState> {
   logout() async {
     try {
       final isLogout = await SharedPrefs.clearData();
-      if (isLogout == true) {
-        emit(_$_Success(isLogout: isLogout));
+      if (isLogout) {
+        emit(const _$_Success());
       }
     } catch (e) {
       emit(const _$_Error());

@@ -4,7 +4,7 @@ import 'package:news_portal_megalab/feature/register/domain/entities/register_en
 import '../../../../core/error/dio_exception.dart';
 
 abstract class RegisterRepo {
-  Future<Either<DioException, RegisterEntity>> postRegister({
+  Future<Either<DioException, Unit>> postRegister({
     required String name,
     required String lastname,
     required String nickname,

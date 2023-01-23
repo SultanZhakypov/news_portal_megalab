@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-import 'package:news_portal_megalab/feature/register/domain/entities/register_entity.dart';
 import 'package:news_portal_megalab/feature/register/domain/repositories/register_repo.dart';
 
 import '../../../../core/error/dio_exception.dart';
@@ -9,7 +8,7 @@ class PostRegisterUseCase {
 
   PostRegisterUseCase(this.registerRepo);
 
-  Future<Either<DioException, RegisterEntity>> call({
+  Future<Either<DioException, Unit>> call({
     required String name,
     required String lastname,
     required String nickname,

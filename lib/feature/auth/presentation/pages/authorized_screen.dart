@@ -44,72 +44,75 @@ class _AuthorizedScreenState extends State<AuthorizedScreen> {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 45),
-          child: BlocConsumer<AuthBloc, AuthState>(listener: (context, state) {
-            state.maybeWhen(
-              orElse: () {},
-              error: (message) =>
-                  AppMenuShow.showSnackBarGlobal(context, message),
-              success: () => context.router.pushAndPopUntil(
-                const HomeScreenRoute(),
-                predicate: (route) => false,
-              ),
-            );
-          }, builder: (context, state) {
-            return state.maybeWhen(
-              loading: () => const Center(
-                child: CircularProgressIndicator.adaptive(),
-              ),
-              orElse: () => Form(
-                key: AppKeys.formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SvgPicture.asset(Svgs.megalabIconPurple),
-                    const SizedBox(height: 15),
-                    CustomTextField(
-                      title: LocaleKeys.nickname,
-                      controller: _nicknameController,
-                    ),
-                    CustomTextFieldPassword(
-                      title: LocaleKeys.password,
-                      controller: _passwordController,
-                    ),
-                    const SizedBox(height: 30),
-                    CustomButtonText(
-                      title: (LocaleKeys.login.tr()),
-                      onPress: () => BlocProvider.of<AuthBloc>(context).add(
-                        AuthEvent.postAuthEvent(
-                          authEntity: AuthEntity(
-                            nickname: _nicknameController.text,
-                            password: _passwordController.text,
+          child: BlocConsumer<AuthBloc, AuthState>(
+            listener: (context, state) {
+              state.maybeWhen(
+                orElse: () {},
+                error: (message) =>
+                    AppMenuShow.showSnackBarGlobal(context, message),
+                success: () => context.router.pushAndPopUntil(
+                  const HomeScreenRoute(),
+                  predicate: (route) => false,
+                ),
+              );
+            },
+            builder: (context, state) {
+              return state.maybeWhen(
+                loading: () => const Center(
+                  child: CircularProgressIndicator.adaptive(),
+                ),
+                orElse: () => Form(
+                  key: AppKeys.formKey1,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SvgPicture.asset(Svgs.megalabIconPurple),
+                      const SizedBox(height: 15),
+                      CustomTextField(
+                        title: LocaleKeys.nickname,
+                        controller: _nicknameController,
+                      ),
+                      CustomTextFieldPassword(
+                        title: LocaleKeys.password,
+                        controller: _passwordController,
+                      ),
+                      const SizedBox(height: 30),
+                      CustomButtonText(
+                        title: (LocaleKeys.login.tr()),
+                        onPress: () => BlocProvider.of<AuthBloc>(context).add(
+                          AuthEvent.postAuthEvent(
+                            authEntity: AuthEntity(
+                              nickname: _nicknameController.text,
+                              password: _passwordController.text,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 32),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          LocaleKeys.no_account.tr(),
-                          style: AppConstants.textGreyw400s12,
-                        ),
-                        const SizedBox(width: 5),
-                        InkWell(
-                          onTap: () => context.router
-                              .push(const UnAuthorizedScreenRoute()),
-                          child: Text(
-                            LocaleKeys.register.tr(),
-                            style: AppConstants.textBluew400s12,
+                      const SizedBox(height: 32),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            LocaleKeys.no_account.tr(),
+                            style: AppConstants.textGreyw400s12,
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                          const SizedBox(width: 5),
+                          InkWell(
+                            onTap: () => context.router
+                                .push(const UnAuthorizedScreenRoute()),
+                            child: Text(
+                              LocaleKeys.register.tr(),
+                              style: AppConstants.textBluew400s12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            );
-          }),
+              );
+            },
+          ),
         ),
       ),
     );

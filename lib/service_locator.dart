@@ -13,6 +13,7 @@ import 'package:news_portal_megalab/feature/detail/domain/repositories/detail_re
 import 'package:news_portal_megalab/feature/detail/domain/usecases/get_detail.dart';
 import 'package:news_portal_megalab/feature/detail/domain/usecases/post_comment.dart';
 import 'package:news_portal_megalab/feature/detail/presentation/bloc/comment/comment_bloc.dart';
+import 'package:news_portal_megalab/feature/detail/presentation/bloc/comment_reply/comment_reply_bloc.dart';
 import 'package:news_portal_megalab/feature/detail/presentation/bloc/detail/detail_bloc.dart';
 import 'package:news_portal_megalab/feature/home/data/datasources/remote_home.dart';
 import 'package:news_portal_megalab/feature/home/data/repositories/postlist_repoimpl.dart';
@@ -74,6 +75,7 @@ Future<void> init() async {
   sl.registerFactory(() => SearchBloc(searchPostUseCase: sl()));
   sl.registerFactory(() => DetailBloc(getDetailUsecase: sl()));
   sl.registerFactory(() => CommentBloc(postCommentUsecase: sl()));
+  sl.registerFactory(() => CommentReplyBloc(postCommentReplyUsecase: sl()));
   sl.registerFactory(() => PostprofileBloc(postProfileUsecase: sl()));
   sl.registerFactory(() => GetuserBloc(userUsecase: sl()));
   sl.registerFactory(() => GetpostsBloc(getPostsUsecase: sl()));
@@ -89,6 +91,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => SearchPostUseCase(postListRepo: sl()));
   sl.registerLazySingleton(() => GetDetailUsecase(detailRepo: sl()));
   sl.registerLazySingleton(() => PostCommentUsecase(commentRepo: sl()));
+  sl.registerLazySingleton(() => PostCommentReplyUsecase(commentRepo: sl()));
   sl.registerLazySingleton(() => PostProfileUsecase(postProfileRepo: sl()));
   sl.registerLazySingleton(() => UserUsecase(userRepo: sl()));
   sl.registerLazySingleton(() => GetPostsUsecase(getPostsRepo: sl()));

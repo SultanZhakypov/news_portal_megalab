@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:news_portal_megalab/core/error/dio_exception.dart';
 import 'package:news_portal_megalab/feature/register/data/datasources/remote_register.dart';
-import 'package:news_portal_megalab/feature/register/data/models/register_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:news_portal_megalab/feature/register/domain/repositories/register_repo.dart';
 
@@ -13,7 +12,7 @@ class RegisterRepoImpl implements RegisterRepo {
   });
 
   @override
-  Future<Either<DioException, RegisterModel>> postRegister({
+  Future<Either<DioException, Unit>> postRegister({
     required String name,
     required String lastname,
     required String nickname,

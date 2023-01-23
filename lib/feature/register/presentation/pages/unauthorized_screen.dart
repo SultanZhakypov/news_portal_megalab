@@ -62,94 +62,96 @@ class _UnAuthorizedScreenState extends State<UnAuthorizedScreen> {
                   orElse: () {},
                   error: (message) =>
                       AppMenuShow.showSnackBarGlobal(context, message),
-                  success: () =>
-                      context.router.push(const AuthorizedScreenRoute()),
+                  success: () => context.router.pushAndPopUntil(
+                    const AuthorizedScreenRoute(),
+                    predicate: (route) => false,
+                  ),
                 );
               },
               builder: (context, state) {
-                state.maybeWhen(
-                  orElse: () {},
+                return state.maybeWhen(
                   loading: () => Center(
                     child: LoadingAnimationWidget.staggeredDotsWave(
                       color: AppColors.colorBlack,
                       size: 50,
                     ),
                   ),
-                );
-                return Form(
-                  key: AppKeys.formKey,
-                  child: Column(
-                    children: [
-                      SvgPicture.asset(Svgs.megalabIconPurple),
-                      const SizedBox(height: 15),
-                      CustomTextField(
-                        title: LocaleKeys.last_name.tr(),
-                        controller: _surNameController,
-                      ),
-                      CustomTextField(
-                        title: LocaleKeys.name.tr(),
-                        controller: _nameController,
-                      ),
-                      CustomTextField(
-                        title: LocaleKeys.nickname.tr(),
-                        controller: _nicknameController,
-                      ),
-                      CustomTextFieldPassword(
-                          title: LocaleKeys.password.tr(),
-                          controller: _passwordController,
+                  orElse: () => Form(
+                    key: AppKeys.formKey2,
+                    child: Column(
+                      children: [
+                        SvgPicture.asset(Svgs.megalabIconPurple),
+                        const SizedBox(height: 15),
+                        CustomTextField(
+                          title: LocaleKeys.last_name.tr(),
+                          controller: _surNameController,
+                        ),
+                        CustomTextField(
+                          title: LocaleKeys.name.tr(),
+                          controller: _nameController,
+                        ),
+                        CustomTextField(
+                          title: LocaleKeys.nickname.tr(),
+                          controller: _nicknameController,
+                        ),
+                        CustomTextFieldPassword(
+                            title: LocaleKeys.password.tr(),
+                            controller: _passwordController,
+                            validator: (p0) {
+                              if (p0!.isEmpty) {
+                                return LocaleKeys.valid_pass.tr();
+                              }
+                              return null;
+                            }),
+                        CustomTextFieldPassword(
+                          title: LocaleKeys.password2.tr(),
+                          controller: _password2Controller,
                           validator: (p0) {
                             if (p0!.isEmpty) {
                               return LocaleKeys.valid_pass.tr();
                             }
+                            if (_passwordController.text !=
+                                _password2Controller.text) {
+                              return LocaleKeys.valid_pass_confirm.tr();
+                            }
                             return null;
-                          }),
-                      CustomTextFieldPassword(
-                        title: LocaleKeys.password2.tr(),
-                        controller: _password2Controller,
-                        validator: (p0) {
-                          if (p0!.isEmpty) {
-                            return LocaleKeys.valid_pass.tr();
-                          }
-                          if (_passwordController.text !=
-                              _password2Controller.text) {
-                            return LocaleKeys.valid_pass_confirm.tr();
-                          }
-                          return null;
-                        },
-                      ),
-                      const SizedBox(height: 30),
-                      CustomButtonText(
-                          title: LocaleKeys.register.tr(),
-                          onPress: () => BlocProvider.of<RegisterBloc>(context)
-                                  .add(RegisterEvent.postRegister(
-                                name: _nameController.text,
-                                lastname: _surNameController.text,
-                                nickname: _nicknameController.text,
-                                password: _passwordController.text,
-                                password2: _password2Controller.text,
-                              ))),
-                      const SizedBox(height: 22),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            LocaleKeys.yes_account.tr(),
-                            style: AppConstants.textGreyw400s12,
-                          ),
-                          const SizedBox(width: 3),
-                          InkWell(
-                            onTap: () {
-                              context.router
-                                  .push(const AuthorizedScreenRoute());
-                            },
-                            child: Text(
-                              LocaleKeys.login.tr(),
-                              style: AppConstants.textBluew400s12,
+                          },
+                        ),
+                        const SizedBox(height: 30),
+                        CustomButtonText(
+                            title: LocaleKeys.register.tr(),
+                            onPress: () =>
+                                BlocProvider.of<RegisterBloc>(context)
+                                    .add(RegisterEvent.postRegister(
+                                  name: _nameController.text,
+                                  lastname: _surNameController.text,
+                                  nickname: _nicknameController.text,
+                                  password: _passwordController.text,
+                                  password2: _password2Controller.text,
+                                ))),
+                        const SizedBox(height: 22),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              LocaleKeys.yes_account.tr(),
+                              style: AppConstants.textGreyw400s12,
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                            const SizedBox(width: 3),
+                            InkWell(
+                              onTap: () {
+                                context.router
+                                    .push(const AuthorizedScreenRoute());
+                              },
+                              child: Text(
+                                LocaleKeys.login.tr(),
+                                style: AppConstants.textBluew400s12,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 );
               },

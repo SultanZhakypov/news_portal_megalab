@@ -73,7 +73,8 @@ abstract class AppKeys {
 
   static final drawerKey = GlobalKey<ScaffoldState>();
 
-  static final formKey = GlobalKey<FormState>();
+  static final formKey1 = GlobalKey<FormState>();
+  static final formKey2 = GlobalKey<FormState>();
 
   static final appRouter = AppRouter(authGuard: AuthGuard());
 

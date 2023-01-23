@@ -21,64 +21,67 @@ class AppDrawer extends StatelessWidget {
       create: (context) => di.sl<LogoutCubit>(),
       child: SizedBox(
         width: context.width / 1.5,
-        child: Builder(builder: (context) {
-          return Drawer(
-            backgroundColor: AppColors.colorWhite,
-            child: BlocListener<LogoutCubit, LogoutState>(
-              listener: (context, state) {
-                state.maybeWhen(
-                    orElse: () {},
-                    success: (isLogout) {
-                      AppKeys.drawerKey.currentState!.closeEndDrawer();
-                      isLogout == true;
-                      context.router.pushAndPopUntil(
-                          const AuthorizedScreenRoute(),
-                          predicate: (route) => false);
-                    });
-              },
-              child: ListView(
-                children: [
-                  DrawerHeader(
-                    child: Center(
-                      child: SvgPicture.asset(Svgs.megalabIconPurple),
-                    ),
-                  ),
-                  ListTile(
-                    leading: SvgPicture.asset(Svgs.purpleProfile),
-                    title: Text(
-                      LocaleKeys.my_profile.tr(),
-                      style: AppConstants.textBlackw400s16,
-                    ),
-                    onTap: () {
-                      AppKeys.drawerKey.currentState!.closeEndDrawer();
-                      context.router.push(const ProfileScreenRoute());
-                    },
-                  ),
-                  ListTile(
-                    leading: SvgPicture.asset(Svgs.liked),
-                    title: Text(
-                      LocaleKeys.izbrannye.tr(),
-                      style: AppConstants.textBlackw400s16,
-                    ),
-                    onTap: () {
-                      AppKeys.drawerKey.currentState!.closeEndDrawer();
+        child: Builder(
+          builder: (context) {
+            return Drawer(
+              backgroundColor: AppColors.colorWhite,
+              child: BlocListener<LogoutCubit, LogoutState>(
+                listener: (context, state) {
+                  state.maybeWhen(
+                      orElse: () {},
+                      success: () {
+                        AppKeys.drawerKey.currentState!.closeEndDrawer();
 
-                      context.router.push(const LikedScreenRoute());
-                    },
-                  ),
-                  ListTile(
-                    leading: SvgPicture.asset(Svgs.x),
-                    title: Text(
-                      LocaleKeys.logout.tr(),
-                      style: AppConstants.textBlackw400s16,
+                        context.router.pushAndPopUntil(
+                            const AuthorizedScreenRoute(),
+                            predicate: (route) => false);
+                      });
+                },
+                child: ListView(
+                  children: [
+                    DrawerHeader(
+                      child: Center(
+                        child: SvgPicture.asset(Svgs.megalabIconPurple),
+                      ),
                     ),
-                    onTap: () => BlocProvider.of<LogoutCubit>(context).logout(),
-                  ),
-                ],
+                    ListTile(
+                      leading: SvgPicture.asset(Svgs.purpleProfile),
+                      title: Text(
+                        LocaleKeys.my_profile.tr(),
+                        style: AppConstants.textBlackw400s16,
+                      ),
+                      onTap: () {
+                        AppKeys.drawerKey.currentState!.closeEndDrawer();
+                        context.router.push(const ProfileScreenRoute());
+                      },
+                    ),
+                    ListTile(
+                      leading: SvgPicture.asset(Svgs.liked),
+                      title: Text(
+                        LocaleKeys.izbrannye.tr(),
+                        style: AppConstants.textBlackw400s16,
+                      ),
+                      onTap: () {
+                        AppKeys.drawerKey.currentState!.closeEndDrawer();
+
+                        context.router.push(const LikedScreenRoute());
+                      },
+                    ),
+                    ListTile(
+                      leading: SvgPicture.asset(Svgs.x),
+                      title: Text(
+                        LocaleKeys.logout.tr(),
+                        style: AppConstants.textBlackw400s16,
+                      ),
+                      onTap: () =>
+                          BlocProvider.of<LogoutCubit>(context).logout(),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        }),
+            );
+          },
+        ),
       ),
     );
   }

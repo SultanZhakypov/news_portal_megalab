@@ -13,7 +13,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final PostAuthUsecase postAuth;
   AuthBloc({required this.postAuth}) : super(const _Initial()) {
     on<_PostAuthEvent>((event, emit) async {
-      final isValid = AppKeys.formKey.currentState!.validate();
+      final isValid = AppKeys.formKey1.currentState!.validate();
 
       if (isValid) {
         final result = await postAuth(event.authEntity);
