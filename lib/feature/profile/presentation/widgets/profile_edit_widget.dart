@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -50,8 +53,10 @@ class _SliverProfileEditWidgetState extends State<SliverProfileEditWidget> {
                   CircleAvatar(
                     radius: 60,
                     backgroundColor: AppColors.colorLightGrey,
-                    backgroundImage:
-                        NetworkImage('${AppKeys.baseUrl}${widget.user.image}'),
+                    backgroundImage: widget.user.image == null
+                        ? null
+                        : CachedNetworkImageProvider(
+                            '${AppKeys.baseUrl}${widget.user.image}'),
                   ),
                   const SizedBox(height: 14),
                   Row(
@@ -101,6 +106,7 @@ class _SliverProfileEditWidgetState extends State<SliverProfileEditWidget> {
                     CustomButtonText(
                       title: 'Сохранить',
                       onPress: () {
+                        log(image!.path.toString());
                         BlocProvider.of<PutUserBloc>(context).add(
                           PutUserEvent.putUser(
                             nickName: _nickName.text,

@@ -7,12 +7,12 @@ import 'package:news_portal_megalab/feature/profile/presentation/widgets/app_edi
 import 'package:news_portal_megalab/feature/profile/presentation/widgets/items_profile.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/widgets/loading_widget.dart';
 import 'package:news_portal_megalab/feature/profile/presentation/widgets/profile_edit_widget.dart';
-import 'package:news_portal_megalab/feature/widgets/app_drawer.dart';
 import 'package:news_portal_megalab/feature/widgets/app_menu.dart';
 import 'package:news_portal_megalab/feature/widgets/widgets.dart';
 import 'package:news_portal_megalab/resources/export_resources.dart';
 import '../../../../service_locator.dart' as di;
 import '../../../../generated/locale_keys.g.dart';
+import '../../../widgets/common_scaffold.dart';
 import '../bloc/delete_post/delete_post_bloc.dart';
 import '../bloc/get_post/getposts_bloc.dart';
 import '../bloc/post_profile/postprofile_bloc.dart';
@@ -44,10 +44,7 @@ class ProfileScreen extends StatelessWidget {
         ),
       ],
       child: Builder(builder: (context) {
-        return Scaffold(
-          key: AppKeys.drawerKey,
-          endDrawer: const AppDrawer(),
-          backgroundColor: AppColors.colorWhite,
+        return CommonScaffold(
           body: BlocListener<PostprofileBloc, PostprofileState>(
             listener: (context, state) {
               state.maybeWhen(

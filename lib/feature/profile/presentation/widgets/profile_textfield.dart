@@ -8,7 +8,8 @@ class ProfileTextFieldWidget extends StatelessWidget {
     this.maxLines = 1,
     this.height = 32,
     this.top = 0,
-    this.bottom = 0, required this.controller,
+    this.bottom = 0,
+    required this.controller,
   }) : super(key: key);
 
   final String title;
@@ -27,31 +28,30 @@ class ProfileTextFieldWidget extends StatelessWidget {
           const SizedBox(height: 5),
           SizedBox(
             height: height,
-            child: Expanded(
-              child: TextField(
-                controller: controller,
-                maxLines: maxLines,
-                style: AppConstants.textBlackw400s16,
-                cursorColor: AppColors.colorPurple,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.only(
-                    right: 15,
-                    left: 15,
-                    top: top,
-                    bottom: bottom,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(5),
-                      borderSide: const BorderSide(
-                        color: AppColors.colorPurple,
-                        width: 2,
-                      )),
-                  border: OutlineInputBorder(
+            width: context.width,
+            child: TextField(
+              controller: controller,
+              maxLines: maxLines,
+              style: AppConstants.textBlackw400s16,
+              cursorColor: AppColors.colorPurple,
+              decoration: InputDecoration(
+                contentPadding: EdgeInsets.only(
+                  right: 15,
+                  left: 15,
+                  top: top,
+                  bottom: bottom,
+                ),
+                focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5),
                     borderSide: const BorderSide(
+                      color: AppColors.colorPurple,
                       width: 2,
-                      color: AppColors.colorGrey,
-                    ),
+                    )),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(5),
+                  borderSide: const BorderSide(
+                    width: 2,
+                    color: AppColors.colorGrey,
                   ),
                 ),
               ),

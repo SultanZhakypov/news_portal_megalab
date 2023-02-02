@@ -25,20 +25,19 @@ class RemotePutUserImpl implements RemotePutUser {
     required String lastName,
   }) async {
     final token = await SharedPrefs.getData(AppKeys.token);
+    final imagePath =
+        image == null ? null : await MultipartFile.fromFile(image.path);
     final formData = {
       'nickname': nickName,
       'name': name,
       'last_name': lastName,
-      'profile_image': image == null
-          ? null
-          : await MultipartFile.fromFile(image.path),
+      'profile_image': imagePath
     };
     final response = await dio.put(
       '/user/',
       data: formData,
       options: Options(headers: {'Authorization': 'Token $token'}),
     );
-
 
     final author = response.data['nickname'];
 

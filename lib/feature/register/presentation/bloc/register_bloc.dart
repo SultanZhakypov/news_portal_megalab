@@ -12,7 +12,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
   final PostRegisterUseCase postRegister;
   RegisterBloc({required this.postRegister}) : super(const _Initial()) {
     on<_PostRegisterEvent>((event, emit) async {
-      final isValid = AppKeys.formKey1.currentState!.validate();
+      final isValid = AppKeys.formKey2.currentState!.validate();
       if (isValid) {
         final result = await postRegister.registerRepo.postRegister(
           name: event.name,

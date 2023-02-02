@@ -4,15 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
-import 'package:news_portal_megalab/core/routes/routes.dart';
 import 'package:news_portal_megalab/feature/detail/presentation/bloc/comment/comment_bloc.dart';
 import 'package:news_portal_megalab/feature/detail/presentation/widgets/detail_widgets.dart';
 import 'package:news_portal_megalab/feature/widgets/app_menu.dart';
 import 'package:news_portal_megalab/feature/widgets/footer_widget.dart';
 import 'package:news_portal_megalab/resources/export_resources.dart';
 import '../../../../generated/locale_keys.g.dart';
-import '../../../widgets/app_drawer.dart';
 import '../../../widgets/appbar_white.dart';
+import '../../../widgets/common_scaffold.dart';
 import '../bloc/comment_reply/comment_reply_bloc.dart';
 import '../bloc/detail/detail_bloc.dart';
 import '../../../../service_locator.dart' as di;
@@ -37,9 +36,7 @@ class DetailScreen extends StatelessWidget {
           create: (context) => di.sl<CommentReplyBloc>(),
         ),
       ],
-      child: Scaffold(
-        key: AppKeys.drawerKey,
-        endDrawer: const AppDrawer(),
+      child: CommonScaffold(
         body: CustomScrollView(
           physics: const ClampingScrollPhysics(),
           slivers: [
@@ -50,10 +47,7 @@ class DetailScreen extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: IconButton(
-                    onPressed: () => context.router.pushAndPopUntil(
-                      const HomeScreenRoute(),
-                      predicate: (route) => false,
-                    ),
+                    onPressed: () => context.router.pop(),
                     icon: SvgPicture.asset(Svgs.arrowLeft),
                   ),
                 ),

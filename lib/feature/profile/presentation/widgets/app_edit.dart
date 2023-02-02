@@ -115,22 +115,22 @@ class _PostDialogState extends State<PostDialog> {
             ),
           ),
           const SizedBox(height: 16),
-          ProfileTextFieldWidget(
-            title: 'Заголовок',
-            controller: _title,
-          ),
-          ProfileTextFieldWidget(
-            title: 'Краткое описание',
-            controller: _shortDesc,
-          ),
-          ProfileTextFieldWidget(
-            controller: _text,
-            top: 20,
-            bottom: 20,
-            title: LocaleKeys.text_news.tr(),
-            maxLines: 10,
-            height: context.height / 3,
-          ),
+          const Text('Имя', style: AppConstants.textBlackw400s14),
+          // ProfileTextFieldWidget(
+          //   controller: _title,
+          // ),
+          // const Text('Имя', style: AppConstants.textBlackw400s14),
+          // ProfileTextFieldWidget(
+          //   controller: _shortDesc,
+          // ),
+          // Text(LocaleKeys.text_news.tr(), style: AppConstants.textBlackw400s14),
+          // ProfileTextFieldWidget(
+          //   controller: _text,
+          //   top: 20,
+          //   bottom: 20,
+          //   maxLines: 10,
+          //   height: context.height / 3,
+          // ),
           SizedBox(
             width: context.width,
             child: DropdownButtonHideUnderline(

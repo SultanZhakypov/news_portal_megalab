@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:news_portal_megalab/feature/like/presentation/bloc/like_bloc.dart';
-import 'package:news_portal_megalab/feature/widgets/app_drawer.dart';
 import 'package:news_portal_megalab/feature/widgets/widgets.dart';
 import 'package:news_portal_megalab/resources/export_resources.dart';
 import '../../../../service_locator.dart' as di;
 import '../../../../generated/locale_keys.g.dart';
+import '../../../widgets/common_scaffold.dart';
 
 class LikedScreen extends StatelessWidget {
   const LikedScreen({super.key});
@@ -21,10 +21,7 @@ class LikedScreen extends StatelessWidget {
               di.sl<LikeBloc>()..add(const LikeEvent.getLikePost()),
         )
       ],
-      child: Scaffold(
-        key: AppKeys.drawerKey,
-        endDrawer: const AppDrawer(),
-        backgroundColor: AppColors.colorWhite,
+      child: CommonScaffold(
         body: CustomScrollView(
           physics: const ClampingScrollPhysics(),
           slivers: [

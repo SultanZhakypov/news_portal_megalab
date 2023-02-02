@@ -45,6 +45,7 @@ class SliverAppbarPurple extends StatelessWidget {
               height: 20,
             )),
         IconButton(
+         
           onPressed: () => AppKeys.drawerKey.currentState!.openEndDrawer(),
           icon: SvgPicture.asset(
             Svgs.purpleMenu,

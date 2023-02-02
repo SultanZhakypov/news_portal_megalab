@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:news_portal_megalab/feature/home/presentation/bloc/get_all_post_bloc/get_post_list_bloc.dart';
-import 'package:news_portal_megalab/feature/home/presentation/widgets/app_shows.dart';
 import 'package:news_portal_megalab/feature/widgets/widgets.dart';
 import 'package:news_portal_megalab/resources/export_resources.dart';
 import '../../../../service_locator.dart' as di;
-import '../../../widgets/app_drawer.dart';
+import '../../../widgets/common_scaffold.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -17,27 +15,13 @@ class HomeScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           di.sl<GetAllPostBloc>()..add(const GetPostListEvent.getPostsEvent()),
-      child: Scaffold(
-        key: AppKeys.drawerKey,
-        endDrawer: const AppDrawer(),
+      child: CommonScaffold(
         body: CustomScrollView(
           physics: const ClampingScrollPhysics(),
           slivers: [
             const SliverAppbarWhite(),
             SliverPadding(
-              padding: const EdgeInsets.symmetric(vertical: 17, horizontal: 20),
-              sliver: SliverToBoxAdapter(
-                child: Align(
-                  alignment: Alignment.centerRight,
-                  child: IconButton(
-                    onPressed: () => AppShows.showFilter(context),
-                    icon: SvgPicture.asset(Svgs.filterIcon),
-                  ),
-                ),
-              ),
-            ),
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 17),
               sliver: BlocBuilder<GetAllPostBloc, GetPostListState>(
                 builder: (context, state) {
                   return state.maybeWhen(
